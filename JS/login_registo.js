@@ -66,6 +66,14 @@ window.onload = function() {
     let optNome = document.getElementById("optNome")
     let optRegister = document.getElementById("optRegister")
 
+    let novoUtilizador01 = new Utilizador("operador", "operador@email.com", "11111", "operador" ) 
+    utilizadores.push(novoUtilizador01)
+    let novoUtilizador02 = new Utilizador("admin", "admin@email.com", "11111", "admin" )
+    utilizadores.push(novoUtilizador02)
+    localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
+
+    
+    console.log(utilizadores)
     optLogout.style.display = 'none'
     optNome.style.display = 'none'
 
@@ -144,6 +152,7 @@ window.onload = function() {
         let novoUtilizador = new Utilizador(inputNome, inputEmail.value, inputPassword1.value)
         // Adicionar ao array
         utilizadores.push(novoUtilizador)
+
         localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
         
     
