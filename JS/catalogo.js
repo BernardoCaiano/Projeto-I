@@ -25,7 +25,6 @@ window.onload = function() {
                 </div>`
             
             for (let j = 0; j < utilizadores.length; j++) {
-                console.log(utilizadores[j].tipo)
                 if (utilizadores[j].tipo == "operador"){
                     strHtml += `<center><a id="${livros[i].id}" href="#" class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
                     <a id="${livros[i].id}" href="#" data-toggle='modal' data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>`
@@ -73,10 +72,8 @@ window.onload = function() {
                                        
                     })        
                 }
-            }
-            
     }
-
+            
     function filtrarAutores() {
         let tempAutores = []
         // 1. Iterar sobre o array livros
@@ -159,5 +156,5 @@ window.onload = function() {
         }
             
     }
-   
+}
    

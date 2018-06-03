@@ -1,63 +1,7 @@
-let utilizadores = []
-let utilizadorId = 0
 
-class Utilizador {
-    constructor(nome, email, password, tipo) {
-        this._id = Utilizador.getLastId() + 1
-        this.nome = nome
-        this.email = email
-        this.password = password 
-        this.tipo = tipo
-    }
-    get id() {
-        return this._id
-    }
-
-    // Propriedade nome
-    get nome() {
-        return this._nome
-    }
-
-    set nome(novoNome) {
-        this._nome = novoNome        
-    }
-
-    // Propriedade email
-    get email() {
-        return this._email
-    }
-    set email(novoEmail) {
-        this._email = novoEmail
-    }
-
-    // Propriedade password
-    get password() {
-        return this._password
-    }
-    set password(novaPassword) {
-        this._password = novaPassword
-    }
-
-    // Propriedade tipo
-    get tipo() {
-        return this._tipo
-    }
-    set tipo(novoTipo) {
-        this._tipo = novoTipo
-    }
-
-    // Get the last ID
-    static getLastId() {
-        let lastId = 0
-        if (utilizadores.length > 0) {
-            lastId = utilizadores[utilizadores.length-1].id
-        }        
-        return lastId
-    }
-}
 
 window.onload = function() {
-
+    //localStorage.removeItem("utilizadores")
     utilizadoresStorage()
     //LOGIN
     // Referências para elementos HTML
@@ -67,11 +11,35 @@ window.onload = function() {
     let optRegister = document.getElementById("optRegister")
 
     let novoUtilizador01 = new Utilizador("operador", "operador@email.com", "11111", "operador" ) 
-    utilizadores.push(novoUtilizador01)
     let novoUtilizador02 = new Utilizador("admin", "admin@email.com", "11111", "admin" )
-    utilizadores.push(novoUtilizador02)
-    localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
 
+    let utilizadorExiste01 = false
+    let utilizadorExiste02 = false
+
+    for (var i = 0; i < utilizadores.length; i++) {
+
+        if (utilizadores[i].nome == novoUtilizador01.nome) {
+            utilizadorExiste01 = true
+        }
+
+        if (utilizadores[i].nome == novoUtilizador02.nome) {
+            utilizadorExiste02 = true
+        }
+    }
+
+    if (utilizadorExiste01 == false) {
+        utilizadores.push(novoUtilizador01)
+    }
+
+    if (utilizadorExiste02 == false) {
+        utilizadores.push(novoUtilizador02)
+    }
+
+    if (utilizadorExiste01 == false || utilizadorExiste02 == false) {
+        localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
+    }
+    
+    
     
     console.log(utilizadores)
     optLogout.style.display = 'none'
@@ -132,13 +100,13 @@ window.onload = function() {
     //  Validar se já existe um user com o mesmo email
     let inputEmail = document.getElementById("inputEmail")
     let utilizadorExiste = false
-    //if (localStorage.getItem("utilizador")){
+    if (localStorage.getItem("utilizadores")){
         for (var i = 0; i < utilizadores.length; i++) {
             if (utilizadores[i].email == inputEmail.value) {
                 utilizadorExiste = true
             } 
         }
-    //}
+    }
     
 
     if(utilizadorExiste == true) {
@@ -153,17 +121,17 @@ window.onload = function() {
         // Adicionar ao array
         utilizadores.push(novoUtilizador)
 
+        localStorage.removeItem("utilizadores")
         localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
         
-    
         utilizadorId = novoUtilizador.id
 
         // Alerta de sucesso!
         alert("Registo efetuado com sucesso!!")
         // Fechar a modal
         $('#registoModal').modal('hide')
+        
         // ALterar navbar 
- 
         optLogin.style.display = 'none'
         optRegister.style.display = 'none'
         optLogout.style.display = 'block'
@@ -192,6 +160,7 @@ optLogout.addEventListener("click", function () {
 })
 
 function utilizadoresStorage(){
+    
     if(localStorage.utilizadores) {
         let tempArray = JSON.parse(localStorage.getItem("utilizadores"))
         
