@@ -1,10 +1,13 @@
-window.onload = function() {
+
     
     livrosStorage()
     filtrarAutores()
     carregarCatalogo()
-
+    
     function carregarCatalogo() {
+        let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
+    console.log(utilizadorLogado)
+    console.log(utilizadorLogado._tipo)
         
         let catalogo = document.getElementById("catalogo")
     
@@ -24,12 +27,12 @@ window.onload = function() {
                          
                 </div>`
             
-            for (let j = 0; j < utilizadores.length; j++) {
-                if (utilizadores[j].tipo == "operador" && utilizadores[j].id == localStorage.getItem("utilizadorID")){
+           
+                if (utilizadorLogado._tipo == "operador"){
                     strHtml += `<center><a id="${livros[i].id}" href="#" class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
                     <a id="${livros[i].id}" href="#" data-toggle='modal' data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>`
                 }
-            }
+            
                           
             if(i % 6 == 5) {
                 strHtml += `</div>`    
@@ -156,5 +159,5 @@ window.onload = function() {
         }
             
     }
-}
+
    

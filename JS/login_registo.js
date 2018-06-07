@@ -1,14 +1,14 @@
-
+let logado = false
 
 window.onload = function() {
+
     //localStorage.removeItem("utilizadores")
     utilizadoresStorage()
+    utilizadorLogadoStorage()
+   
     //LOGIN
     // Referências para elementos HTML
-    let optLogin = document.getElementById("optLogin")
-    let optLogout = document.getElementById("optLogout")
-    let optNome = document.getElementById("optNome")
-    let optRegister = document.getElementById("optRegister")
+    
 
     let novoUtilizador01 = new Utilizador("operador", "operador@email.com", "11111", "operador" ) 
     let novoUtilizador02 = new Utilizador("admin", "admin@email.com", "11111", "admin" )
@@ -74,6 +74,7 @@ window.onload = function() {
         if(utilizadorExiste == true) {
             
             alert("Autenticação efetuado com sucesso!!")
+            logado = true
             // Fechar a modal
             $('#loginModal').modal('hide')
             // Alterar navbar 
@@ -124,11 +125,11 @@ window.onload = function() {
         if (strError=="") {
             let inputNome = document.getElementById("inputNome").value
             event.preventDefault()
-            let novoUtilizador = new Utilizador(inputNome, inputEmail.value, inputPassword1.value)
+            let novoUtilizador = new Utilizador(inputNome, inputEmail.value, inputPassword1.value, "utilizador")
             // Adicionar ao array
             utilizadores.push(novoUtilizador)
 
-            localStorage.removeItem("utilizadores")
+            //localStorage.removeItem("utilizadores")
             localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
         
             utilizadorId = novoUtilizador.id
@@ -142,8 +143,9 @@ window.onload = function() {
             optLogin.style.display = 'none'
             optRegister.style.display = 'none'
             optLogout.style.display = 'block'
-            optNome.innerHTML = `<a class="nav-link" href="#" style="color:white">Olá, ${inputNome}</a>`
+            optNome.innerHTML = `<a class="nav-link" href="#" style="color:white">Olá, ${nomeUtilizador}</a>`
             optNome.style.display = 'block'
+            logado = false
 
         }
 
@@ -178,6 +180,23 @@ window.onload = function() {
                 let novoUtilizador =  new Utilizador(tempArray[i]._nome, tempArray[i]._email, tempArray[i]._password, tempArray[i]._tipo)
                 utilizadores.push(novoUtilizador)       
             }
-    }  
-}
+        } 
+    } 
+
+    function utilizadorLogadoStorage() {
+        
+        if(localStorage.utilizadorLogado) {
+            let tempArray = JSON.parse(localStorage.getItem("utilizadorLogado"))
+            for (var i = 0; i < tempArray.length; i++) {
+            
+                let utilizadorLogado =  new Utilizador(tempArray[i]._nome, tempArray[i]._email, tempArray[i]._password, tempArray[i]._tipo)
+                       
+            }
+            logado = true        
+        } 
+        else {
+            logado = false
+        }
+    }
+
 }
