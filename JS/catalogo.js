@@ -6,8 +6,8 @@
     
     function carregarCatalogo() {
         let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
-    console.log(utilizadorLogado)
-    console.log(utilizadorLogado._tipo)
+        console.log(utilizadorLogado)
+        console.log(utilizadorLogado._tipo)
         
         let catalogo = document.getElementById("catalogo")
     
@@ -19,21 +19,28 @@
                  strHtml += `<div class="row">`    
             }
 
-            strHtml += `
-                <div class="col-2"><center><a id="${livros[i].id}" href="#" class="btn btn-dark"> Requisitar </a></center> <br>
-                <a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" alt="" height="240" width="160"></a> <br>
+            if (utilizadorLogado._tipo == "operador"){
+                strHtml += `
+                <div class="col-2"><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" alt="" height="240" width="160"></a> <br>
                 <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
                          de ${livros[i].autor}</p>  </center>
+                         <center><a id="${livros[i].id}" href="#" class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
+                <a id="${livros[i].id}" href="#" data-toggle='modal' data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
                          
                 </div>`
+            }
+            else {
+                strHtml += `
+                <div class="col-2"><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" alt="" height="240" width="160"></a> <br>
+                <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
+                         de ${livros[i].autor}</p>  </center>
+                        
+                         
+                </div>`
+            }
             
-           
-                if (utilizadorLogado._tipo == "operador"){
-                    strHtml += `<center><a id="${livros[i].id}" href="#" class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
-                    <a id="${livros[i].id}" href="#" data-toggle='modal' data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>`
-                }
             
-                          
+                               
             if(i % 6 == 5) {
                 strHtml += `</div>`    
             } 

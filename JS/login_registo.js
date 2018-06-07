@@ -5,10 +5,27 @@ window.onload = function() {
     //localStorage.removeItem("utilizadores")
     utilizadoresStorage()
     utilizadorLogadoStorage()
-   
+
     //LOGIN
     // Referências para elementos HTML
     
+    let linkCatalogo = document.getElementById("linkCatalogo")
+    let linkDoarLivro = document.getElementById("linkDoarLivro")
+
+    linkCatalogo.addEventListener("click", function(event) {
+        if (logado == false) {
+            event.preventDefault()
+            alert("Para aceder a esses conteudos tem que fazer login!")
+            
+        }
+    })
+
+    linkDoarLivro.addEventListener("click", function(event) {
+        if (logado == false) {
+            event.preventDefault()
+            alert("Para aceder a esses conteudos tem que fazer login!")
+        }
+    })
 
     let novoUtilizador01 = new Utilizador("operador", "operador@email.com", "11111", "operador" ) 
     let novoUtilizador02 = new Utilizador("admin", "admin@email.com", "11111", "admin" )
@@ -40,11 +57,22 @@ window.onload = function() {
         localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
     }
     
-    
-    
     console.log(utilizadores)
-    optLogout.style.display = 'none'
-    optNome.style.display = 'none'
+    
+
+    if (logado) {
+
+        optLogin.style.display = 'none'
+        optRegister.style.display = 'none'
+        optLogout.style.display = 'block'
+        optNome.innerHTML = `<a class="nav-link" href="#" style="color:white">Olá, ${nomeUtilizador}</a>`
+        optNome.style.display = 'block'
+ 
+    }
+    else {
+        optLogout.style.display = 'none'
+        optNome.style.display = 'none'
+    }
 
     let frmLogin = document.getElementById("frmLogin")
     // SUBMISSÃO DE AUTENTICAÇÃO
@@ -52,21 +80,23 @@ window.onload = function() {
 
         // Obter as referências para as caixas de texto
         let inputLoginEmail = document.getElementById("inputLoginEmail")
-
         let inputLoginPassword = document.getElementById("inputLoginPassword")
 
         // Iterar sobre o array e verificar se o utilizador já existe
         let utilizadorExiste = false
         let nomeUtilizador = ""
         for (var i = 0; i < utilizadores.length; i++) {
+
             if (utilizadores[i].email == inputLoginEmail.value && utilizadores[i].password == inputLoginPassword.value) {
+
                 utilizadorExiste = true
                 utilizadorId = utilizadores[i].id
                 nomeUtilizador = utilizadores[i].nome
                 let utilizadorLogadoID = utilizadores[i].id
                 let utilizadorLogado = utilizadores[i]
                 localStorage.setItem("utilizadorID", utilizadorLogadoID)
-                localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado) )
+                localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado))
+
             }        
         }   
 
@@ -75,6 +105,7 @@ window.onload = function() {
             
             alert("Autenticação efetuado com sucesso!!")
             logado = true
+            
             // Fechar a modal
             $('#loginModal').modal('hide')
             // Alterar navbar 
@@ -96,6 +127,7 @@ window.onload = function() {
     //REGISTO
     let frmRegister = document.getElementById("frmRegister")
     frmRegister.addEventListener("submit", function() { 
+
         // Validar pass iguais
         let inputPassword1 = document.getElementById("inputPassword1")
         let inputPassword2 = document.getElementById("inputPassword2")
@@ -108,7 +140,9 @@ window.onload = function() {
         //  Validar se já existe um user com o mesmo email
         let inputEmail = document.getElementById("inputEmail")
         let utilizadorExiste = false
+
         if (localStorage.getItem("utilizadores")){
+
             for (var i = 0; i < utilizadores.length; i++) {
                 if (utilizadores[i].email == inputEmail.value) {
                     utilizadorExiste = true
@@ -116,13 +150,13 @@ window.onload = function() {
             }
         }
     
-
         if(utilizadorExiste == true) {
             strError += "\nEmail já existente!"
         }
 
         // Criar o utilizador
         if (strError=="") {
+            
             let inputNome = document.getElementById("inputNome").value
             event.preventDefault()
             let novoUtilizador = new Utilizador(inputNome, inputEmail.value, inputPassword1.value, "utilizador")
@@ -139,13 +173,7 @@ window.onload = function() {
             // Fechar a modal
             $('#registoModal').modal('hide')
         
-            // ALterar navbar 
-            optLogin.style.display = 'none'
-            optRegister.style.display = 'none'
-            optLogout.style.display = 'block'
-            optNome.innerHTML = `<a class="nav-link" href="#" style="color:white">Olá, ${nomeUtilizador}</a>`
-            optNome.style.display = 'block'
-            logado = false
+            
 
         }
 
@@ -159,15 +187,16 @@ window.onload = function() {
 
     // LOGOUT
     optLogout.addEventListener("click", function () {
-    utilizadorId = 0
-    optLogin.style.display = 'block'
-    optRegister.style.display = 'block'
-    optLogout.style.display = 'none'
-    optNome.style.display = 'none'
-    alert("Logout efetuado com sucesso!!")
-    localStorage.removeItem("utilizadorLogado")
-    localStorage.removeItem("utilizadorID")
-    
+
+        utilizadorId = 0
+        optLogin.style.display = 'block'
+        optRegister.style.display = 'block'
+        optLogout.style.display = 'none'
+        optNome.style.display = 'none'
+        alert("Logout efetuado com sucesso!!")
+        localStorage.removeItem("utilizadorLogado")
+        localStorage.removeItem("utilizadorID")    
+        
     })
 
     function utilizadoresStorage(){
@@ -186,12 +215,9 @@ window.onload = function() {
     function utilizadorLogadoStorage() {
         
         if(localStorage.utilizadorLogado) {
-            let tempArray = JSON.parse(localStorage.getItem("utilizadorLogado"))
-            for (var i = 0; i < tempArray.length; i++) {
-            
-                let utilizadorLogado =  new Utilizador(tempArray[i]._nome, tempArray[i]._email, tempArray[i]._password, tempArray[i]._tipo)
-                       
-            }
+            let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
+            console.log(utilizadorLogado._nome)
+            nomeUtilizador = utilizadorLogado._nome
             logado = true        
         } 
         else {
