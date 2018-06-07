@@ -17,17 +17,24 @@ window.onload = function() {
             }
 
             strHtml += `
-                <div class="col-2"><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img class="img-thumbnail" src="${livros[i].capa}" alt="" height="240" width="160"></a> <br>
+                <div class="col-2"><center><a id="${livros[i].id}" href="#" class="btn btn-dark"> Requisitar </a></center> <br>
+                <a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" alt="" height="240" width="160"></a> <br>
                 <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
-                         de ${livros[i].autor}</p>  
-                        <a id="${livros[i].id}" href="#" class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
-                        <a id="${livros[i].id}" href="#" data-toggle='modal' data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
+                         de ${livros[i].autor}</p>  </center>
+                         
                 </div>`
-                          
-                if(i % 6 == 5) {
-                    strHtml += `</div>`    
-                } 
+            
+            for (let j = 0; j < utilizadores.length; j++) {
+                if (utilizadores[j].tipo == "operador" && utilizadores[j].id == localStorage.getItem("utilizadorID")){
+                    strHtml += `<center><a id="${livros[i].id}" href="#" class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
+                    <a id="${livros[i].id}" href="#" data-toggle='modal' data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>`
+                }
             }
+                          
+            if(i % 6 == 5) {
+                strHtml += `</div>`    
+            } 
+        }
     
             catalogo.innerHTML = strHtml
            
@@ -65,10 +72,8 @@ window.onload = function() {
                                        
                     })        
                 }
-            }
-            
     }
-
+            
     function filtrarAutores() {
         let tempAutores = []
         // 1. Iterar sobre o array livros
@@ -151,5 +156,5 @@ window.onload = function() {
         }
             
     }
-   
+}
    
