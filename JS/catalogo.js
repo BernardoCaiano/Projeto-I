@@ -75,7 +75,7 @@
                 // For each link, add a listener to listen the click event
                 for (let i = 0; i < editar.length; i++) {
                     editar[i].addEventListener("click", function() {
-                        // By clicking in a specific game, edit in the form
+                        // Ao clicar num livro especifico, editar no form
                         let livroId = editar[i].getAttribute("id")
                         
                         editarLivroPorId(livroId) 
@@ -134,23 +134,43 @@
         console.log(id)
         
         livroId = id
+
+        let frmEditarLivros = document.getElementById("frmEditarLivros")
+        let titulo = document.getElementById("inputTitulo").value
+        let capa = document.getElementById("inputCapa").value
+        let descriçao = document.getElementById("inputDescriçao").value
+        let autor = document.getElementById("inputAutor").value
+        let editora = document.getElementById("inputEditora").value
+        let dataLançamento = document.getElementById("inputDataLançamento").value
+        let numeroPaginas = document.getElementById("inputNpaginas").value
+        let estado = document.getElementById("inputEstado").value
+        let dataDoaçao = document.getElementById("inputDataDoaçao").value
+        let doador = document.getElementById("inputDoador").value
+
+        frmEditarLivros.addEventListener("submit", function(event) {
+            for (let i = 0; i < livros.length; i++) {
+                if(livros[i].id == id) {
+                    
+                    livros[i].titulo = titulo
+                    livros[i].capa = capa
+                    livros[i].descriçao = descriçao
+                    livros[i].autor = autor
+                    livros[i].editora = editora
+                    livros[i].dataLançamento = dataLançamento
+                    livros[i].numeroPaginas = numeroPaginas
+                    livros[i].estado = estado
+                    livros[i].dataDoaçao = dataDoaçao
+                    livros[i].doador = doador
+                    localStorage.setItem("livros", JSON.stringify(livros))
+                    // Fechar a modal
+                    $('#editarLivroModal').modal('hide')
+                    carregarCatalogo()
+                    event.preventDefault()
+                    
+                }                                    
+            }
+        })
         
-        for (let i = 0; i < livros.length; i++) {
-            if(livros[i].id == id) {
-                
-                titulo = livros[i].titulo
-                capa = livros[i].capa
-                descriçao = livros[i].descriçao
-                autor = livros[i].autor
-                editora = livros[i].editora
-                dataLançamento = livros[i].dataLançamento
-                numeroPaginas = livros[i].numeroPaginas
-                estado = livros[i].estado
-                dataDoaçao = livros[i].dataDoaçao
-                doador = livros[i].doador
-                
-            }                                    
-        }
         
     }
     

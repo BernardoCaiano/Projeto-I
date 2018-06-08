@@ -94,7 +94,7 @@ window.onload = function() {
                 nomeUtilizador = utilizadores[i].nome
                 let utilizadorLogadoID = utilizadores[i].id
                 let utilizadorLogado = utilizadores[i]
-                localStorage.setItem("utilizadorID", utilizadorLogadoID)
+                
                 localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado))
 
             }        
@@ -195,7 +195,7 @@ window.onload = function() {
         optNome.style.display = 'none'
         alert("Logout efetuado com sucesso!!")
         localStorage.removeItem("utilizadorLogado")
-        localStorage.removeItem("utilizadorID")    
+           
         
     })
 
