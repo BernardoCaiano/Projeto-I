@@ -11,6 +11,7 @@ window.onload = function() {
     
     let linkCatalogo = document.getElementById("linkCatalogo")
     let linkDoarLivro = document.getElementById("linkDoarLivro")
+    let linkPerfil = document.getElementById("linkPerfil")
 
     linkCatalogo.addEventListener("click", function(event) {
         if (logado == false) {
@@ -27,8 +28,17 @@ window.onload = function() {
         }
     })
 
-    let novoUtilizador01 = new Utilizador("operador", "operador@email.com", "11111", "operador" ) 
-    let novoUtilizador02 = new Utilizador("admin", "admin@email.com", "11111", "admin" )
+    //linkPerfil.addEventListener("click", function(event) {
+        //if (logado == false) {
+            //event.preventDefault()
+            //alert("Para aceder a esses conteudos tem que fazer login!")
+        //}
+    //})
+
+   
+
+    let novoUtilizador01 = new Utilizador("operador", "operador@email.com", "11111", "operador", "" ) 
+    let novoUtilizador02 = new Utilizador("admin", "admin@email.com", "11111", "admin", "" )
     let utilizadorLogado = new Utilizador()
 
     let utilizadorExiste01 = false
@@ -58,6 +68,7 @@ window.onload = function() {
     }
     
     console.log(utilizadores)
+    
     
 
     if (logado) {
@@ -98,7 +109,9 @@ window.onload = function() {
                 localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado))
 
             }        
-        }   
+        } 
+        
+        
 
         // Se sim, autenticar utilizador
         if(utilizadorExiste == true) {
@@ -123,6 +136,11 @@ window.onload = function() {
         event.preventDefault()
 
     })
+    // Apenas mostrar a opcao doar livro na navbar se o utilizador for do tipo operador
+    //if (utilizadorLogado._tipo != "operador") {
+        //let linkDoarLivro = document.getElementById("linkDoarLivro")
+        //linkDoarLivro.style.display = "none"
+    //}
 
     //REGISTO
     let frmRegister = document.getElementById("frmRegister")
@@ -159,7 +177,7 @@ window.onload = function() {
             
             let inputNome = document.getElementById("inputNome").value
             event.preventDefault()
-            let novoUtilizador = new Utilizador(inputNome, inputEmail.value, inputPassword1.value, "utilizador")
+            let novoUtilizador = new Utilizador(inputNome, inputEmail.value, inputPassword1.value, "utilizador", "")
             // Adicionar ao array
             utilizadores.push(novoUtilizador)
 
@@ -195,6 +213,7 @@ window.onload = function() {
         optNome.style.display = 'none'
         alert("Logout efetuado com sucesso!!")
         localStorage.removeItem("utilizadorLogado")
+        location.replace("index.html")
            
         
     })
@@ -206,7 +225,7 @@ window.onload = function() {
         
             for (var i = 0; i < tempArray.length; i++) {
             
-                let novoUtilizador =  new Utilizador(tempArray[i]._nome, tempArray[i]._email, tempArray[i]._password, tempArray[i]._tipo)
+                let novoUtilizador =  new Utilizador(tempArray[i]._nome, tempArray[i]._email, tempArray[i]._password, tempArray[i]._tipo, tempArray[i]._foto)
                 utilizadores.push(novoUtilizador)       
             }
         } 

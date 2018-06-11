@@ -3,11 +3,11 @@
     livrosStorage()
     filtrarAutores()
     carregarCatalogo()
+
+    
     
     function carregarCatalogo() {
         let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
-        console.log(utilizadorLogado)
-        console.log(utilizadorLogado._tipo)
         
         let catalogo = document.getElementById("catalogo")
     
@@ -62,7 +62,7 @@
             // Para cada botão, adicionar um listener para escutar pelo evento clique
                 for (let i = 0; i < btnRemover.length; i++) {
                     btnRemover[i].addEventListener("click", function() {
-                        // By clicking in a specific game, remove it from the array
+                        // Ao clicar num livro especifico, remover do array
                         let livroId = btnRemover[i].getAttribute("id")
                         eliminarLivro(livroId)
                         carregarCatalogo(livroId)
@@ -72,19 +72,22 @@
 
                 
                 let editar = document.getElementsByClassName("editar")
-                // For each link, add a listener to listen the click event
+                // Para cada botão, adicionar um listener para escutar pelo evento clique
                 for (let i = 0; i < editar.length; i++) {
                     editar[i].addEventListener("click", function() {
                         // Ao clicar num livro especifico, editar no form
                         let livroId = editar[i].getAttribute("id")
                         
                         editarLivroPorId(livroId) 
-                                       
+                        carregarCatalogo(livroId)
+                        
+                                 
                     })        
                 }
     }
             
     function filtrarAutores() {
+
         let tempAutores = []
         // 1. Iterar sobre o array livros
         for (let i = 0; i < livros.length; i++) {
@@ -101,7 +104,6 @@
             
                     strHtml += `<option value='${tempAutores[i]}'>${tempAutores[i]}</option>` 
                             
-            
         }
     
         let autores = document.getElementById("autores")
@@ -133,44 +135,67 @@
     function editarLivroPorId(id) {
         console.log(id)
         
-        livroId = id
+        //livroId = id
 
         let frmEditarLivros = document.getElementById("frmEditarLivros")
-        let titulo = document.getElementById("inputTitulo").value
-        let capa = document.getElementById("inputCapa").value
-        let descriçao = document.getElementById("inputDescriçao").value
-        let autor = document.getElementById("inputAutor").value
-        let editora = document.getElementById("inputEditora").value
-        let dataLançamento = document.getElementById("inputDataLançamento").value
-        let numeroPaginas = document.getElementById("inputNpaginas").value
-        let estado = document.getElementById("inputEstado").value
-        let dataDoaçao = document.getElementById("inputDataDoaçao").value
-        let doador = document.getElementById("inputDoador").value
+
+        let titulo = document.getElementById("inputTitulo")
+        let capa = document.getElementById("inputCapa")
+        let descriçao = document.getElementById("inputDescriçao")
+        let autor = document.getElementById("inputAutor")
+        let editora = document.getElementById("inputEditora")
+        let dataLançamento = document.getElementById("inputDataLançamento")
+        let numeroPaginas = document.getElementById("inputNpaginas")
+        let estado = document.getElementById("inputEstado")
+        let dataDoaçao = document.getElementById("inputDataDoaçao")
+        let doador = document.getElementById("inputDoador")
+
+        
+        
+        for (let j = 0; j < livros.length; j++) {
+            if(livros[j].id == id) {
+                titulo.value = livros[j].titulo
+                capa.value = livros[j].capa
+                descriçao.value = livros[j].descriçao 
+                autor.value =  livros[j].autor
+                editora.value = livros[j].editora
+                dataLançamento.value = livros[j].dataLançamento
+                numeroPaginas.value = livros[j].numeroPaginas
+                estado.value = livros[j].estado
+                dataDoaçao.value = livros[j].dataDoaçao
+                doador.value = livros[j].doador
+            }
+            
+
+        }
 
         frmEditarLivros.addEventListener("submit", function(event) {
+            
             for (let i = 0; i < livros.length; i++) {
+                
                 if(livros[i].id == id) {
                     
-                    livros[i].titulo = titulo
-                    livros[i].capa = capa
-                    livros[i].descriçao = descriçao
-                    livros[i].autor = autor
-                    livros[i].editora = editora
-                    livros[i].dataLançamento = dataLançamento
-                    livros[i].numeroPaginas = numeroPaginas
-                    livros[i].estado = estado
-                    livros[i].dataDoaçao = dataDoaçao
-                    livros[i].doador = doador
-                    localStorage.setItem("livros", JSON.stringify(livros))
+                    livros[i].titulo = titulo.value
+                    livros[i].capa = capa.value
+                    livros[i].descriçao = descriçao.value
+                    livros[i].autor = autor.value
+                    livros[i].editora = editora.value
+                    livros[i].dataLançamento = dataLançamento.value
+                    livros[i].numeroPaginas = numeroPaginas.value
+                    livros[i].estado = estado.value
+                    livros[i].dataDoaçao = dataDoaçao.value
+                    livros[i].doador = doador.value
+                
                     // Fechar a modal
                     $('#editarLivroModal').modal('hide')
-                    carregarCatalogo()
+                    
                     event.preventDefault()
                     
                 }                                    
             }
+            localStorage.setItem("livros", JSON.stringify(livros))
+            location.reload()
         })
-        
         
     }
     

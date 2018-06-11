@@ -4,8 +4,8 @@
     <title>Books on the move</title>
     <script src="../JS/classeUtilizadores.js"></script>
     <script src="../JS/login_registo.js"></script>
-    <script src="../JS/classeLivros.js"></script>
-    
+
+    <script></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,17 +18,17 @@
   </head>
   <body>
       
-    <nav class="navbar navbar-expand-sm sticky-top " style="background-color: black;">
+    <nav class="navbar navbar-expand-sm sticky-top" style="background-color:black;">
         <div class="navbar-header">
             <a href="#" id="sidebarCollapse"><i class="fas fa-bars fa-2x mr-3" style="color:white"></i></a>
         </div>    
         <a class="navbar-brand" href="index.html">
             <img src="../imagens/logo.png" width="160" height="100" alt="">
         </a>
-        <a class="navbar-toggler hidden-lg-up"  data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-angle-down fa-lg" style="color:white"></i>
-    </a>
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto">
                 <form class="form-inline">
@@ -41,24 +41,24 @@
                 
                 <!--OPÇÃO LOGIN-->
                 <li id="optLogin" class="nav-item">
-                  <a data-toggle="modal" data-target="#loginModal" class="nav-link" href="#" style="color:white">Login</a>
+                    <a data-toggle="modal" data-target="#loginModal" class="nav-link" href="#" style="color:white">Login</a>
                 </li>
                 <!--OPÇÃO REGISTO-->
                 <li id="optRegister" class="nav-item">
-                  <a data-toggle="modal" data-target="#registoModal" class="nav-link" href="#" style="color:white">Registo</a>
+                    <a data-toggle="modal" data-target="#registoModal" class="nav-link" href="#" style="color:white">Registo</a>
                 </li> 
                 <!--OPÇÃO LOGOUT-->
                 <li id="optLogout" class="nav-item">
                     <a class="nav-link" href="#" style="color:white">Logout</a>
                 </li> 
                 <!--OPÇÃO NOME-->
-                <li id="optNome" class="nav-item"></li>  
+                <li id="optNome" class="nav-item"></li> 
+                <!--ICONS-->
                 <li class="nav-item">
-                        <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>
-                    
-                    </li>
+                    <a href=""><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
+                </li>
                     <li class="nav-item">
-                         <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
+                        <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
                         
                     </li>
                     <li class="nav-item">
@@ -73,93 +73,28 @@
     </nav>
     <div class="wrapper">
         <!-- Sidebar Holder -->
-        
-        <nav  id="sidebar">
-                <ul class="navbar-nav ">
-                    <div class="position-fixed">
-                        <li class="nav-item " >
-                            <a href="index.html" class="nav-link ml-2"  style="color:white">Home</a>
-                        </li>
-                        <li class="nav-item" >
-                            <a href="catalogo.html" class="nav-link ml-2" id="linkCatalogo" style="color:white">Catálogo</a>
-                        </li>
-                        <li class="nav-item" >
-                            <a href="doarlivro.html" class="nav-link ml-2" id="linkDoarLivro" style="color:white">Doar Livro</a>
-                        </li>
-                    </div>        
-                </ul>
-                
+        <nav id="sidebar">
+            <ul class="navbar-nav ">
+                <div class="position-fixed">
+                    <li class="nav-item " >
+                        <a href="index.html" class="nav-link"  style="color:white">Home</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a href="catalogo.html" class="nav-link" id="linkCatalogo"  style="color:white">Catálogo</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a href="doarlivro.html" class="nav-link" id="linkDoarLivro" style="color:white">Doar Livro</a>
+                    </li>
+                </div>        
+            </ul>
         </nav>
-    <div class="container">
-        <h1>Doar Livro</h1>
-            <form action="" id="frmLivros">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputTitulo">Titulo:</label> 
-                        <input type="text" class="form-control" value="harry potter" id="inputTitulo">
-                    </div>
-                    <div class="form-group col-md-6">
-                            <label for="inputAutor">Autor:</label> <br>
-                            <input type="text" class="form-control" value="j.k.rowling" id="inputAutor">
-                        </div>   
+        <div class="container">
+            <div class="jumbotron">
+                <div id="perfil">
+                    
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="inputCapa">Capa:</label> 
-                        <input type="url" class="form-control" value="https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9370589&qld=90&l=430&a=-1" id="inputCapa">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputEditora">Editora:</label> 
-                        <input type="text" class="form-control" value="" id="inputEditora">
-                    </div>   
-                    <div class="form-group col-md-4">
-                        <label for="inputDataLançamento">Data de lançamento:</label> 
-                        <input type="date" class="form-control" value="" id="inputDataLançamento">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputNpaginas">Nº Páginas:</label> 
-                        <input type="number" class="form-control" value="" id="inputNpaginas">
-                    </div>  
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputEstado">Estado:</label> 
-                        <select id="inputEstado" class="form-control" >                            
-                            <option value="Bom">Bom</option>
-                            <option value="Aceitável">Aceitável</option>
-                            <option value="Fraco">Fraco</option>
-                        </select>
-                    </div>   
-                    <div class="form-group col-md-4">
-                        <label for="inputDoador">Nome do doador:</label> 
-                        <input type="text" class="form-control" value="" id="inputDoador">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDataDoaçao">Data de Doaçao:</label> 
-                        <input type="date" class="form-control" value="" id="inputDataDoaçao">
-                    </div>      
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="inputDescriçao">Descrição:</label> <br>
-                        <textarea name="" maxlength="120" class="form-control" id="inputDescriçao" value = "brehqufvl"  rows="5"></textarea>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <button type="submit"  class="btn btn-primary mb-2">Adicionar Livro</button>
-                        </div>
-            </form>
-            
+            </div>
         </div>
-    </div>     
-</div>
-
-    
-    
     <!--MODAL PARA REGISTO-->    
     <div class="modal fade" id="registoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -174,8 +109,8 @@
                 <form id="frmRegister">
                     <!--NOME-->
                     <div class="form-group">
-                        <label for="inputName">Nome</label>
-                        <input required type="text" class="form-control" id="inputName" placeholder="nome" >                        
+                        <label for="inputNome">Nome</label>
+                        <input required type="text" class="form-control" id="inputNome" placeholder="nome" >                        
                     </div>
                     <!--EMAIL-->
                     <div class="form-group">
@@ -239,9 +174,54 @@
           </div>
         </div>
       </div>
+      <!--Modal editar perfil-->
+      <div class="modal fade" id="editarPerfilModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmEditarPerfil">
+                        <!--NOME-->
+                        <div class="form-group">
+                            <label for="inputNome">Nome</label>
+                            <input  type="text" class="form-control" id="inputNome"  >                        
+                        </div>
+                        <!--EMAIL-->
+                        <div class="form-group">
+                            <label for="inputEmail">E-mail</label>
+                            <input  type="email" class="form-control" id="inputEmail"  >                        
+                        </div>
+    
+                        <!--PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputPassword1">Nova Password</label>
+                            <input  minlength="5" type="password" class="form-control" id="inputNovaPassword1"  >                        
+                        </div>
+    
+                        <!-- CONFIRMAR PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputPassword2">Confirmar Nova Password</label>
+                            <input  minlength="5" type="password" class="form-control" id="inputNovaPassword2" >                        
+                        </div>    
+    
+                    
+                </div>
+                <div class="modal-footer">
+                  
+                        <button type="submit" id="editarPerfil" class="btn btn-primary mb-2">Editar Perfil</button>
+                </div>
+            </form>
+              </div>
+            </div>
+          </div>
 
     <!-- Optional JavaScript -->
-    <script src="../JS/doarlivros.js"></script>
+    <script src="../JS/perfil.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
