@@ -188,24 +188,36 @@
                     <form id="frmEditarPerfil">
                         <!--NOME-->
                         <div class="form-group">
-                            <label for="inputNome">Nome</label>
-                            <input  type="text" class="form-control" id="inputNome"  >                        
+                            <label for="inputNomeEditar">Nome</label>
+                            <input  type="text" class="form-control" id="inputNomeEditar"  >                        
                         </div>
                         <!--EMAIL-->
                         <div class="form-group">
-                            <label for="inputEmail">E-mail</label>
-                            <input  type="email" class="form-control" id="inputEmail"  >                        
+                            <label for="inputEmailEditar">E-mail</label>
+                            <input  type="email" class="form-control" id="inputEmailEditar"  >                        
                         </div>
-    
+
+                        <!--FOTO-->
+                        <div class="form-group">
+                            <label for="inputFoto">Foto</label>
+                            <input  type="url" class="form-control" id="inputFoto"  >                        
+                        </div>
+                        
+                        <!--ANTIGA PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputAntigaPassword">Antiga Password</label>
+                            <input  minlength="5" type="password" class="form-control" id="inputAntigaPassword"  >                        
+                        </div>
+
                         <!--PASSWORD-->
                         <div class="form-group">
-                            <label for="inputPassword1">Nova Password</label>
+                            <label for="inputNovaPassword1">Nova Password</label>
                             <input  minlength="5" type="password" class="form-control" id="inputNovaPassword1"  >                        
                         </div>
     
                         <!-- CONFIRMAR PASSWORD-->
                         <div class="form-group">
-                            <label for="inputPassword2">Confirmar Nova Password</label>
+                            <label for="inputNovaPassword2">Confirmar Nova Password</label>
                             <input  minlength="5" type="password" class="form-control" id="inputNovaPassword2" >                        
                         </div>    
     

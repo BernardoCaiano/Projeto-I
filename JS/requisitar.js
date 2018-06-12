@@ -2,7 +2,7 @@ let requisiçoes = []
 let requisitarID = 0
 
 class Requisiçao {
-    constructor(nome, email, password, tipo) {
+    constructor(utilizadorID, livroID, dataRequisiçao, dataEntrega) {
         this._id = Requisiçao.getLastId() + 1
         this.utilizadorID = utilizadorID
         this.livroID = livroID
@@ -56,13 +56,38 @@ class Requisiçao {
     }
 }
 
+requisiçoesStorage()
 
+    let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
+
+    let cont = 0
 
     let btnRequisitar = document.getElementById("btnRequisitar")
 
     btnRequisitar.addEventListener("click", function(event){
-        let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
-        let novaRequisiçao = new Requisiçao (utilizadorLogado._id)
-        console.log(novaRequisiçao)
+        
+        if (cont < 2) {
+            let novaRequisiçao = new Requisiçao (utilizadorLogado._id, livroIdRequisicao, new Date().toLocaleString(), "")
+            cont++
+            requisiçoes.push(novaRequisiçao)
+            localStorage.setItem("requisiçoes", JSON.stringify(requisiçoes))
+            console.log(requisiçoes)
+        }
+        else {
+            alert("Nao pode requisitar mais que 2 livros!")
+        }
+        
     })
+
+    function requisiçoesStorage() {
+        if(localStorage.requisiçoes) {
+            let tempArray = JSON.parse(localStorage.getItem("requisiçoes"))
+            
+            for (var i = 0; i < tempArray.length; i++) {
+                
+                let novaRequisiçao =  new Livro(tempArray[i]._utilizadorID, tempArray[i]._livroID, tempArray[i]._dataRequisiçao, tempArray[i]._dataEntrega)
+                livros.push(novaRequisiçao)       
+            }
+        }
+    }
 

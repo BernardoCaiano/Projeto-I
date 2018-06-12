@@ -1,11 +1,7 @@
-
-    
     livrosStorage()
     filtrarAutores()
     carregarCatalogo()
-
-    
-    
+    let livroIdRequisicao = 0
     function carregarCatalogo() {
         let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
         
@@ -116,7 +112,8 @@
                 modalTituloLivro.innerHTML= livros[i].titulo                
                 modalAutorLivro.innerHTML = livros[i].autor
                 modalDescriçaoLivro.innerHTML = livros[i].descriçao
-                modalCapaLivro.setAttribute("src", livros[i].capa)         
+                modalCapaLivro.setAttribute("src", livros[i].capa)
+                livroIdRequisicao = livros[i].id          
             }                  
         }
     }
@@ -151,7 +148,7 @@
         let doador = document.getElementById("inputDoador")
 
         
-        
+        //Preencher o formulario de edicao do livro
         for (let j = 0; j < livros.length; j++) {
             if(livros[j].id == id) {
                 titulo.value = livros[j].titulo
