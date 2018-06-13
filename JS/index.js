@@ -10,6 +10,7 @@
                 <div class="col-3"><img src="${livros[livros.length-4].capa}" alt="" height="240" width="160"></div>`
 
     maisRecentes.innerHTML = strHtml
+    
 
     function livrosStorage(){
         if(localStorage.livros) {

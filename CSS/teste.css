@@ -8,9 +8,34 @@
     width: 160 !important; 
 }
 
-/*.jumbotron {
+.jumbotron {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
-}*/
+#titulosJumbotron {
+    background-color: #0A1D29;
+    color: white;
+}
+
+#conteudoJumbotron {
+    background-color:#3E606F;
+}
+
+.container {
+    color: white;
+}
+
+.livrosCatalogo {
+    border: white;
+}
+
+.img-thumbnail {
+    height: 240 !important;
+    width: 160 !important;
+}
+
+
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -18,12 +43,13 @@
 .wrapper {
     display: flex;
     align-items: stretch;
+     
 }
 
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: black;
+    background: #0A1D29;
     color: #fff;
     transition: all 0.3s;
 }
