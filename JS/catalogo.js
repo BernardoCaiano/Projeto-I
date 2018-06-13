@@ -8,41 +8,46 @@
         let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
         
         let catalogo = document.getElementById("catalogo")
-    
+        let autores = document.getElementById("autores")
+        let btnProcurar = document.getElementById("autores")
+        console.log(autores)
         let strHtml = ""
        
         for (let i = 0; i < livros.length; i++) {
             
-            if(i % 6 == 0) {
-                 strHtml += `<div class="row">`    
-            }
-
-            if (utilizadorLogado._tipo == "operador"){
-                strHtml += `
-                <div class="col-2"><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
-                <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
-                         de ${livros[i].autor}</p>  </center>
-                         <center><a id="${livros[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
-                <a id="${livros[i].id}" href="#" data-toggle='modal'  data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
-                         
-                </div>`
-            }
-            else {
-                strHtml += `
-                <div class="col-2"><a id="${livros[i].id}" border="5" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
-                <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
-                         de ${livros[i].autor}</p>  </center>
-                        
-                         
-                </div>`
-            }
+                if(i % 6 == 0) {
+                    strHtml += `<div class="row">`    
+               }
+   
+               if (utilizadorLogado._tipo == "operador"){
+                   strHtml += `
+                   <div class="col-2"><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
+                   <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
+                            de ${livros[i].autor}</p>  </center>
+                            <center><a id="${livros[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
+                   <a id="${livros[i].id}" href="#" data-toggle='modal'  data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
+                            
+                   </div>`
+               }
+                else {
+                   strHtml += `
+                   <div class="col-2"><a id="${livros[i].id}" border="5" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
+                   <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
+                            de ${livros[i].autor}</p>  </center>
+                           
+                            
+                   </div>`
+               }
+               
+               
+                                  
+                if(i % 6 == 5) {
+                   strHtml += `</div>`    
+                } 
             
-            
-                               
-            if(i % 6 == 5) {
-                strHtml += `</div>`    
-            } 
         }
+            
+            
     
             catalogo.innerHTML = strHtml
            

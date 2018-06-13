@@ -19,7 +19,7 @@
   <body>
       
    
-    <nav class="navbar navbar-expand-sm sticky-top" style="background-color: #0A1D29;">
+    <nav class="navbar navbar-expand-sm sticky-top" id="menu" >
         <div class="navbar-header">
             <a href="#" id="sidebarCollapse"><i class="fas fa-bars fa-2x mr-3" style="color:white"></i></a>
         </div>    
@@ -94,40 +94,40 @@
         
         <div class="container">
                 <div class="jumbotron" id="titulosJumbotron">
-                        <h1> <i class="fas fa-book"></i>  Catálogo</h1>
+                        <h2> <i class="fas fa-book mr-3"></i> Catálogo</h2>
                         
                 </div>
                 
                 <div class="jumbotron" id="conteudoJumbotron">
-                <form> 
-                    <div class="form-group col-2">
-                        <label for="autores"><h4>Autores</h4> </label>
-                        <select class="form-control" id="autores"></select>
-                    </div>
-                    <div class="form-group col-2">
+                    <form> 
+                        <div class="form-group col-2">
+                            <label for="autores"><h5>Autores</h5> </label>
+                            <select class="form-control" id="autores"></select>
+                        </div>
+                        <div class="form-group col-2">
                             <button id="btnProcurar" type="button" class="btn btn-primary mb-2 mr-1">Procurar</button>
-                    </div>
+                        </div>
                     
-                </form> <br>
+                    </form> <br>
         
-                <div  id="catalogo">
+                    <div  id="catalogo">
                     
                         
-                </div>
+                    </div>
             </div>
         </div>
         
         <!--Modal Livro-->
 <div class="modal fade bd-example-modal-lg" id="livroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
+      <div class="modal-content" id="cssModal">
         <div class="modal-header">
           <h5 class="modal-title">Detalhes sobre o livro</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" style="color: white" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" >
             <h5>Titulo</h5>
                 <p id="modalTituloLivro"></p>
             <hr>
@@ -159,7 +159,6 @@
           </button>
         </div>
         <div class="modal-body">
-            <div class="container">
                     <form action="" id="frmEditarLivros">
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -222,15 +221,12 @@
                                 </div>
                     </form>
                     
-                </div>
+                
             </div>     
         </div>
         </div>
        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-        </div>
+        
       </div>
     </div>
   </div>

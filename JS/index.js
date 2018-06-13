@@ -4,10 +4,10 @@
 
     let maisRecentes = document.getElementById("maisRecentes")
 
-    strHtml = ` <div class="col-3"><img src="${livros[livros.length-1].capa}" width="160"></div>
-                <div class="col-3"><img src="${livros[livros.length-2].capa}" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="${livros[livros.length-3].capa}" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="${livros[livros.length-4].capa}" alt="" height="240" width="160"></div>`
+    strHtml = ` <div class="col-3"><img src="${livros[livros.length-1].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
+                <div class="col-3"><img src="${livros[livros.length-2].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
+                <div class="col-3"><img src="${livros[livros.length-3].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
+                <div class="col-3"><img src="${livros[livros.length-4].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>`
 
     maisRecentes.innerHTML = strHtml
     
