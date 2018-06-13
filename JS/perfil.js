@@ -12,12 +12,12 @@ function carregarPerfil() {
                         <img src="../imagens/perfil.jpg" class="img-thumbnail" height="250" width="250" alt=""> 
                     </div>
                     <div class="col-9">
-                        <br>
+                        
                         <h4>Nome de Utilizador</h4>
                         <p>${utilizadorLogado._nome}</p>
                         <h4>Email</h4>
                         <p>${utilizadorLogado._email}</p>
-                        <br>
+                        
                         <a name="editar" id="editar" href="#" data-toggle='modal' data-target='#editarPerfilModal' class="btn btn-dark "><i class="fas fa-edit"></i> Editar perfil</a>
                     </div>
                 </div> `
@@ -28,12 +28,12 @@ function carregarPerfil() {
             <img src="${utilizadorLogado._foto}" class="img-thumbnail" height="250" width="250" alt=""> 
         </div>
         <div class="col-8">
-            <br>
+            
             <h4>Nome de Utilizador</h4>
             <p>${utilizadorLogado._nome}</p>
             <h4>Email</h4>
             <p>${utilizadorLogado._email}</p>
-            <br>
+            
             <a name="editar" id="editar" href="#" data-toggle='modal' data-target='#editarPerfilModal' class="btn btn-dark "><i class="fas fa-edit"></i> Editar perfil</a>
         </div>
     </div> `
