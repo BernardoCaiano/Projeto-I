@@ -1,5 +1,7 @@
     livrosStorage()
     completarFiltroAutores()
+    completarFiltroEstadoLivro()
+    completarFiltroEditoras()
     carregarCatalogo()
 
     let livroIdRequisicao = 0
@@ -23,9 +25,9 @@
        
         let strHtml = ""
        
-        for (let i = 0; i < livros.length; i++) {
-            if (autores.value == livros[i].autor || autores.value == "") {
-                if(i % 6 == 0) {
+        for (let i = 0, cont = 0; i < livros.length ; i++) {
+            if (autores.value == livros[i].autor || autores.value == "" )  {
+                if(cont % 6 == 0) {
                     strHtml += `<div class="row">`    
                }
 
@@ -49,9 +51,10 @@
             
 
             
-                if(i % 6 == 5) {
+                if(cont % 6 == 5) {
                    strHtml += `</div>`    
                 } 
+                cont++
             }
                 
             
@@ -122,7 +125,55 @@
         let autores = document.getElementById("autores")
         autores.innerHTML = strHtml
     }
+
+    function completarFiltroEstadoLivro() {
+
+        let tempAutores = []
+        // 1. Iterar sobre o array livros
+        for (let i = 0; i < livros.length; i++) {
+            if (tempAutores.indexOf(livros[i].estado) == -1) {
+                // 2. Guardar todos os autores não duplicados
+                tempAutores.push(livros[i].estado)    
+            }
+        }   
     
+        // 3. Criar o HTML (option) para todos os users encontrados
+        let strHtml = "<option value=''>Todos</option>"
+        for (let i = 0; i < tempAutores.length; i++) {
+            // Obter o nome do autor no array users
+            
+                    strHtml += `<option value='${tempAutores[i]}'>${tempAutores[i]}</option>` 
+                            
+        }
+    
+        let estadoLivro = document.getElementById("estadoLivro")
+        estadoLivro.innerHTML = strHtml
+    }
+    
+    function completarFiltroEditoras() {
+
+        let tempAutores = []
+        // 1. Iterar sobre o array livros
+        for (let i = 0; i < livros.length; i++) {
+            if (tempAutores.indexOf(livros[i].editora) == -1) {
+                // 2. Guardar todos os autores não duplicados
+                tempAutores.push(livros[i].editora)    
+            }
+        }   
+    
+        // 3. Criar o HTML (option) para todos os users encontrados
+        let strHtml = "<option value=''>Todos</option>"
+        for (let i = 0; i < tempAutores.length; i++) {
+            // Obter o nome do autor no array users
+            
+                    strHtml += `<option value='${tempAutores[i]}'>${tempAutores[i]}</option>` 
+                            
+        }
+    
+        let editora = document.getElementById("editora")
+        editora.innerHTML = strHtml
+    }
+
     function verLivroPorId(id) { 
         for (let i = 0; i < livros.length; i++) {
             if(livros[i].id == id) {
