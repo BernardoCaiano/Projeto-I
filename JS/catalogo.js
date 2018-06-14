@@ -1,40 +1,53 @@
-window.onload = function() {
-    
     livrosStorage()
     filtrarAutores()
     carregarCatalogo()
 
+    let livroIdRequisicao = 0
+
     function carregarCatalogo() {
+        let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
         
         let catalogo = document.getElementById("catalogo")
-    
+        let autores = document.getElementById("autores")
+        let btnProcurar = document.getElementById("autores")
+        console.log(autores)
         let strHtml = ""
        
         for (let i = 0; i < livros.length; i++) {
             
-            if(i % 6 == 0) {
-                 strHtml += `<div class="row">`    
-            }
-
-            strHtml += `
-                <div class="col-2"><center><a id="${livros[i].id}" href="#" class="btn btn-dark"> Requisitar </a></center> <br>
-                <a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" alt="" height="240" width="160"></a> <br>
-                <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
-                         de ${livros[i].autor}</p>  </center>
-                         
-                </div>`
+                if(i % 6 == 0) {
+                    strHtml += `<div class="row">`    
+               }
+   
+               if (utilizadorLogado._tipo == "operador"){
+                   strHtml += `
+                   <div class="col-2"><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
+                   <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
+                            de ${livros[i].autor}</p>  </center>
+                            <center><a id="${livros[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
+                   <a id="${livros[i].id}" href="#" data-toggle='modal'  data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
+                            
+                   </div>`
+               }
+                else {
+                   strHtml += `
+                   <div class="col-2"><a id="${livros[i].id}" border="5" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
+                   <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
+                            de ${livros[i].autor}</p>  </center>
+                           
+                            
+                   </div>`
+               }
+               
+               
+                                  
+                if(i % 6 == 5) {
+                   strHtml += `</div>`    
+                } 
             
-            for (let j = 0; j < utilizadores.length; j++) {
-                if (utilizadores[j].tipo == "operador" && utilizadores[j].id == localStorage.getItem("utilizadorID")){
-                    strHtml += `<center><a id="${livros[i].id}" href="#" class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
-                    <a id="${livros[i].id}" href="#" data-toggle='modal' data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>`
-                }
-            }
-                          
-            if(i % 6 == 5) {
-                strHtml += `</div>`    
-            } 
         }
+            
+            
     
             catalogo.innerHTML = strHtml
            
@@ -52,7 +65,7 @@ window.onload = function() {
             // Para cada botão, adicionar um listener para escutar pelo evento clique
                 for (let i = 0; i < btnRemover.length; i++) {
                     btnRemover[i].addEventListener("click", function() {
-                        // By clicking in a specific game, remove it from the array
+                        // Ao clicar num livro especifico, remover do array
                         let livroId = btnRemover[i].getAttribute("id")
                         eliminarLivro(livroId)
                         carregarCatalogo(livroId)
@@ -62,19 +75,22 @@ window.onload = function() {
 
                 
                 let editar = document.getElementsByClassName("editar")
-                // For each link, add a listener to listen the click event
+                // Para cada botão, adicionar um listener para escutar pelo evento clique
                 for (let i = 0; i < editar.length; i++) {
                     editar[i].addEventListener("click", function() {
-                        // By clicking in a specific game, edit in the form
+                        // Ao clicar num livro especifico, editar no form
                         let livroId = editar[i].getAttribute("id")
                         
                         editarLivroPorId(livroId) 
-                                       
+                        carregarCatalogo(livroId)
+                        
+                                 
                     })        
                 }
     }
             
     function filtrarAutores() {
+
         let tempAutores = []
         // 1. Iterar sobre o array livros
         for (let i = 0; i < livros.length; i++) {
@@ -91,7 +107,6 @@ window.onload = function() {
             
                     strHtml += `<option value='${tempAutores[i]}'>${tempAutores[i]}</option>` 
                             
-            
         }
     
         let autores = document.getElementById("autores")
@@ -104,7 +119,8 @@ window.onload = function() {
                 modalTituloLivro.innerHTML= livros[i].titulo                
                 modalAutorLivro.innerHTML = livros[i].autor
                 modalDescriçaoLivro.innerHTML = livros[i].descriçao
-                modalCapaLivro.setAttribute("src", livros[i].capa)         
+                modalCapaLivro.setAttribute("src", livros[i].capa)
+                livroIdRequisicao = livros[i].id          
             }                  
         }
     }
@@ -123,24 +139,67 @@ window.onload = function() {
     function editarLivroPorId(id) {
         console.log(id)
         
-        livroId = id
+        //livroId = id
+
+        let frmEditarLivros = document.getElementById("frmEditarLivros")
+
+        let titulo = document.getElementById("inputTitulo")
+        let capa = document.getElementById("inputCapa")
+        let descriçao = document.getElementById("inputDescriçao")
+        let autor = document.getElementById("inputAutor")
+        let editora = document.getElementById("inputEditora")
+        let dataLançamento = document.getElementById("inputDataLançamento")
+        let numeroPaginas = document.getElementById("inputNpaginas")
+        let estado = document.getElementById("inputEstado")
+        let dataDoaçao = document.getElementById("inputDataDoaçao")
+        let doador = document.getElementById("inputDoador")
+
         
-        for (let i = 0; i < livros.length; i++) {
-            if(livros[i].id == id) {
-                
-                titulo = livros[i].titulo
-                capa = livros[i].capa
-                descriçao = livros[i].descriçao
-                autor = livros[i].autor
-                editora = livros[i].editora
-                dataLançamento = livros[i].dataLançamento
-                numeroPaginas = livros[i].numeroPaginas
-                estado = livros[i].estado
-                dataDoaçao = livros[i].dataDoaçao
-                doador = livros[i].doador
-                
-            }                                    
+        //Preencher o formulario de edicao do livro
+        for (let j = 0; j < livros.length; j++) {
+            if(livros[j].id == id) {
+                titulo.value = livros[j].titulo
+                capa.value = livros[j].capa
+                descriçao.value = livros[j].descriçao 
+                autor.value =  livros[j].autor
+                editora.value = livros[j].editora
+                dataLançamento.value = livros[j].dataLançamento
+                numeroPaginas.value = livros[j].numeroPaginas
+                estado.value = livros[j].estado
+                dataDoaçao.value = livros[j].dataDoaçao
+                doador.value = livros[j].doador
+            }
+            
+
         }
+
+        frmEditarLivros.addEventListener("submit", function(event) {
+            
+            for (let i = 0; i < livros.length; i++) {
+                
+                if(livros[i].id == id) {
+                    
+                    livros[i].titulo = titulo.value
+                    livros[i].capa = capa.value
+                    livros[i].descriçao = descriçao.value
+                    livros[i].autor = autor.value
+                    livros[i].editora = editora.value
+                    livros[i].dataLançamento = dataLançamento.value
+                    livros[i].numeroPaginas = numeroPaginas.value
+                    livros[i].estado = estado.value
+                    livros[i].dataDoaçao = dataDoaçao.value
+                    livros[i].doador = doador.value
+                
+                    // Fechar a modal
+                    $('#editarLivroModal').modal('hide')
+                    
+                    event.preventDefault()
+                    
+                }                                    
+            }
+            localStorage.setItem("livros", JSON.stringify(livros))
+            location.reload()
+        })
         
     }
     
@@ -156,5 +215,5 @@ window.onload = function() {
         }
             
     }
-}
+
    

@@ -5,7 +5,7 @@
     <script src="../JS/classeUtilizadores.js"></script>
     <script src="../JS/login_registo.js"></script>
     <script src="../JS/classeLivros.js"></script>
-    <script src="../JS/doarlivros.js"></script>
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +18,7 @@
   </head>
   <body>
       
-    <nav class="navbar navbar-expand-sm sticky-top " style="background-color: black;">
+    <nav class="navbar navbar-expand-sm sticky-top " id="menu" >
         <div class="navbar-header">
             <a href="#" id="sidebarCollapse"><i class="fas fa-bars fa-2x mr-3" style="color:white"></i></a>
         </div>    
@@ -54,7 +54,7 @@
                 <!--OPÇÃO NOME-->
                 <li id="optNome" class="nav-item"></li>  
                 <li class="nav-item">
-                        <a href=""><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>
+                        <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>
                     
                     </li>
                     <li class="nav-item">
@@ -81,81 +81,87 @@
                             <a href="index.html" class="nav-link ml-2"  style="color:white">Home</a>
                         </li>
                         <li class="nav-item" >
-                            <a href="catalogo.html" class="nav-link ml-2"  style="color:white">Catálogo</a>
+                            <a href="catalogo.html" class="nav-link ml-2" id="linkCatalogo" style="color:white">Catálogo</a>
                         </li>
                         <li class="nav-item" >
-                            <a href="doarlivro.html" class="nav-link ml-2"  style="color:white">Doar Livro</a>
+                            <a href="doarlivro.html" class="nav-link ml-2" id="linkDoarLivro" style="color:white">Doar Livro</a>
                         </li>
                     </div>        
                 </ul>
                 
         </nav>
     <div class="container">
-        <h1>Doar Livro</h1>
-            <form action="" id="frmLivros">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputTitulo">Titulo:</label> 
-                        <input type="text" class="form-control" value="harry potter" id="inputTitulo">
-                    </div>
-                    <div class="form-group col-md-6">
-                            <label for="inputAutor">Autor:</label> <br>
-                            <input type="text" class="form-control" value="j.k.rowling" id="inputAutor">
-                        </div>   
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="inputCapa">Capa:</label> 
-                        <input type="url" class="form-control" value="https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9370589&qld=90&l=430&a=-1" id="inputCapa">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputEditora">Editora:</label> 
-                        <input type="text" class="form-control" value="" id="inputEditora">
-                    </div>   
-                    <div class="form-group col-md-4">
-                        <label for="inputDataLançamento">Data de lançamento:</label> 
-                        <input type="date" class="form-control" value="" id="inputDataLançamento">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputNpaginas">Nº Páginas:</label> 
-                        <input type="number" class="form-control" value="" id="inputNpaginas">
-                    </div>  
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputEstado">Estado:</label> 
-                        <select id="inputEstado" class="form-control" >                            
-                            <option value="Bom">Bom</option>
-                            <option value="Aceitável">Aceitável</option>
-                            <option value="Fraco">Fraco</option>
-                        </select>
-                    </div>   
-                    <div class="form-group col-md-4">
-                        <label for="inputDoador">Nome do doador:</label> 
-                        <input type="text" class="form-control" value="" id="inputDoador">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDataDoaçao">Data de Doaçao:</label> 
-                        <input type="date" class="form-control" value="" id="inputDataDoaçao">
-                    </div>      
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="inputDescriçao">Descrição:</label> <br>
-                        <textarea name="" maxlength="120" class="form-control" id="inputDescriçao" value = "brehqufvl"  rows="5"></textarea>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <button type="submit"  class="btn btn-primary mb-2">Adicionar Livro</button>
-                        </div>
-            </form>
-            
+        <div class="jumbotron" id="titulosJumbotron">
+            <h2>Doar Livro</h2>
         </div>
-    </div>     
+        <div class="jumbotron" id="conteudoJumbotron">
+                <form action="" id="frmLivros">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputTitulo">Titulo:</label> 
+                                <input type="text" class="form-control" value="harry potter" id="inputTitulo">
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label for="inputAutor">Autor:</label> <br>
+                                    <input type="text" class="form-control" value="j.k.rowling" id="inputAutor">
+                                </div>   
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputCapa">Capa:</label> 
+                                <input type="url" class="form-control" value="https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9370589&qld=90&l=430&a=-1" id="inputCapa">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputEditora">Editora:</label> 
+                                <input type="text" class="form-control" value="" id="inputEditora">
+                            </div>   
+                            <div class="form-group col-md-4">
+                                <label for="inputDataLançamento">Data de lançamento:</label> 
+                                <input type="date" class="form-control" value="" id="inputDataLançamento">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputNpaginas">Nº Páginas:</label> 
+                                <input type="number" class="form-control" value="" id="inputNpaginas">
+                            </div>  
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputEstado">Estado:</label> 
+                                <select id="inputEstado" class="form-control" >                            
+                                    <option type="text" value="Bom">Bom</option>
+                                    <option type="text" value="Aceitável">Aceitável</option>
+                                    <option type="text" value="Fraco">Fraco</option>
+                                </select>
+                            </div>   
+                            <div class="form-group col-md-4">
+                                <label for="inputDoador">Nome do doador:</label> 
+                                <input type="text" class="form-control" value="" id="inputDoador">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputDataDoaçao">Data de Doaçao:</label> 
+                                <input type="date" class="form-control" value="" id="inputDataDoaçao">
+                            </div>      
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputDescriçao">Descrição:</label> <br>
+                                <textarea name="" maxlength="120" class="form-control" id="inputDescriçao" value = "brehqufvl"  rows="5"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <button type="submit"  class="btn btn-primary mb-2">Adicionar Livro</button>
+                                </div>
+                    </form>
+                    
+                </div>
+            </div>     
+        </div>
+        
+            
 </div>
 
     
@@ -241,6 +247,7 @@
       </div>
 
     <!-- Optional JavaScript -->
+    <script src="../JS/doarlivros.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

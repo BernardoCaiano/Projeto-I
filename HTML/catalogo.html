@@ -5,7 +5,7 @@
     <script src="../JS/classeUtilizadores.js"></script>
     <script src="../JS/login_registo.js"></script>
     <script src="../JS/classeLivros.js"></script>
-    <script src="../JS/catalogo.js"></script>
+  
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,11 +18,12 @@
   </head>
   <body>
       
-    <nav class="navbar navbar-expand-sm sticky-top" style="background-color: black;">
+   
+    <nav class="navbar navbar-expand-sm sticky-top" id="menu" >
         <div class="navbar-header">
             <a href="#" id="sidebarCollapse"><i class="fas fa-bars fa-2x mr-3" style="color:white"></i></a>
         </div>    
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.html" >
             <img src="../imagens/logo.png" width="160" height="100" alt="">
         </a>
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -55,7 +56,7 @@
                 <li id="optNome" class="nav-item"></li> 
                 <!--ICONS-->
                 <li class="nav-item">
-                    <a href=""><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
+                    <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
                 </li>
                     <li class="nav-item">
                         <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
@@ -80,46 +81,53 @@
                         <a href="index.html" class="nav-link"  style="color:white">Home</a>
                     </li>
                     <li class="nav-item" >
-                        <a href="catalogo.html" class="nav-link"  style="color:white">Catálogo</a>
+                        <a href="catalogo.html" class="nav-link" id="linkCatalogo" style="color:white">Catálogo</a>
                     </li>
                     <li class="nav-item" >
-                        <a href="doarlivro.html" class="nav-link"  style="color:white">Doar Livro</a>
+                        <a href="doarlivro.html" class="nav-link" id="linkDoarLivro" style="color:white">Doar Livro</a>
                     </li>
+                    
                 </div>        
             </ul>
         </nav>
         <!-- CATALOGO -->
         
         <div class="container">
-                <h1>Catálogo</h1><br>
-                <form> 
-                    <div class="form-group col-2">
-                        <label for="autores">Autores</label>
-                        <select class="form-control" id="autores"></select>
-                    </div>
-                    <div class="form-group col-2">
-                            <button id="btnProcurar" type="button" class="btn btn-primary mb-2 mr-1">Procurar</button>
-                    </div>
-                    
-                </form> <br>
-        
-                <div  id="catalogo">
-                    
+                <div class="jumbotron" id="titulosJumbotron">
+                        <h2> <i class="fas fa-book mr-3"></i> Catálogo</h2>
                         
                 </div>
+                
+                <div class="jumbotron" id="conteudoJumbotron">
+                    <form> 
+                        <div class="form-group col-2">
+                            <label for="autores"><h5>Autores</h5> </label>
+                            <select class="form-control" id="autores"></select>
+                        </div>
+                        <div class="form-group col-2">
+                            <button id="btnProcurar" type="button" class="btn btn-primary mb-2 mr-1">Procurar</button>
+                        </div>
+                    
+                    </form> <br>
+        
+                    <div  id="catalogo">
+                    
+                        
+                    </div>
+            </div>
         </div>
         
         <!--Modal Livro-->
 <div class="modal fade bd-example-modal-lg" id="livroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
+      <div class="modal-content" id="cssModal">
         <div class="modal-header">
           <h5 class="modal-title">Detalhes sobre o livro</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" style="color: white" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" >
             <h5>Titulo</h5>
                 <p id="modalTituloLivro"></p>
             <hr>
@@ -134,7 +142,7 @@
         </div>
        
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" id="btnRequisitar"> Requisitar Livro </button>
 
         </div>
       </div>
@@ -151,8 +159,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <div class="container">
-                    <form action="" id="frmLivros">
+                    <form action="" id="frmEditarLivros">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputTitulo">Titulo:</label> 
@@ -210,19 +217,16 @@
                         
                         <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <button type="submit"  class="btn btn-primary mb-2">Editar Livro</button>
+                                    <button type="submit" id="editarLivro" class="btn btn-primary mb-2">Editar Livro</button>
                                 </div>
                     </form>
                     
-                </div>
+                
             </div>     
         </div>
         </div>
        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-        </div>
+        
       </div>
     </div>
   </div>
@@ -307,6 +311,8 @@
       </div>
 
     <!-- Optional JavaScript -->
+    <script src="../JS/catalogo.js"></script>
+    <!--<script src="../JS/requisitar.js"></script>-->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

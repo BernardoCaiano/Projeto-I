@@ -4,7 +4,9 @@
     <title>Books on the move</title>
     <script src="../JS/classeUtilizadores.js"></script>
     <script src="../JS/login_registo.js"></script>
-    <script></script>
+    <script src="../JS/classeLivros.js"></script>
+    
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +19,7 @@
   </head>
   <body>
       
-    <nav class="navbar navbar-expand-sm sticky-top" style="background-color: black;">
+    <nav class="navbar navbar-expand-sm sticky-top" id="menu" >
         <div class="navbar-header">
             <a href="#" id="sidebarCollapse"><i class="fas fa-bars fa-2x mr-3" style="color:white"></i></a>
         </div>    
@@ -54,7 +56,7 @@
                 <li id="optNome" class="nav-item"></li> 
                 <!--ICONS-->
                 <li class="nav-item">
-                    <a href=""><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
+                    <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
                 </li>
                     <li class="nav-item">
                         <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
@@ -79,34 +81,45 @@
                         <a href="index.html" class="nav-link"  style="color:white">Home</a>
                     </li>
                     <li class="nav-item" >
-                        <a href="catalogo.html" class="nav-link"  style="color:white">Catálogo</a>
+                        <a href="catalogo.html" class="nav-link" id="linkCatalogo"  style="color:white">Catálogo</a>
                     </li>
                     <li class="nav-item" >
-                        <a href="doarlivro.html" class="nav-link"  style="color:white">Doar Livro</a>
+                        <a href="doarlivro.html" class="nav-link" id="linkDoarLivro" style="color:white">Doar Livro</a>
                     </li>
                 </div>        
             </ul>
         </nav>
         <div class="container">
-            <h1>Destaques</h1>
-            <br>
-            <div class="row">
-                <div class="col-3"><img src="../imagens/livro1.jpg" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="../imagens/livro1.jpg" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="../imagens/livro1.jpg" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="../imagens/livro1.jpg" alt="" height="240" width="160"></div>
-            
+            <div class="jumbotron" id="titulosJumbotron">
+                <h2>Destaques</h2>
             </div>
-            <br>
-            <h1>Mais Recentes</h1>
-            <br>
-            <div class="row">
-                <div class="col-3"><img src="../imagens/livro1.jpg" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="../imagens/livro1.jpg" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="../imagens/livro1.jpg" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="../imagens/livro1.jpg" alt="" height="240" width="160"></div>
-            
+            <div class="jumbotron" id="conteudoJumbotron">
+                <center>
+                    <div class="row">
+                        <div class="col-3"><img src="../imagens/livro1.jpg" class="img-thumbnail" alt="" height="240" width="160"></div>
+                        <div class="col-3"><img src="../imagens/livro1.jpg" class="img-thumbnail" alt="" height="240" width="160"></div>
+                        <div class="col-3"><img src="../imagens/livro1.jpg" class="img-thumbnail" alt="" height="240" width="160"></div>
+                        <div class="col-3"><img src="../imagens/livro1.jpg" class="img-thumbnail" alt="" height="240" width="160"></div> 
+                         
+                    </div>
+                </center>   
+                
             </div>
+            <div class="jumbotron" id="titulosJumbotron">
+                <h2>Mais Recentes</h2>
+            </div>
+            <div class="jumbotron" id="conteudoJumbotron">
+            <center>
+                <div class="row" id="maisRecentes">
+                
+                </div>
+            </center> 
+            </div>
+         
+           
+            
+            
+            
         </div>
     </div>
     <!--MODAL PARA REGISTO-->    
@@ -190,6 +203,7 @@
       </div>
 
     <!-- Optional JavaScript -->
+    <script src="../JS/index.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

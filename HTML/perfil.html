@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <title>Books on the move</title>
-    <script src="../JS/index.js"></script>
+    <script src="../JS/classeUtilizadores.js"></script>
+    <script src="../JS/login_registo.js"></script>
+
+    <script></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,7 +55,7 @@
                 <li id="optNome" class="nav-item"></li> 
                 <!--ICONS-->
                 <li class="nav-item">
-                    <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
+                    <a href=""><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
                 </li>
                     <li class="nav-item">
                         <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
@@ -77,45 +80,28 @@
                         <a href="index.html" class="nav-link"  style="color:white">Home</a>
                     </li>
                     <li class="nav-item" >
-                        <a href="catalogo.html" class="nav-link"  style="color:white">Catálogo</a>
+                        <a href="catalogo.html" class="nav-link" id="linkCatalogo"  style="color:white">Catálogo</a>
                     </li>
                     <li class="nav-item" >
-                        <a href="doarlivro.html" class="nav-link"  style="color:white">Doar Livro</a>
+                        <a href="doarlivro.html" class="nav-link" id="linkDoarLivro" style="color:white">Doar Livro</a>
                     </li>
                 </div>        
             </ul>
         </nav>
         <div class="container">
-            <center><div id="myMap" style="width:500px; height:500px"></div></center>
-            <script>            
-                let map
-                let myMap = document.getElementById("myMap")
-                function initMap() {
-                    let mapProp= {
-                        center:new google.maps.LatLng(41.355998, -8.660251),
-                        mapTypeId: google.maps.MapTypeId.HYBRID,
-                        zoom:11
-                    }
-                    map = new google.maps.Map(myMap, mapProp)
-
-                    var imgspot = '../imagens/ftpng.ico';
-
-                    let spot1 = new google.maps.LatLng(41.364145, -8.760203)
-
-                    let marker = new google.maps.Marker({
-                    position: spot1,
-                    map: map,
-                    icon : imgspot
-                    })
+            
+            <div class="jumbotron" id="titulosJumbotron">
+                <h2><i class="fas fa-user"></i> Perfil</h2>
+            </div>
+            <div class="jumbotron" id="conteudoJumbotron">
+                <div id="perfil">
 
                     
-
-
-                }                    
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMfRYKPXOiNoVuomVzmyHdXpG4g5g1dQw&callback=initMap" async></script>
+                </div>
+            </div>
+                
+            
         </div>
-    </div>
     <!--MODAL PARA REGISTO-->    
     <div class="modal fade" id="registoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -195,11 +181,66 @@
           </div>
         </div>
       </div>
-      <footer>
-          <div class="col-"></div>
-      </footer>
+      <!--Modal editar perfil-->
+      <div class="modal fade" id="editarPerfilModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmEditarPerfil">
+                        <!--NOME-->
+                        <div class="form-group">
+                            <label for="inputNomeEditar">Nome</label>
+                            <input  type="text" class="form-control" id="inputNomeEditar"  >                        
+                        </div>
+                        <!--EMAIL-->
+                        <div class="form-group">
+                            <label for="inputEmailEditar">E-mail</label>
+                            <input  type="email" class="form-control" id="inputEmailEditar"  >                        
+                        </div>
+
+                        <!--FOTO-->
+                        <div class="form-group">
+                            <label for="inputFoto">Foto</label>
+                            <input  type="url" class="form-control" id="inputFoto"  >                        
+                        </div>
+                        
+                        <!--ANTIGA PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputAntigaPassword">Antiga Password</label>
+                            <input  minlength="5" type="password" class="form-control" id="inputAntigaPassword"  >                        
+                        </div>
+
+                        <!--PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputNovaPassword1">Nova Password</label>
+                            <input  minlength="5" type="password" class="form-control" id="inputNovaPassword1"  >                        
+                        </div>
+    
+                        <!-- CONFIRMAR PASSWORD-->
+                        <div class="form-group">
+                            <label for="inputNovaPassword2">Confirmar Nova Password</label>
+                            <input  minlength="5" type="password" class="form-control" id="inputNovaPassword2" >                        
+                        </div>    
+    
+                    
+                </div>
+                <div class="modal-footer">
+                  
+                        <button type="submit" id="editarPerfil" class="btn btn-primary mb-2">Editar Perfil</button>
+                </div>
+            </form>
+              </div>
+            </div>
+          </div>
 
     <!-- Optional JavaScript -->
+    <script src="../JS/perfil.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

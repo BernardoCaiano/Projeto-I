@@ -1,5 +1,5 @@
 
-window.onload = function() {
+
     livrosStorage()
     let modalTituloLivro = document.getElementById("modalTituloLivro")
     let modalAutorLivro = document.getElementById("modalAutorLivro")
@@ -27,6 +27,7 @@ window.onload = function() {
         let novoLivro = new Livro(titulo, capa, descriçao , autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao )
         livros.push(novoLivro)
         localStorage.setItem("livros", JSON.stringify(livros))
+        alert("Livro adicionado com sucesso!")
         event.preventDefault();
 
     })
@@ -44,5 +45,5 @@ window.onload = function() {
             
     }
         
-}    
+    
    

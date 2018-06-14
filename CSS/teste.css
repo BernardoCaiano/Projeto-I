@@ -2,11 +2,47 @@
     color: white !important
 }
 
-.img-thumbnail img{
-    
-    height: 240 !important;
-    width: 160 !important; 
+#titulosJumbotron {
+    background-color: #0A1D29;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+
+#conteudoJumbotron {
+    background-color:#3E606F;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.container {
+    color: white;
+}
+
+.livrosCatalogo {
+    border: white;
+}
+
+.img-thumbnail {
+    height: 240 !important;
+    width: 160 !important;
+}
+
+
+
+#menu {
+    background-color: #0A1D29;
+}
+
+#cssModal {
+    background-color: #3E606F;
+    color: white;
+}
+
+.active a{
+    color: #0A1D29 !important;
+}
+
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -14,12 +50,13 @@
 .wrapper {
     display: flex;
     align-items: stretch;
+     
 }
 
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: black;
+    background: #0A1D29;
     color: #fff;
     transition: all 0.3s;
 }
@@ -58,3 +95,25 @@
         display: none;
     }
 }
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: #0A1D29;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px#0A1D29;
+  outline: 0 none;
+}
+
