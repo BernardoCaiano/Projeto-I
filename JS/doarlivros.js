@@ -22,9 +22,12 @@
         let estado = document.getElementById("inputEstado").value
         let dataDoaçao = document.getElementById("inputDataDoaçao").value
         let doador = document.getElementById("inputDoador").value
-        
+
+        let categoria = document.getElementById("inputDoador").value
+        let tags = document.getElementById("inputDoador").value
+        let biblioteca = document.getElementById("inputDoador").value
        
-        let novoLivro = new Livro(titulo, capa, descriçao , autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao )
+        let novoLivro = new Livro(titulo, capa, descriçao , autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao, categoria, tags, biblioteca)
         livros.push(novoLivro)
         localStorage.setItem("livros", JSON.stringify(livros))
         alert("Livro adicionado com sucesso!")
