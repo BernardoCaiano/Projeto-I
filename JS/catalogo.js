@@ -22,14 +22,16 @@
         
         let catalogo = document.getElementById("catalogo")
         
-       
         let strHtml = ""
        
         for (let i = 0, cont = 0; i < livros.length ; i++) {
-            if (autores.value == livros[i].autor || autores.value == "" )  {
+            if ((autores.value == livros[i].autor || autores.value == "") && 
+                (estadoLivro.value == livros[i].estado || estadoLivro.value == "") && 
+                (editora.value == livros[i].editora || editora.value == ""))  {
+                
                 if(cont % 6 == 0) {
                     strHtml += `<div class="row">`    
-               }
+                }
 
                 if (utilizadorLogado._tipo == "operador"){
                     strHtml += `
@@ -41,7 +43,7 @@
                              
                     </div>`
                 }
-                 else {
+                else {
                     strHtml += `
                     <div class="col-2"><a id="${livros[i].id}" border="5" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
                     <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
