@@ -97,20 +97,18 @@
                         zoom:11
                     }
                     map = new google.maps.Map(myMap, mapProp)
+                    let imgspot = {
+                        url: 'https://i.imgur.com/8iNB1rh.png',
 
-                    var imgspot = '../imagens/ftpng.ico';
-
+                        size: new google.maps.Size(90, 60)
+                    }
                     let spot1 = new google.maps.LatLng(41.364145, -8.760203)
-
                     let marker = new google.maps.Marker({
                     position: spot1,
                     map: map,
                     icon : imgspot
                     })
-
                     
-
-
                 }                    
             </script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMfRYKPXOiNoVuomVzmyHdXpG4g5g1dQw&callback=initMap" async></script>
