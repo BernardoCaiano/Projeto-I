@@ -66,11 +66,12 @@ requisiçoesStorage()
 
     btnRequisitar.addEventListener("click", function(event){
         
-        if (cont < 2) {
+        if (cont < 2 ) {
             let novaRequisiçao = new Requisiçao (utilizadorLogado._id, livroIdRequisicao, new Date().toLocaleString(), "")
             cont++
             requisiçoes.push(novaRequisiçao)
             localStorage.setItem("requisiçoes", JSON.stringify(requisiçoes))
+
             console.log(requisiçoes)
         }
         else {

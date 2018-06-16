@@ -2,6 +2,7 @@
     completarFiltroAutores()
     completarFiltroEstadoLivro()
     completarFiltroEditoras()
+    
     carregarCatalogo()
 
     let livroIdRequisicao = 0
@@ -10,24 +11,25 @@
 
     let btnFiltrar = document.getElementById("btnFiltrar")
    
-    
-
     btnFiltrar.addEventListener("click", function(){
         carregarCatalogo()
+        filtrarOrdemAlfabetica()
     })
     
 
     function carregarCatalogo() {
+
         let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
         
         let catalogo = document.getElementById("catalogo")
+        
         
         let strHtml = ""
        
         for (let i = 0, cont = 0; i < livros.length ; i++) {
             if ((autores.value == livros[i].autor || autores.value == "") && 
                 (estadoLivro.value == livros[i].estado || estadoLivro.value == "") && 
-                (editora.value == livros[i].editora || editora.value == ""))  {
+                (editora.value == livros[i].editora || editora.value == "")  ) {
                 
                 if(cont % 6 == 0) {
                     strHtml += `<div class="row">`    
@@ -51,8 +53,6 @@
                     </div>`
                 }
             
-
-            
                 if(cont % 6 == 5) {
                    strHtml += `</div>`    
                 } 
@@ -74,8 +74,9 @@
             })        
          }
          
-    let btnRemover = document.getElementsByClassName("remove")
-    // Para cada botão, adicionar um listener para escutar pelo evento clique
+    
+        let btnRemover = document.getElementsByClassName("remove")
+        // Para cada botão, adicionar um listener para escutar pelo evento clique
         for (let i = 0; i < btnRemover.length; i++) {
             btnRemover[i].addEventListener("click", function() {
                 // Ao clicar num livro especifico, remover do array
@@ -84,6 +85,7 @@
                 carregarCatalogo(livroId)
                 localStorage.setItem("livros", JSON.stringify(livros))
             })        
+            
         }
 
         
@@ -103,7 +105,6 @@
             
     }
       
-    
     function completarFiltroAutores() {
 
         let tempAutores = []
@@ -176,6 +177,21 @@
         editora.innerHTML = strHtml
     }
 
+    function filtrarOrdemAlfabetica() {
+        let ordem = document.getElementById("ordem")
+        if(ordem.value == "alfabetica") {
+            let tempArray = []
+            for (let i = 0; i < livros.length; i++) {
+                tempArray.push(livros[i].titulo)
+                tempArray.sort()
+                
+                carregarCatalogo()
+                
+            }
+        }
+        
+    }
+
     function verLivroPorId(id) { 
         for (let i = 0; i < livros.length; i++) {
             if(livros[i].id == id) {
@@ -186,6 +202,7 @@
                 livroIdRequisicao = livros[i].id          
             }                  
         }
+        
     }
 
     function eliminarLivro(id){
