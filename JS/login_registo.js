@@ -35,42 +35,20 @@ window.onload = function() {
         //}
     //})
 
-   
-
-    let novoUtilizador01 = new Utilizador("operador", "operador@email.com", "11111", "operador", "" ) 
-    let novoUtilizador02 = new Utilizador("admin", "admin@email.com", "11111", "admin", "" )
+    let novoUtilizador01 = new Utilizador(getLastId() + 1, "operador", "operador@email.com", "11111", "operador", "", 0 ) 
+    let novoUtilizador02 = new Utilizador(getLastId() + 2, "admin", "admin@email.com", "11111", "admin", "", 0 )
     let utilizadorLogado = new Utilizador()
 
-    let utilizadorExiste01 = false
-    let utilizadorExiste02 = false
-
-    for (var i = 0; i < utilizadores.length; i++) {
-
-        if (utilizadores[i].nome == novoUtilizador01.nome) {
-            utilizadorExiste01 = true
-        }
-
-        if (utilizadores[i].nome == novoUtilizador02.nome) {
-            utilizadorExiste02 = true
-        }
-    }
-
-    if (utilizadorExiste01 == false) {
+    
+    if (localStorage.getItem("utilizadores") == null){
         utilizadores.push(novoUtilizador01)
-    }
-
-    if (utilizadorExiste02 == false) {
+        localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
         utilizadores.push(novoUtilizador02)
-    }
-
-    if (utilizadorExiste01 == false || utilizadorExiste02 == false) {
         localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
     }
-    
+        
     console.log(utilizadores)
     
-    
-
     if (logado) {
 
         optLogin.style.display = 'none'
@@ -105,7 +83,7 @@ window.onload = function() {
                 nomeUtilizador = utilizadores[i].nome
                 let utilizadorLogadoID = utilizadores[i].id
                 let utilizadorLogado = utilizadores[i]
-                
+                console
                 localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado))
 
             }        
@@ -177,7 +155,7 @@ window.onload = function() {
             
             let inputNome = document.getElementById("inputNome").value
             event.preventDefault()
-            let novoUtilizador = new Utilizador(inputNome, inputEmail.value, inputPassword1.value, "utilizador", "")
+            let novoUtilizador = new Utilizador(getLastId() + 1, inputNome, inputEmail.value, inputPassword1.value, "utilizador", "", 0)
             // Adicionar ao array
             utilizadores.push(novoUtilizador)
 
@@ -225,7 +203,7 @@ window.onload = function() {
         
             for (var i = 0; i < tempArray.length; i++) {
             
-                let novoUtilizador =  new Utilizador(tempArray[i]._nome, tempArray[i]._email, tempArray[i]._password, tempArray[i]._tipo, tempArray[i]._foto)
+                let novoUtilizador =  new Utilizador(tempArray[i]._id, tempArray[i]._nome, tempArray[i]._email, tempArray[i]._password, tempArray[i]._tipo, tempArray[i]._foto, tempArray[i]._requisiçoes)
                 utilizadores.push(novoUtilizador)       
             }
         } 
@@ -242,6 +220,15 @@ window.onload = function() {
         else {
             logado = false
         }
+    }
+
+    
+    function getLastId() {
+        let lastId = 0
+        if (utilizadores.length > 0) {
+            lastId = utilizadores[utilizadores.length-1].id
+        }        
+        return lastId
     }
 
 }

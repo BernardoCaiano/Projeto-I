@@ -2,16 +2,23 @@ let utilizadores = []
 let utilizadorId = 0
 
 class Utilizador {
-    constructor(nome, email, password, tipo, foto) {
-        this._id = Utilizador.getLastId() + 1
+    constructor(id, nome, email, password, tipo, foto, requisiçoes) {
+        this.id = id
         this.nome = nome
         this.email = email
         this.password = password 
         this.tipo = tipo
         this.foto = foto
+        this.requisiçoes = requisiçoes
     }
+
+    // Propriedade id
     get id() {
         return this._id
+    }
+
+    set id(novoID) {
+        this._id = novoID        
     }
 
     // Propriedade nome
@@ -55,12 +62,13 @@ class Utilizador {
         this._foto = novaFoto
     }
 
-    // Get the last ID
-    static getLastId() {
-        let lastId = 0
-        if (utilizadores.length > 0) {
-            lastId = utilizadores[utilizadores.length-1].id
-        }        
-        return lastId
+    // Propriedade requisiçoes
+    get requisiçoes() {
+        return this._requisiçoes
     }
+    set requisiçoes(novasRequisiçoes) {
+        this._requisiçoes = novasRequisiçoes
+    }
+
+    
 }

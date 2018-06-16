@@ -1,5 +1,8 @@
-
+requisiçoesStorage()
+livrosStorage()
 carregarPerfil()
+carregarRequisicoes()
+
 
 function carregarPerfil() {
     let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
@@ -111,3 +114,64 @@ function editarPerfilPorId(id) {
     })   
 }
 
+function carregarRequisicoes() {
+    let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
+    
+    let requisicoes = document.getElementById("requisicoes")
+    let strHtml = ""
+
+    for (let i = 0; i < requisiçoes.length; i++) {
+        
+        if (requisiçoes[i].utilizadorID == utilizadorLogado._id ) {
+            
+            for (let j = 0, cont = 0; j < livros.length; j++) {
+                if (livros[j].id == requisiçoes[i].livroID) {
+                    if(cont % 6 == 0) {
+                        strHtml += `<div class="row">`    
+                    }
+
+                    strHtml += `
+                    <div class="col-2"><a id="${livros[j].id}" border="5" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[j].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
+                    <center><a id="${livros[j].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[j].titulo}</b></a> <br>
+                             de ${livros[j].autor}</p>  </center>
+                    </div>`
+
+                    if(cont % 6 == 5) {
+                        strHtml += `</div>`    
+                    } 
+                    cont++
+                }
+            }
+        }
+        
+    }
+            
+        
+    requisicoes.innerHTML = strHtml
+    
+}
+
+function requisiçoesStorage() {
+    if(localStorage.requisiçoes) {
+        let tempArrayReq = JSON.parse(localStorage.getItem("requisiçoes"))
+        
+        for (var i = 0; i < tempArrayReq.length; i++) {
+            
+            let novaRequisiçao =  new Requisiçao(tempArrayReq[i]._utilizadorID, tempArrayReq[i]._livroID, tempArrayReq[i]._dataRequisiçao, tempArrayReq[i]._dataEntrega)
+            requisiçoes.push(novaRequisiçao)       
+        }
+    }
+}
+
+function livrosStorage(){
+    if(localStorage.livros) {
+        let tempArray2 = JSON.parse(localStorage.getItem("livros"))
+        
+        for (let i = 0; i < tempArray2.length; i++) {
+            
+            let novoLivro =  new Livro(tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categorias, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado)
+            livros.push(novoLivro)       
+        }
+    }
+        
+}

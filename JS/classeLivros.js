@@ -2,7 +2,7 @@ let livros = []
 let livroId = 0
 
 class Livro {
-    constructor(titulo, capa, descriçao, autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao, categoria, tags, biblioteca) {
+    constructor(titulo, capa, descriçao, autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao, categoria, tags, biblioteca, requisitado) {
         this._id = Livro.getLastId() + 1
         this.titulo = titulo
         this.capa = capa
@@ -17,7 +17,7 @@ class Livro {
         this.categoria = categoria
         this.tags = tags
         this.biblioteca = biblioteca
-
+        this.requisitado = requisitado
     }
     
     get id() {
@@ -127,6 +127,14 @@ class Livro {
     }
     set biblioteca(novaBiblioteca) {
         this._biblioteca = novaBiblioteca
+    }
+
+    // Propriedade requisitado
+    get requisitado() {
+        return this._requisitado
+    }
+    set requisitado(novoRequisitado) {
+        this._requisitado = novoRequisitado
     }
 
     // Get the last ID

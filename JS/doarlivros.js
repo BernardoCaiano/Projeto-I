@@ -27,7 +27,8 @@
         let tags = document.getElementById("inputDoador").value
         let biblioteca = document.getElementById("inputDoador").value
        
-        let novoLivro = new Livro(titulo, capa, descriçao , autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao, categoria, tags, biblioteca)
+        let novoLivro = new Livro(titulo, capa, descriçao , autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao, categoria, tags, biblioteca, false)
+        event.preventDefault();
         livros.push(novoLivro)
         localStorage.setItem("livros", JSON.stringify(livros))
         alert("Livro adicionado com sucesso!")
@@ -41,7 +42,7 @@
             
             for (var i = 0; i < tempArray2.length; i++) {
                 
-                let novoLivro =  new Livro(tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao)
+                let novoLivro =  new Livro(tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categorias, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado)
                 livros.push(novoLivro)       
             }
         }

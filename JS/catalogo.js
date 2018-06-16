@@ -70,7 +70,7 @@
             verModal[i].addEventListener("click", function() {
                 // Ao clicar num livro especifico, ve-lo numa modal
                 let livroId = verModal[i].getAttribute("id")
-                verLivroPorId(livroId )                
+                verLivroPorId(livroId)                
             })        
          }
          
@@ -183,10 +183,7 @@
             let tempArray = []
             for (let i = 0; i < livros.length; i++) {
                 tempArray.push(livros[i].titulo)
-                tempArray.sort()
-                
-                carregarCatalogo()
-                
+                tempArray.sort() 
             }
         }
         
@@ -289,7 +286,7 @@
             
             for (let i = 0; i < tempArray2.length; i++) {
                 
-                let novoLivro =  new Livro(tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao)
+                let novoLivro =  new Livro(tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categorias, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado)
                 livros.push(novoLivro)       
             }
         }
