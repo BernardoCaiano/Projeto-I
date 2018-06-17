@@ -1,16 +1,23 @@
 
-
+    
     requisiçoesStorage()
 
     let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
 
     let btnRequisitar = document.getElementById("btnRequisitar")
+    
 
     btnRequisitar.addEventListener("click", function(event){
-
+         
         console.log(utilizadorLogado._requisiçoes)
         if (utilizadorLogado._requisiçoes < 2) {
-
+            for (let j = 0; j < livros.length; j++) {
+                if (livros[j].id == livroIdRequisicao) {
+                    livros[j].requisitado = true
+                }
+                
+            }
+            localStorage.setItem("livros", JSON.stringify(livros))
             let novaRequisiçao = new Requisiçao (utilizadorLogado._id, livroIdRequisicao, new Date().toLocaleString(), "")
             utilizadorLogado._requisiçoes = utilizadorLogado._requisiçoes + 1
             requisiçoes.push(novaRequisiçao)

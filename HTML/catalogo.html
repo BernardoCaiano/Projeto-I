@@ -100,7 +100,7 @@
                 
                 <div class="jumbotron" id="conteudoJumbotron">
                     <form class="form-inline"> 
-                        <div class="form-group col-2">
+                        <div class="form-group col-3">
                             <label for="autores"><h5>Autores</h5> </label>
                             <select class="form-control" id="autores"></select>
                         </div>
@@ -120,8 +120,9 @@
                                 <option value="maisPontuados">Mais Pontuados</option>
                             </select>
                         </div>
-                        <div class="form-group col-2"><br>
-                            <button id="btnFiltrar" type="button" class="btn btn-primary mb-2 mr-1">Filtrar</button>
+                        <div class="form-group col-2">
+                            
+                            <button id="btnFiltrar" type="button" class="btn btn-primary mb-2 mr-1 ">Filtrar</button>
                         </div>
                     
                     </form> <br>
@@ -155,11 +156,15 @@
             <hr>
             <h5>Capa</h5>
                 <img id="modalCapaLivro" class="img-thumbnail" src="" alt="" height="240" width="160">
+            
+            <form action="" id="comentario">
+
+            </form>
         </div>
        
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" id="btnRequisitar"> Requisitar Livro </button>
-
+            <p id="livroRequisitado">Livro Requisitado</p>
         </div>
       </div>
     </div>
@@ -341,6 +346,9 @@
                 $('#sidebar').toggleClass('active');
             });
         });
+
+       
     </script>
+    
   </body>
 </html>

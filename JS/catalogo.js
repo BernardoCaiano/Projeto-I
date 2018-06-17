@@ -6,6 +6,7 @@
     carregarCatalogo()
 
     let livroIdRequisicao = 0
+    
 
     //Filtros
 
@@ -190,15 +191,62 @@
     }
 
     function verLivroPorId(id) { 
+        let strHtml = ""
+        
+        let comentario = document.getElementById("comentario")
+        
+        
         for (let i = 0; i < livros.length; i++) {
             if(livros[i].id == id) {
                 modalTituloLivro.innerHTML= livros[i].titulo                
                 modalAutorLivro.innerHTML = livros[i].autor
                 modalDescriçaoLivro.innerHTML = livros[i].descriçao
                 modalCapaLivro.setAttribute("src", livros[i].capa)
-                livroIdRequisicao = livros[i].id          
+
+                strHtml += `<br> <div class="form-group col-md-12">
+                <label >Pontuacao:</label> <br>
+                <label for = "star1">1</label>
+                <input type = "radio"  name = "star" id = "star1">
+                <label for = "star2">2</label>
+                 <input type = "radio" name = "star" id = "star2">
+                 <label for = "star3">3</label>
+                 <input type = "radio" name = "star" id = "star3">
+                 <label for = "star4">4</label>
+                 <input type = "radio" name = "star" id = "star4">
+                 <label for = "star5">5</label>
+                 <input type = "radio" name = "star" id = "star5">
+                  
+                </div>
+              </div>`
+
+                strHtml +=`<div class="form-group col-md-12">
+                                <label for="inputComentario">Comentario:</label> <br>
+                                <textarea name="" maxlength="500" class="form-control" id="inputComentario" value = "brehqufvl"  rows="5"></textarea>
+                            </div>
+                            
+                                <div class="form-group col-md-12">
+                                    <button type="submit"  class="btn submeter mb-2">Submeter</button>
+                                </div>
+                            
+                    </form>`
+
+                livroIdRequisicao = livros[i].id  
+                
+                let livroRequisitado = document.getElementById("livroRequisitado")
+                if (livros[i].requisitado == true) {
+                    btnRequisitar.style.display = "none"
+                    livroRequisitado.style.display = "block"
+
+                }
+                else {
+                    btnRequisitar.style.display = "block"
+                    livroRequisitado.style.display = "none"
+
+                }
+                       
             }                  
         }
+        comentario.innerHTML = strHtml
         
     }
 

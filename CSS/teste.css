@@ -43,6 +43,27 @@
     color: #0A1D29 !important;
 }
 
+.entregar {
+    background-color: #0A1D29;
+    width: 160px;
+}
+
+.tabela {
+    background-color: #0A1D29 !important;
+}
+
+#editar {
+    background-color: #0A1D29 !important;
+}
+
+#btnRequisitar {
+    background-color: #0A1D29 !important;
+}
+
+.submeter {
+    background-color: #0A1D29 !important;
+    color: #fff !important;
+}
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -75,6 +96,7 @@
     min-height: 100vh;
     transition: all 0.3s;
 }
+
 
 /*
 .modal-lg {
@@ -116,4 +138,5 @@ input[type="color"]:focus,
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px#0A1D29;
   outline: 0 none;
 }
+
 

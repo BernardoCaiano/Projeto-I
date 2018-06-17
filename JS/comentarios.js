@@ -2,11 +2,12 @@ let comentarios = []
 let comentarioID = 0
 
 class Comentario {
-    constructor(utilizadorID, livroID, comentario) {
+    constructor(utilizadorID, livroID, comentario, pontuacao) {
         this._id = Requisiçao.getLastId() + 1
         this.utilizadorID = utilizadorID
         this.livroID = livroID
         this.comentario = comentario 
+        this.pontuacao = pontuacao
         
     }
     get id() {
@@ -54,7 +55,7 @@ let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
 
         
 
-let novoComentario = new Comentario (utilizadorLogado._id, livroIdRequisicao, comentario)
+let novoComentario = new Comentario (utilizadorLogado._id, livroIdRequisicao, comentario, pontuacao)
   
 requisiçoes.push(novaRequisiçao)
 localStorage.setItem("requisiçoes", JSON.stringify(requisiçoes))

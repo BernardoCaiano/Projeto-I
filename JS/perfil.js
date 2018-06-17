@@ -1,11 +1,13 @@
+let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
 requisiçoesStorage()
 livrosStorage()
 carregarPerfil()
 carregarRequisicoes()
+carregarHistoricoRequisicoes()
 
 
 function carregarPerfil() {
-    let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
+    
       
     let perfil = document.getElementById("perfil")
     let strHtml = ""
@@ -60,7 +62,6 @@ function carregarPerfil() {
 
 function editarPerfilPorId(id) {
     console.log(id)
-    let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
     
     let frmEditarPerfil = document.getElementById("frmEditarPerfil")
     let inputNomeEditar = document.getElementById("inputNomeEditar")
@@ -115,40 +116,113 @@ function editarPerfilPorId(id) {
 }
 
 function carregarRequisicoes() {
-    let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
     
     let requisicoes = document.getElementById("requisicoes")
     let strHtml = ""
-
+    let contRequisicoes = 0
     for (let i = 0; i < requisiçoes.length; i++) {
-        
-        if (requisiçoes[i].utilizadorID == utilizadorLogado._id ) {
-            
-            for (let j = 0, cont = 0; j < livros.length; j++) {
+    
+        if ((requisiçoes[i].utilizadorID == utilizadorLogado._id) && (requisiçoes[i].dataEntrega == "") ) {
+            contRequisicoes ++
+            for (let j = 0 ; j < livros.length; j++) {
                 if (livros[j].id == requisiçoes[i].livroID) {
-                    if(cont % 6 == 0) {
-                        strHtml += `<div class="row">`    
-                    }
-
-                    strHtml += `
-                    <div class="col-2"><a id="${livros[j].id}" border="5" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[j].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
-                    <center><a id="${livros[j].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[j].titulo}</b></a> <br>
-                             de ${livros[j].autor}</p>  </center>
-                    </div>`
-
-                    if(cont % 6 == 5) {
-                        strHtml += `</div>`    
-                    } 
-                    cont++
+                    console.log(utilizadorLogado._requisiçoes)
+                    
+                   
+                        strHtml += `
+                                <div class="row">
+                    
+                                <div class="col-3">
+                                    <center><img src="${livros[j].capa}" class="img-thumbnail" height="240" width="160" alt=""> 
+                                    <a id = "${requisiçoes[i].id}" class="btn btn-dark entregar">Entregar</a></center>
+                                    
+                                </div>
+                                <div class="col-9">
+                                    <h4>${livros[j].titulo}</h4>
+                                    <h5>de ${livros[j].autor}</h5>
+                                    <br>
+                                    <br>
+                                    <p>Data de Requisicao: ${requisiçoes[i].dataRequisiçao}</p>
+                                    <p>Data limite de Entrega: ${requisiçoes[i].dataRequisiçao}</p>
+                                    <p>Multa:</p>
+                                </div>
+                                </div>
+                                <br>`      
+                    
+                              
                 }
             }
         }
-        
+ 
+    }
+    if (contRequisicoes == 0) {
+        strHtml += `<p>De momento nao tem livros requisitados.</p>` 
     }
             
         
     requisicoes.innerHTML = strHtml
     
+}
+
+let entregar = document.getElementsByClassName("entregar") 
+
+// For each link, add a listener to listen the click event
+for (let i = 0; i < entregar.length; i++) {
+    entregar[i].addEventListener("click", function() {
+        
+        let requisitacaoID = entregar[i].getAttribute("id")
+        for (let j = 0; j < requisiçoes.length; j++) {
+            if (requisitacaoID == requisiçoes[j].id) {
+                requisiçoes[j].dataEntrega = new Date().toLocaleString()
+                for (let k = 0; k < utilizadores.length; k++) {
+                    if (utilizadores[k].id == utilizadorLogado._id){
+                        utilizadores[k].requisiçoes = utilizadores[k].requisiçoes - 1
+                        utilizadorLogado._requisiçoes = utilizadorLogado._requisiçoes -1
+                         
+                    }
+                }
+                for (let l = 0; l < livros.length; l++) {
+                    if (livros[l].id == requisiçoes[j].livroID) {
+                        livros[l].requisitado = false
+                    }
+                }
+                localStorage.setItem("livros", JSON.stringify(livros))
+                localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
+                localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado))
+                localStorage.setItem("requisiçoes", JSON.stringify(requisiçoes))
+                location.reload()
+            }   
+        }
+                     
+    })        
+}
+
+function carregarHistoricoRequisicoes() {
+    let historicoRequisicoes = document.getElementById("historicoRequisicoes")
+    let strHtml = ""
+    strHtml = "<thead class=' tabela'><tr>" +
+                    "<th>Titulo</th>" +
+                    "<th>Autor</th>" +
+                    "<th>Data de Requisicao</th>"+  
+                    "<th>Data de Entrega</th>" +              
+                    "</tr>" + 
+                    "</thead><tbody>"
+    for (let i = 0; i < requisiçoes.length; i++) {
+        if ((requisiçoes[i].utilizadorID == utilizadorLogado._id) && (requisiçoes[i].dataEntrega != "") ) {
+            
+            for (let j = 0 ; j < livros.length; j++) {
+                if (livros[j].id == requisiçoes[i].livroID) {
+                    
+
+                    strHtml += `<tr><td>${livros[j].titulo}</td>
+                    <td>${livros[j].autor}</td>
+                    <td>${requisiçoes[i].dataRequisiçao}</td>
+                    <td>${requisiçoes[i].dataEntrega}</td></tr>`
+                }
+            }
+        }
+    }
+    historicoRequisicoes.innerHTML = strHtml
 }
 
 function requisiçoesStorage() {
