@@ -1,5 +1,5 @@
 let requisiçoes = []
-let requisitacaoID = 0
+let requisitacaorID = 0
 
 class Requisiçao {
     constructor(utilizadorID, livroID, dataRequisiçao, dataEntrega) {

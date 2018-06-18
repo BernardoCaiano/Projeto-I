@@ -7,9 +7,40 @@
 
     let livroIdRequisicao = 0
     
+    let novoLivro01 = new Livro(1, "Quem Meteu a Mão na Caixa", "https://img.wook.pt/images/quem-meteu-a-mao-na-caixa-helena-garrido/MXwxOTc0MTgzNHwxNTU3NTEyM3wxNTI1MjE1NjAwMDAw/502x", "", "Helena Garrido" ) 
+    let novoLivro02 = new Livro(2, "Deixar Ir", "https://img.wook.pt/images/deixar-ir-david-r-hawkins/MXwyMTgxMzU4OXwxNzY2NDg2NHwxNTIzODMzMjAwMDAw/502x", "", "David R. Hawkins" )
+    let novoLivro03 = new Livro(3, "O Tatuador de Auschwitz", "https://img.wook.pt/images/o-tatuador-de-auschwitz-heather-morris/MXwyMTM3MDQwNnwxNzI1MjkwM3wxNTE2NzUyMDAwMDAw/502x", "", "Heather Morris" )
+    let novoLivro04 = new Livro(4, "Cebola Crua com Sal e Broa", "https://img.wook.pt/images/cebola-crua-com-sal-e-broa-miguel-sousa-tavares/MXwyMTkwOTA1N3wxNzc2ODk3NHwxNTI2MzM4ODAwMDAw/502x", "", "Miguel Sousa Tavares" )
+    let novoLivro05 = new Livro(5, "Propósito", "https://img.wook.pt/images/proposito-sri-prem-baba/MXwyMTUyMTI5NnwxNzM2ODUyN3wxNTI2MjUyNDAwMDAw/502x", "", "Sri Prem Baba" )
+    let novoLivro06 = new Livro(6, "O Homem Que Sou", "https://img.wook.pt/images/tony-carreira---o-homem-que-sou-tony-carreira/MXwyMTE4ODM3NXwxNzA1NDY1NXwxNTI2MzM4ODAwMDAw/502x", "", "Tony Carreira" )
+    let novoLivro07 = new Livro(7, "Hippie", "https://img.wook.pt/images/hippie-paulo-coelho/MXwyMTYwMjc3MnwxNzQ1MzQ4NHwxNTI2MjUyNDAwMDAw/502x", "", "Paulo Coelho" )
+    let novoLivro08 = new Livro(8, "A Guerra dos Tronos", "https://img.wook.pt/images/a-guerra-dos-tronos-george-r-r-martin/MXwxOTY1MTF8MjQ3OTIzfDEzODM1MjMyMDAwMDA=/502x", "", "George R. R. Martin" )
+    let novoLivro09 = new Livro(9, "A Guerra dos Tronos", "https://img.wook.pt/images/o-mundo-de-a-guerra-dos-tronos-george-r-r-martin/MXwxNjM3NDc0OHwxMTk1ODU1MXwxNDI4NDQ3NjAwMDAw/502x", "", "George R. R. Martin" )
+    let novoLivro10 = new Livro(10, "Sonho Febril", "https://img.wook.pt/images/sonho-febril-george-r-r-martin/MXwyMTM5NDQ2MHwxNzI2OTk5NnwxNTE3MzU2ODAwMDAw/502x", "", "George R. R. Martin" )
+    let novoLivro11 = new Livro(11, "Não Respire", "https://img.wook.pt/images/nao-respire-pedro-rolo-duarte/MXwyMTg3Njc5MXwxNzczMjk2NXwxNTI1MzAyMDAwMDAw/502x", "", "Pedro Rolo Duarte " )
+    let novoLivro12 = new Livro(12, "A Rapariga de Auschwitz", "https://img.wook.pt/images/a-rapariga-de-auschwitz-eva-schloss/MXwyMTYwODkwMnwxNzQ2MDE4MnwxNTIyMTkxNjAwMDAw/502x", "", "Eva Schloss" )
+    let novoLivro13 = new Livro(13, "Do Sonho à Vitória", "https://img.wook.pt/images/do-sonho-a-vitoria-antonio-tadeia/MXwyMTkxMjU5OHwxNzc3MjgxMnwxNTI2NDI1MjAwMDAw/502x", "", "António Tadeia" )
+    let novoLivro14 = new Livro(14, "Almanaque da Seleção", "https://img.wook.pt/images/almanaque-da-selecao-rui-miguel-tovar/MXwyMTk0Mjk3OXwxNzgwNTA0MXwxNTI3MTE2NDAwMDAw/502x", "", "Rui Miguel Tovar " )
 
+    if (localStorage.getItem("livros") == null){
+        livros.push(novoLivro01)
+        livros.push(novoLivro02)
+        livros.push(novoLivro03)
+        livros.push(novoLivro04)
+        livros.push(novoLivro05)
+        livros.push(novoLivro06)
+        livros.push(novoLivro07)
+        livros.push(novoLivro08)
+        livros.push(novoLivro09)
+        livros.push(novoLivro10)
+        livros.push(novoLivro11)
+        livros.push(novoLivro12)
+        livros.push(novoLivro13)
+        livros.push(novoLivro14)
+        localStorage.setItem("livros", JSON.stringify(livros))
+    }
+    
     //Filtros
-
     let btnFiltrar = document.getElementById("btnFiltrar")
    
     btnFiltrar.addEventListener("click", function(){
@@ -324,7 +355,7 @@
             
             for (let i = 0; i < tempArray2.length; i++) {
                 
-                let novoLivro =  new Livro(tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categorias, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado)
+                let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categorias, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado)
                 livros.push(novoLivro)       
             }
         }

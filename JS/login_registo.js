@@ -2,7 +2,6 @@ let logado = false
 
 window.onload = function() {
 
-    //localStorage.removeItem("utilizadores")
     utilizadoresStorage()
     utilizadorLogadoStorage()
 
@@ -12,6 +11,8 @@ window.onload = function() {
     let linkCatalogo = document.getElementById("linkCatalogo")
     let linkDoarLivro = document.getElementById("linkDoarLivro")
     let linkPerfil = document.getElementById("linkPerfil")
+
+    
 
     linkCatalogo.addEventListener("click", function(event) {
         if (logado == false) {
@@ -39,15 +40,19 @@ window.onload = function() {
     let novoUtilizador02 = new Utilizador(getLastId() + 2, "admin", "admin@email.com", "11111", "admin", "", 0 )
     let utilizadorLogado = new Utilizador()
 
+    //if (logado == false || utilizadorLogado._tipo != "operador") {
+        //linkDoarLivro.style.display = "none"
+    //}
+    
+
     
     if (localStorage.getItem("utilizadores") == null){
         utilizadores.push(novoUtilizador01)
-        localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
         utilizadores.push(novoUtilizador02)
         localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
     }
         
-    console.log(utilizadores)
+    
     
     if (logado) {
 
