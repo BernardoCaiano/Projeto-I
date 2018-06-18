@@ -140,7 +140,7 @@
       <div class="modal-content" id="cssModal">
         <div class="modal-header">
           <h5 class="modal-title">Detalhes sobre o livro</h5>
-          <button type="button" class="close" style="color: white" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -157,9 +157,32 @@
             <h5>Capa</h5>
                 <img id="modalCapaLivro" class="img-thumbnail" src="" alt="" height="240" width="160">
             
-            <form action="" id="comentario">
-
+            <form action="" >
+                    <div class="form-group col-md-12" id="estrelas">
+                        <br>
+                        <label >Pontuacao:</label> <br>
+                        <label for = "estrela">1</label>
+                        <input type = "radio"   class = "estrela" value = "1">
+                        <label for = "estrela">2</label>
+                        <input type = "radio"  class = "estrela" value = "2">
+                        <label for = "estrela">3</label>
+                        <input type = "radio"  class = "estrela" value = "3">
+                        <label for = "estrela">4</label>
+                        <input type = "radio"  class = "estrela" value = "4">
+                        <label for = "estrela">5</label>
+                        <input type = "radio" class = "estrela" value = "5">
+                              
+                    </div>
+                    <div class="form-group col-md-12" id="comentario">
+                        <label for="inputComentario">Comentario:</label> <br>
+                        <textarea name="" maxlength="500" class="form-control" id="inputComentario"   rows="5"></textarea>
+                    </div>
+                          
+                    
             </form>
+            <div class="form-group col-md-12">
+                    <button type="button" id = "btnComentar"  class="btn submeter mb-2">Submeter</button>
+            </div>
         </div>
        
         <div class="modal-footer">
@@ -334,7 +357,9 @@
     <!-- Optional JavaScript -->
     <script src="../JS/catalogo.js"></script>
     <script src="../JS/classeRequisicao.js"></script>
-    <script src="../JS/requisitar.js"></script>
+    <script src="../JS/requisitar.js"></script>\
+    <script src="../JS/classeComentarios.js"></script>
+    <script src="../JS/comentarios.js"></script>
     <!--<script src="../JS/requisitar.js"></script>-->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

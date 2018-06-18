@@ -1,76 +1,47 @@
-let comentarios = []
-let comentarioID = 0
 
-class Comentario {
-    constructor(utilizadorID, livroID, comentario, pontuacao) {
-        this._id = Requisiçao.getLastId() + 1
-        this.utilizadorID = utilizadorID
-        this.livroID = livroID
-        this.comentario = comentario 
-        this.pontuacao = pontuacao
-        
-    }
-    get id() {
-        return this._id
-    }
+comentariosStorage()
 
-    // Propriedade utilizadorID
-    get utilizadorID() {
-        return this._utilizadorID
-    }
+let valorPontuacao = 0
 
-    set utilizadorID(novoUtilizadorID) {
-        this._utilizadorID = novoUtilizadorID       
-    }
+let btnComentar = document.getElementById("btnComentar") 
+let estrela = document.getElementsByClassName("estrela")
+let inputComentario = document.getElementById("inputComentario")
+let estrelas = document.getElementById("estrelas")
+let comentario = document.getElementById("comentario")
 
-    // Propriedade livroID
-    get livroID() {
-        return this._livroID
-    }
-    set livroID(novoLivroID) {
-        this._livroID = novoLivroID
-    }
 
-    // Propriedade dataRequisiçao
-    get comentario() {
-        return this._comentario
-    }
-    set comentario(novoComentario) {
-        this._comentario = novoComentario
-    }
 
-    // Get the last ID
-    static getLastId() {
-        let lastId = 0
-        if (comentarios.length > 0) {
-            lastId = comentarios[comentarios.length-1].id
-        }        
-        return lastId
+btnComentar.addEventListener("click", function(){
+     
+    for (let i = 0; i < estrela.length; i++) {
+        if (estrela[i].checked == true) {
+            valorPontuacao = estrela[i].value
+        }
+    }
+    
+    
+    let novoComentario = new Comentario (getLastId() + 1, utilizadorLogado._id, livroIdRequisicao, inputComentario.value, valorPontuacao)
+    comentarios.push(novoComentario)
+    localStorage.setItem("comentarios", JSON.stringify(comentarios))
+})
+
+
+function comentariosStorage() {
+    if(localStorage.comentarios) {
+        let tempArray3 = JSON.parse(localStorage.getItem("comentarios"))
+
+        for (let i = 0; i < tempArray3.length; i++) {
+                
+            let novoComentario =  new Comentario(tempArray3[i]._id, tempArray3[i]._utilizadorID, tempArray3[i]._livroID, tempArray3[i]._comentario, tempArray3[i]._pontuacao)
+            comentarios.push(novoComentario)       
+        }
     }
 }
 
-requisiçoesStorage()
-
-let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
-
-        
-
-let novoComentario = new Comentario (utilizadorLogado._id, livroIdRequisicao, comentario, pontuacao)
-  
-requisiçoes.push(novaRequisiçao)
-localStorage.setItem("requisiçoes", JSON.stringify(requisiçoes))
-
-
-       
-    
-function comentariosStorage() {
-    if(localStorage.requisiçoes) {
-        let tempArray = JSON.parse(localStorage.getItem("requisiçoes"))
-
-        for (var i = 0; i < tempArray.length; i++) {
-                
-            let novaRequisiçao =  new Livro(tempArray[i]._utilizadorID, tempArray[i]._livroID, tempArray[i]._dataRequisiçao, tempArray[i]._dataEntrega)
-            livros.push(novaRequisiçao)       
-        }
-    }
+function getLastId() {
+    let lastId = 0
+    if (comentarios.length > 0) {
+        lastId = comentarios[comentarios.length-1].id
+    }        
+    return lastId
 }
