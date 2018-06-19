@@ -1,8 +1,8 @@
     livrosStorage()
+    comentariosStorage()
     completarFiltroAutores()
     completarFiltroEstadoLivro()
     completarFiltroEditoras()
-    
     carregarCatalogo()
 
     let livroIdRequisicao = 0
@@ -223,20 +223,15 @@
 
     function verLivroPorId(id) { 
         let strHtml = ""
-        
-        
-        
-        
+        livroId = id
         for (let i = 0; i < livros.length; i++) {
             if(livros[i].id == id) {
                 modalTituloLivro.innerHTML= livros[i].titulo                
                 modalAutorLivro.innerHTML = livros[i].autor
                 modalDescriçaoLivro.innerHTML = livros[i].descriçao
                 modalCapaLivro.setAttribute("src", livros[i].capa)
-
                 
-                            
-                        
+                
                 livroIdRequisicao = livros[i].id  
                 
                 let livroRequisitado = document.getElementById("livroRequisitado")
@@ -253,7 +248,7 @@
 
                 for (let j = 0; j < comentarios.length; j++){
                     if (comentarios[j].utilizadorID == utilizadorLogado._id && comentarios[j].livroID == livroIdRequisicao) {
-                        console.log(comentarios[j])
+                        
                         btnComentar.style.display = "none"
                         estrelas.style.display = "none"
                         comentario.style.display = "none"
@@ -267,8 +262,35 @@
                        
             }                  
         }
+        carregarComentarios(livroId)
         
+           
+    }
+
+    function carregarComentarios(id) {
+
+        let carregarComentarios = document.getElementById("carregarComentarios")
         
+        let strHtml = ""
+
+        for (let i = 0; i < comentarios.length; i++) {
+           
+            
+                if (comentarios[i].livroID == id) {
+                    for (let k = 0; k < utilizadores.length; k++) {
+                        if (comentarios[i].utilizadorID == utilizadores[k].id) {
+                            strHtml += `<h6>${utilizadores[k].nome}</h6>
+                                        <p>Pontuacao: ${comentarios[i].pontuacao}</p>
+                                        <p>Comentario: </p>
+                                        <p>${comentarios[i].comentario}</p>`
+                        }   
+                    }
+                }
+            
+            
+        }
+        carregarComentarios.innerHTML = strHtml
+            
     }
 
     function eliminarLivro(id){
@@ -360,6 +382,18 @@
             }
         }
             
+    }
+
+    function comentariosStorage() {
+        if(localStorage.comentarios) {
+            let tempArray3 = JSON.parse(localStorage.getItem("comentarios"))
+    
+            for (let i = 0; i < tempArray3.length; i++) {
+                    
+                let novoComentario =  new Comentario(tempArray3[i]._id, tempArray3[i]._utilizadorID, tempArray3[i]._livroID, tempArray3[i]._comentario, tempArray3[i]._pontuacao)
+                comentarios.push(novoComentario)       
+            }
+        }
     }
 
 
