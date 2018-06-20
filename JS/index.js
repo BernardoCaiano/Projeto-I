@@ -1,6 +1,6 @@
 
     livrosStorage()
-    comentariosStorage()
+    
     let strHtml = ""
     let strHtml2 = ""
 
@@ -15,8 +15,6 @@
 
     console.log(arrayMaisPontuados)
 
-    
-
     let maisRecentes = document.getElementById("maisRecentes")
 
     strHtml2 = ` <div class="col-3"><img src="${livros[livros.length-1].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
@@ -26,8 +24,6 @@
 
     maisRecentes.innerHTML = strHtml2
     
-    
-
     function livrosStorage(){
         if(localStorage.livros) {
             let tempArray2 = JSON.parse(localStorage.getItem("livros"))
@@ -41,15 +37,5 @@
             
     }
 
-    function comentariosStorage() {
-        if(localStorage.comentarios) {
-            let tempArray3 = JSON.parse(localStorage.getItem("comentarios"))
     
-            for (let i = 0; i < tempArray3.length; i++) {
-                    
-                let novoComentario =  new Comentario(tempArray3[i]._id, tempArray3[i]._utilizadorID, tempArray3[i]._livroID, tempArray3[i]._comentario, tempArray3[i]._pontuacao)
-                comentarios.push(novoComentario)       
-            }
-        }
-    }
 

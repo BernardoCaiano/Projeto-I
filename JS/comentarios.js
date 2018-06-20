@@ -22,17 +22,18 @@ btnComentar.addEventListener("click", function(){
     
     let novoComentario = new Comentario (getLastId() + 1, utilizadorLogado._id, livroIdRequisicao, inputComentario.value, valorPontuacao)
     comentarios.push(novoComentario)
+    console.log(comentarios.length)
     localStorage.setItem("comentarios", JSON.stringify(comentarios))
 })
 
 
 function comentariosStorage() {
     if(localStorage.comentarios) {
-        let tempArray3 = JSON.parse(localStorage.getItem("comentarios"))
+        let tempArrayCom = JSON.parse(localStorage.getItem("comentarios"))
 
-        for (let i = 0; i < tempArray3.length; i++) {
+        for (let i = 0; i < tempArrayCom.length; i++) {
                 
-            let novoComentario =  new Comentario(tempArray3[i]._id, tempArray3[i]._utilizadorID, tempArray3[i]._livroID, tempArray3[i]._comentario, tempArray3[i]._pontuacao)
+            let novoComentario =  new Comentario(tempArrayCom[i]._id, tempArrayCom[i]._utilizadorID, tempArrayCom[i]._livroID, tempArrayCom[i]._comentario, tempArrayCom[i]._pontuacao)
             comentarios.push(novoComentario)       
         }
     }

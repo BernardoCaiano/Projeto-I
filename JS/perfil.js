@@ -225,6 +225,33 @@ function carregarHistoricoRequisicoes() {
     historicoRequisicoes.innerHTML = strHtml
 }
 
+function carregarHistoricoComentarios() {
+    let carregarHistoricoComentarios = document.getElementById("carregarHistoricoComentarios")
+    let strHtml = ""
+    strHtml = "<thead class=' tabela'><tr>" +
+                    "<th>Livro</th>" +
+                    "<th>Pontuacao</th>" +
+                    "<th>Comentario</th>"+              
+                    "</tr>" + 
+                    "</thead><tbody>"
+    for (let i = 0; i < comentarios.length; i++) {
+        if (comentarios[i].utilizadorID == utilizadorLogado._id)  {
+            
+            for (let j = 0 ; j < livros.length; j++) {
+                if (livros[j].id == requisiçoes[i].livroID) {
+                    
+
+                    strHtml += `<tr><td>${livros[j].titulo}</td>
+                    <td>${livros[j].autor}</td>
+                    <td>${requisiçoes[i].dataRequisiçao}</td>
+                    <td>${requisiçoes[i].dataEntrega}</td></tr>`
+                }
+            }
+        }
+    }
+    historicoRequisicoes.innerHTML = strHtml
+}
+
 function requisiçoesStorage() {
     if(localStorage.requisiçoes) {
         let tempArrayReq = JSON.parse(localStorage.getItem("requisiçoes"))

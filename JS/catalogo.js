@@ -1,5 +1,5 @@
+    
     livrosStorage()
-    comentariosStorage()
     completarFiltroAutores()
     completarFiltroEstadoLivro()
     completarFiltroEditoras()
@@ -222,6 +222,7 @@
     }
 
     function verLivroPorId(id) { 
+    
         let strHtml = ""
         livroId = id
         for (let i = 0; i < livros.length; i++) {
@@ -245,19 +246,24 @@
                     livroRequisitado.style.display = "none"
 
                 }
-
+                let comentar = true
                 for (let j = 0; j < comentarios.length; j++){
-                    if (comentarios[j].utilizadorID == utilizadorLogado._id && comentarios[j].livroID == livroIdRequisicao) {
+
+                    if (comentarios[j].utilizadorID == utilizadorLogado._id && comentarios[j].livroID == id) {
                         
                         btnComentar.style.display = "none"
                         estrelas.style.display = "none"
                         comentario.style.display = "none"
+                        comentar = false
                     }
-                    else {
+                    else if (comentar) {
                         btnComentar.style.display = "block"
                         estrelas.style.display = "block"
                         comentario.style.display = "block"
                     }
+                        
+
+                    
                 }
                        
             }                  
@@ -272,23 +278,22 @@
         let carregarComentarios = document.getElementById("carregarComentarios")
         
         let strHtml = ""
-
+        
+        
         for (let i = 0; i < comentarios.length; i++) {
-           
-            
                 if (comentarios[i].livroID == id) {
                     for (let k = 0; k < utilizadores.length; k++) {
                         if (comentarios[i].utilizadorID == utilizadores[k].id) {
+                            
                             strHtml += `<h6>${utilizadores[k].nome}</h6>
                                         <p>Pontuacao: ${comentarios[i].pontuacao}</p>
                                         <p>Comentario: </p>
                                         <p>${comentarios[i].comentario}</p>`
                         }   
                     }
-                }
-            
-            
+                }   
         }
+        
         carregarComentarios.innerHTML = strHtml
             
     }
@@ -384,17 +389,6 @@
             
     }
 
-    function comentariosStorage() {
-        if(localStorage.comentarios) {
-            let tempArray3 = JSON.parse(localStorage.getItem("comentarios"))
-    
-            for (let i = 0; i < tempArray3.length; i++) {
-                    
-                let novoComentario =  new Comentario(tempArray3[i]._id, tempArray3[i]._utilizadorID, tempArray3[i]._livroID, tempArray3[i]._comentario, tempArray3[i]._pontuacao)
-                comentarios.push(novoComentario)       
-            }
-        }
-    }
 
 
 
