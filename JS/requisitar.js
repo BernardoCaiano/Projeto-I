@@ -29,7 +29,8 @@
             localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
             localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado))
             localStorage.setItem("requisiçoes", JSON.stringify(requisiçoes))
-
+            alert("Livro requisitado com sucesso!")
+            location.reload()
             console.log(requisiçoes)
         }
         else {

@@ -65,6 +65,19 @@
     color: #fff !important;
 }
 
+/*#headerModal {
+    background-color: #0A1D29 !important;
+    color: #fff !important;
+    border: #fff !important;
+}*/
+
+.scrollTabelas {
+    height: 400px;
+    overflow: scroll;
+}
+
+
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */

@@ -222,7 +222,7 @@
     }
 
     function verLivroPorId(id) { 
-    
+        console.log(id)
         let strHtml = ""
         livroId = id
         for (let i = 0; i < livros.length; i++) {

@@ -138,56 +138,59 @@
 <div class="modal fade bd-example-modal-lg" id="livroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content" id="cssModal">
-        <div class="modal-header">
+        <div class="modal-header" id="headerModal">
           <h5 class="modal-title">Detalhes sobre o livro</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body" >
-            <h5>Titulo</h5>
-                <p id="modalTituloLivro"></p>
-            <hr>
-            <h5>Autor</h5>
-                <p id="modalAutorLivro"></p>
-            <hr>
-            <h5>Descrição</h5>
-                <p id="modalDescriçaoLivro"></p>
-            <hr>
-            <h5>Capa</h5>
-                <img id="modalCapaLivro" class="img-thumbnail" src="" alt="" height="240" width="160">
             
-            <form action="" >
-                    <div class="form-group col-md-12" id="estrelas">
-                        <br>
-                        <label >Pontuacao:</label> <br>
-                        <label for = "estrela">1</label>
-                        <input type = "radio"   class = "estrela" value = "1">
-                        <label for = "estrela">2</label>
-                        <input type = "radio"  class = "estrela" value = "2">
-                        <label for = "estrela">3</label>
-                        <input type = "radio"  class = "estrela" value = "3">
-                        <label for = "estrela">4</label>
-                        <input type = "radio"  class = "estrela" value = "4">
-                        <label for = "estrela">5</label>
-                        <input type = "radio" class = "estrela" value = "5">
+                    <h5>Titulo</h5>
+                    <p id="modalTituloLivro"></p>
+                <hr>
+                <h5>Autor</h5>
+                    <p id="modalAutorLivro"></p>
+                <hr>
+                <h5>Descrição</h5>
+                    <p id="modalDescriçaoLivro"></p>
+                <hr>
+                <h5>Capa</h5>
+                    <img id="modalCapaLivro" class="img-thumbnail" src="" alt="" height="240" width="160">
+                
+                <form action="" >
+                        <div class="form-group col-md-12" id="estrelas">
+                            <br>
+                            <label >Pontuacao:</label> <br>
+                            <label for = "estrela">1</label>
+                            <input type = "radio"   class = "estrela" value = "1">
+                            <label for = "estrela">2</label>
+                            <input type = "radio"  class = "estrela" value = "2">
+                            <label for = "estrela">3</label>
+                            <input type = "radio"  class = "estrela" value = "3">
+                            <label for = "estrela">4</label>
+                            <input type = "radio"  class = "estrela" value = "4">
+                            <label for = "estrela">5</label>
+                            <input type = "radio" class = "estrela" value = "5">
+                                  
+                        </div>
+                        <div class="form-group col-md-12" id="comentario">
+                            <label for="inputComentario">Comentario:</label> <br>
+                            <textarea name="" maxlength="500" class="form-control" id="inputComentario"   rows="5"></textarea>
+                        </div>
                               
-                    </div>
-                    <div class="form-group col-md-12" id="comentario">
-                        <label for="inputComentario">Comentario:</label> <br>
-                        <textarea name="" maxlength="500" class="form-control" id="inputComentario"   rows="5"></textarea>
-                    </div>
-                          
-                    
-            </form>
-            <div class="form-group col-md-12">
-                    <button type="button" id = "btnComentar"  class="btn submeter mb-2">Submeter</button>
-            </div>
-            <h5>Comentarios:</h5>
-            <br>
-            <div id="carregarComentarios">
-                       
-            </div>
+                        
+                </form>
+                <div class="form-group col-md-12">
+                        <button type="button" id = "btnComentar"  class="btn submeter mb-2">Submeter</button>
+                </div>
+                <h5>Comentarios:</h5>
+                <br>
+                <div id="carregarComentarios">
+                           
+                </div>
+            
+            
         </div>
        
         <div class="modal-footer">

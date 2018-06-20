@@ -1,10 +1,11 @@
 let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
 requisiçoesStorage()
+comentariosStorage()
 livrosStorage()
 carregarPerfil()
 carregarRequisicoes()
 carregarHistoricoRequisicoes()
-
+carregarHistoricoComentarios()
 
 function carregarPerfil() {
     
@@ -226,7 +227,7 @@ function carregarHistoricoRequisicoes() {
 }
 
 function carregarHistoricoComentarios() {
-    let carregarHistoricoComentarios = document.getElementById("carregarHistoricoComentarios")
+    let historicoComentarios = document.getElementById("historicoComentarios")
     let strHtml = ""
     strHtml = "<thead class=' tabela'><tr>" +
                     "<th>Livro</th>" +
@@ -238,18 +239,16 @@ function carregarHistoricoComentarios() {
         if (comentarios[i].utilizadorID == utilizadorLogado._id)  {
             
             for (let j = 0 ; j < livros.length; j++) {
-                if (livros[j].id == requisiçoes[i].livroID) {
+                if (livros[j].id == comentarios[i].livroID) {
                     
-
                     strHtml += `<tr><td>${livros[j].titulo}</td>
-                    <td>${livros[j].autor}</td>
-                    <td>${requisiçoes[i].dataRequisiçao}</td>
-                    <td>${requisiçoes[i].dataEntrega}</td></tr>`
+                    <td>${comentarios[i].pontuacao}</td>
+                    <td>${comentarios[i].comentario}</td></tr>`
                 }
             }
         }
     }
-    historicoRequisicoes.innerHTML = strHtml
+    historicoComentarios.innerHTML = strHtml
 }
 
 function requisiçoesStorage() {
@@ -260,6 +259,18 @@ function requisiçoesStorage() {
             
             let novaRequisiçao =  new Requisiçao(tempArrayReq[i]._utilizadorID, tempArrayReq[i]._livroID, tempArrayReq[i]._dataRequisiçao, tempArrayReq[i]._dataEntrega)
             requisiçoes.push(novaRequisiçao)       
+        }
+    }
+}
+
+function comentariosStorage() {
+    if(localStorage.comentarios) {
+        let tempArrayCom = JSON.parse(localStorage.getItem("comentarios"))
+
+        for (let i = 0; i < tempArrayCom.length; i++) {
+                
+            let novoComentario =  new Comentario(tempArrayCom[i]._id, tempArrayCom[i]._utilizadorID, tempArrayCom[i]._livroID, tempArrayCom[i]._comentario, tempArrayCom[i]._pontuacao)
+            comentarios.push(novoComentario)       
         }
     }
 }
