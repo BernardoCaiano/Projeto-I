@@ -17,10 +17,14 @@
 
     let maisRecentes = document.getElementById("maisRecentes")
 
-    strHtml2 = ` <div class="col-3"><img src="${livros[livros.length-1].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
+    for (let i = 0, cont = 0; i < livros.length ; i++) {
+        strHtml2 = `<a id="${livros[i].id}" class='verLivro' href = "../HTML/livro.html"> <div class="col-3"><img src="${livros[livros.length-1].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>
                 <div class="col-3"><img src="${livros[livros.length-2].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
                 <div class="col-3"><img src="${livros[livros.length-3].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
                 <div class="col-3"><img src="${livros[livros.length-4].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>`
+    }
+
+    
 
     maisRecentes.innerHTML = strHtml2
     

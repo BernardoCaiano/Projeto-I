@@ -12,7 +12,6 @@ window.onload = function() {
     let linkDoarLivro = document.getElementById("linkDoarLivro")
     let linkPerfil = document.getElementById("linkPerfil")
 
-    
 
     linkCatalogo.addEventListener("click", function(event) {
         if (logado == false) {
@@ -160,7 +159,7 @@ window.onload = function() {
             
             let inputNome = document.getElementById("inputNome").value
             event.preventDefault()
-            let novoUtilizador = new Utilizador(getLastId() + 1, inputNome, inputEmail.value, inputPassword1.value, "utilizador", "", 0)
+            let novoUtilizador = new Utilizador(getLastId() + 1, inputNome, inputEmail.value, inputPassword1.value, "utilizador", "../imagens/perfil.jpg", 0)
             // Adicionar ao array
             utilizadores.push(novoUtilizador)
 

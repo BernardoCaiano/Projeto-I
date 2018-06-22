@@ -12,23 +12,7 @@ function carregarPerfil() {
       
     let perfil = document.getElementById("perfil")
     let strHtml = ""
-    if (utilizadorLogado._foto == "") {
-         strHtml = `<div class="row">
-                    <div class="col-3">
-                        <img src="../imagens/perfil.jpg" class="img-thumbnail" height="250" width="250" alt=""> 
-                    </div>
-                    <div class="col-9">
-                        
-                        <h4>Nome de Utilizador</h4>
-                        <p>${utilizadorLogado._nome}</p>
-                        <h4>Email</h4>
-                        <p>${utilizadorLogado._email}</p>
-                        
-                        <a name="editar" id="editar" href="#" data-toggle='modal' data-target='#editarPerfilModal' class="btn btn-dark "><i class="fas fa-edit"></i> Editar perfil</a>
-                    </div>
-                </div> `
-    }
-    else {
+    
          strHtml = `<div class="row">
         <div class="col-4">
             <img src="${utilizadorLogado._foto}" class="img-thumbnail" height="250" width="250" alt=""> 
@@ -43,7 +27,7 @@ function carregarPerfil() {
             <a name="editar" id="editar" href="#" data-toggle='modal' data-target='#editarPerfilModal' class="btn btn-dark "><i class="fas fa-edit"></i> Editar perfil</a>
         </div>
     </div> `
-    }
+    
     
     
     perfil.innerHTML = strHtml

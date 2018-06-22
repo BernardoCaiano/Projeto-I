@@ -6,7 +6,7 @@ let valorPontuacao = 0
 let btnComentar = document.getElementById("btnComentar") 
 let estrela = document.getElementsByClassName("estrela")
 let inputComentario = document.getElementById("inputComentario")
-let estrelas = document.getElementById("estrelas")
+
 let comentario = document.getElementById("comentario")
 
 
@@ -24,6 +24,7 @@ btnComentar.addEventListener("click", function(){
     comentarios.push(novoComentario)
     console.log(comentarios.length)
     localStorage.setItem("comentarios", JSON.stringify(comentarios))
+    location.reload()
 })
 
 
@@ -34,7 +35,8 @@ function comentariosStorage() {
         for (let i = 0; i < tempArrayCom.length; i++) {
                 
             let novoComentario =  new Comentario(tempArrayCom[i]._id, tempArrayCom[i]._utilizadorID, tempArrayCom[i]._livroID, tempArrayCom[i]._comentario, tempArrayCom[i]._pontuacao)
-            comentarios.push(novoComentario)       
+            comentarios.push(novoComentario)  
+                 
         }
     }
 }

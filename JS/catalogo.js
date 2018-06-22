@@ -69,8 +69,8 @@
 
                 if (utilizadorLogado._tipo == "operador"){
                     strHtml += `
-                    <div class="col-2"><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
-                    <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
+                    <div class="col-md-2"><a id="${livros[i].id}" class='verLivro' href = "../HTML/livro.html"><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
+                    <center><a id="${livros[i].id}" class='verLivro' ><p><b>${livros[i].titulo}</b></a> <br>
                              de ${livros[i].autor}</p>  </center>
                              <center><a id="${livros[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
                     <a id="${livros[i].id}" href="#" data-toggle='modal'  data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
@@ -79,8 +79,8 @@
                 }
                 else {
                     strHtml += `
-                    <div class="col-2"><a id="${livros[i].id}" border="5" class='verModal' data-toggle='modal' data-target='#livroModal'><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
-                    <center><a id="${livros[i].id}" class='verModal' data-toggle='modal' data-target='#livroModal'><p><b>${livros[i].titulo}</b></a> <br>
+                    <div class="col-2"><a id="${livros[i].id}" class='verLivro' href = "livro.html" ><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
+                    <center><a id="${livros[i].id}" class='verLivro' ><p><b>${livros[i].titulo}</b></a> <br>
                              de ${livros[i].autor}</p>  </center>
                     </div>`
                 }
@@ -96,16 +96,18 @@
             
         catalogo.innerHTML = strHtml
         
-        let verModal = document.getElementsByClassName("verModal")
+        
+        let verLivro = document.getElementsByClassName("verLivro")
         // For each link, add a listener to listen the click event
-        for (let i = 0; i < verModal.length; i++) {
-            verModal[i].addEventListener("click", function() {
+        for (let i = 0; i < verLivro.length; i++) {
+            verLivro[i].addEventListener("click", function() {
                 // Ao clicar num livro especifico, ve-lo numa modal
-                let livroId = verModal[i].getAttribute("id")
-                verLivroPorId(livroId)                
+                let livroId = verLivro[i].getAttribute("id")
+                localStorage.setItem("livroID", livroId)
+                
+        
             })        
          }
-         
     
         let btnRemover = document.getElementsByClassName("remove")
         // Para cada botão, adicionar um listener para escutar pelo evento clique
@@ -124,13 +126,13 @@
         let editar = document.getElementsByClassName("editar")
         // Para cada botão, adicionar um listener para escutar pelo evento clique
         for (let i = 0; i < editar.length; i++) {
-            editar[i].addEventListener("click", function() {
+            editar[i].addEventListener("click", function(event) {
                 // Ao clicar num livro especifico, editar no form
                 let livroId = editar[i].getAttribute("id")
                 
-                editarLivroPorId(livroId) 
+                 
                 carregarCatalogo(livroId)
-                
+                event.preventDefault()
                          
             })        
         }  
@@ -221,82 +223,6 @@
         
     }
 
-    function verLivroPorId(id) { 
-        console.log(id)
-        let strHtml = ""
-        livroId = id
-        for (let i = 0; i < livros.length; i++) {
-            if(livros[i].id == id) {
-                modalTituloLivro.innerHTML= livros[i].titulo                
-                modalAutorLivro.innerHTML = livros[i].autor
-                modalDescriçaoLivro.innerHTML = livros[i].descriçao
-                modalCapaLivro.setAttribute("src", livros[i].capa)
-                
-                
-                livroIdRequisicao = livros[i].id  
-                
-                let livroRequisitado = document.getElementById("livroRequisitado")
-                if (livros[i].requisitado == true) {
-                    btnRequisitar.style.display = "none"
-                    livroRequisitado.style.display = "block"
-
-                }
-                else {
-                    btnRequisitar.style.display = "block"
-                    livroRequisitado.style.display = "none"
-
-                }
-                let comentar = true
-                for (let j = 0; j < comentarios.length; j++){
-
-                    if (comentarios[j].utilizadorID == utilizadorLogado._id && comentarios[j].livroID == id) {
-                        
-                        btnComentar.style.display = "none"
-                        estrelas.style.display = "none"
-                        comentario.style.display = "none"
-                        comentar = false
-                    }
-                    else if (comentar) {
-                        btnComentar.style.display = "block"
-                        estrelas.style.display = "block"
-                        comentario.style.display = "block"
-                    }
-                        
-
-                    
-                }
-                       
-            }                  
-        }
-        carregarComentarios(livroId)
-        
-           
-    }
-
-    function carregarComentarios(id) {
-
-        let carregarComentarios = document.getElementById("carregarComentarios")
-        
-        let strHtml = ""
-        
-        
-        for (let i = 0; i < comentarios.length; i++) {
-                if (comentarios[i].livroID == id) {
-                    for (let k = 0; k < utilizadores.length; k++) {
-                        if (comentarios[i].utilizadorID == utilizadores[k].id) {
-                            
-                            strHtml += `<h6>${utilizadores[k].nome}</h6>
-                                        <p>Pontuacao: ${comentarios[i].pontuacao}</p>
-                                        <p>Comentario: </p>
-                                        <p>${comentarios[i].comentario}</p>`
-                        }   
-                    }
-                }   
-        }
-        
-        carregarComentarios.innerHTML = strHtml
-            
-    }
 
     function eliminarLivro(id){
         if (confirm("Tem a certeza que quer eliminar o livro?")){
