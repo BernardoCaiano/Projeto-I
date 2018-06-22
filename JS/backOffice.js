@@ -1,6 +1,7 @@
+
 utilizadoresStorage()
 carregarUtilizadores()
-
+//carregarButoes()
 
 function carregarUtilizadores() {
     let gerirUtilizadores = document.getElementById("gerirUtilizadores")
@@ -22,13 +23,13 @@ function carregarUtilizadores() {
         <td>${utilizadores[i].tipo}</td>
         <td>${utilizadores[i].foto}</td>
         <td><a id="${utilizadores[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i></a>
-        <a id="${utilizadores[i].id}" href="#" id="admin" class="btn btn-dark admin">Tornar Admin</a>  
-        <a id="${utilizadores[i].id}" href="#" id="operador" class="btn btn-dark operador">Tornar Operador</td></tr>`
+        <a id="${utilizadores[i].id}" href="#" id="tornarAdmin" class="btn btn-dark tornarAdmin">Tornar Admin</a>
+        <a id="${utilizadores[i].id}" href="#" id="retirarAdmin" class="btn btn-dark retirarAdmin">Retirar Admin</a>  
+        <a id="${utilizadores[i].id}" href="#" id="tornarOperador" class="btn btn-dark tornarOperador">Tornar Operador</a>
+        <a id="${utilizadores[i].id}" href="#" id="retirarOperador" class="btn btn-dark retirarOperador">Retirar Operador</a></td></tr>`
         
         
     }
-
-    
     
     gerirUtilizadores.innerHTML = strHtml
 
@@ -38,11 +39,12 @@ function carregarUtilizadores() {
         btnRemover[i].addEventListener("click", function() {
             // Ao clicar num utilizador especifico, remover do array
             let utilizadorId = btnRemover[i].getAttribute("id")
+            
             eliminarUtilizador(utilizadorId)
             carregarUtilizadores(utilizadorId)
             localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
         })        
-            
+
     }
 
     let btnAdmin = document.getElementsByClassName("admin")
@@ -50,7 +52,7 @@ function carregarUtilizadores() {
     for (let i = 0; i < btnAdmin.length; i++) {
         btnAdmin[i].addEventListener("click", function() {
             
-            let utilizadorId = btnRemover[i].getAttribute("id")
+            let utilizadorId = btnAdmin[i].getAttribute("id")
             tornarAdmin(utilizadorId)
             carregarUtilizadores(utilizadorId)
             localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
@@ -58,12 +60,17 @@ function carregarUtilizadores() {
             
     }
 
+    
+
 }
-let admin = document.getElementById("admin")
-for (let i = 0; i < utilizadores.length; i++) {
-    if (utilizadores[i].tipo == "admin") {
-        
-        admin.style.display = "disabled"
+
+function carregarButoes() {
+    let tornarAdmin = document.getElementById("tornarAdmin")
+    for (let j = 0; j < utilizadores.length; j++) {
+        if (utilizadores[j].tipo == "utilizador") {
+            tornarAdmin.style.display = "none"
+
+        }
     }
 }
 

@@ -117,6 +117,7 @@ function carregarComentarios(id) {
     }
     
     
+    
     carregarComentarios.innerHTML = strHtml
         
 }

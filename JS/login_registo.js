@@ -2,7 +2,10 @@ let logado = false
 
 window.onload = function() {
 
-    utilizadoresStorage()
+    if (utilizadores.length == 0) {
+        utilizadoresStorage()
+    }
+    
     utilizadorLogadoStorage()
 
     //LOGIN
@@ -35,7 +38,7 @@ window.onload = function() {
         //}
     //})
 
-    let novoUtilizador01 = new Utilizador(getLastId() + 1, "operador", "operador@email.com", "11111", "operador", "", 0 ) 
+    let novoUtilizador01 = new Utilizador(getLastId() + 1, "operador", "operador@email.com", "11111", "operador", "../imagens/per", 0 ) 
     let novoUtilizador02 = new Utilizador(getLastId() + 2, "admin", "admin@email.com", "11111", "admin", "", 0 )
     let utilizadorLogado = new Utilizador()
 

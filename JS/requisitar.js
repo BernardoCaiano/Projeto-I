@@ -26,6 +26,7 @@
                     utilizadores[i].requisiçoes = utilizadores[i].requisiçoes + 1
                 }
             }
+            
             localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
             localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado))
             localStorage.setItem("requisiçoes", JSON.stringify(requisiçoes))
