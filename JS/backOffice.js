@@ -7,6 +7,7 @@ function carregarUtilizadores() {
     let gerirUtilizadores = document.getElementById("gerirUtilizadores")
     let strHtml = ""
     strHtml = "<thead class=' thead-dark'><tr>" +
+                    "<th>ID</th>" +
                     "<th>Nome</th>" +
                     "<th>Email</th>" +
                     "<th>Password</th>"+  
@@ -17,7 +18,8 @@ function carregarUtilizadores() {
                     "</thead><tbody>"
 
     for (let i = 0; i < utilizadores.length; i++) {   
-        strHtml += `<tr><td>${utilizadores[i].nome}</td>
+        strHtml += `<tr><td>${utilizadores[i].id}</td>
+        <td>${utilizadores[i].nome}</td>
         <td>${utilizadores[i].email}</td>
         <td>${utilizadores[i].password}</td>
         <td>${utilizadores[i].tipo}</td>
@@ -73,7 +75,6 @@ function carregarButoes() {
         }
     }
 }
-
 
 function eliminarUtilizador(id){
     if (confirm("Tem a certeza que quer eliminar o utilizador?")){

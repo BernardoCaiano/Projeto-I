@@ -27,10 +27,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Gerir Utilizadores</a>
                         </li>
+                        <!--OPÇÃO Gerir Categorias/Tags-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Gerir Categorias/Tags</a>
+                        </li>  
                         <!--OPÇÃO Gerir Bibliotecas-->
                         <li class="nav-item">
-                                <a class="nav-link" href="#">Gerir Bibliotecas</a>
-                            </li>  
+                            <a class="nav-link" href="#">Gerir Bibliotecas</a>
+                        </li>  
                         <!--OPÇÃO Multas-->
                         <li class="nav-item">
                             <a class="nav-link" href="#"> Gerir Multas</a>
@@ -59,7 +63,7 @@
                     </div>
                     <div class="col-md-2">
                         <br>
-                        <button type="submit" id="btnCategoria" class="btn submeter mb-2">Adicionar</button>
+                        <button type="submit" id="btnCategoria" class="btn btn-dark mt-2">Adicionar</button>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputTag">Adicionar Tag</label>
@@ -67,15 +71,83 @@
                     </div>
                     <div class="col-md-2">
                         <br>
-                        <button type="button" id="btnTag" class="btn submeter mb-2">Adicionar</button>
+                        <button type="button" id="btnTag" class="btn btn-dark mt-2">Adicionar</button>
                     </div>
                 </div>   
             </form>
         </div>
-        <div class="table-responsive">
-            <table id="gerirTags" class="table table-sm">   
+        <div class="row">
+            <div class="table-responsive col-6">
+                <table id="gerirCategorias" class="table table-sm">   
+                            
+                </table>
+            </div>
+            <div class="table-responsive col-6">
+                <table id="gerirTags" class="table table-sm">   
+                
+                </table>
+            </div>
+        </div>
 
-            </table>
+
+    <!--MODAL Editar Categorias-->    
+    <div class="modal fade" id="categoriaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar Categoria</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="frmEditarCategoria">                    
+                    <!--Categoria-->
+                    <div class="form-group">
+                        <label for="inputCategoriaEditar">Categoria</label>
+                        <input type="text" class="form-control" id="inputCategoriaEditar" >                        
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit"  class="btn btn-primary mb-2">Editar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+          </div>
+        </div>
+    </div>
+
+    <!--MODAL Editar Tags-->    
+    <div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Tag</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                
+                <div class="modal-body">
+                    <form id="frmEditarTag">                    
+                        <!--Categoria-->
+                        <div class="form-group">
+                            <label for="inputTagEditar">Tag</label>
+                            <input type="text" class="form-control" id="inputTagEditar" >                        
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <button type="submit"  class="btn btn-primary mb-2">Editar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            
+              </div>
+            </div>
         </div>
         
         

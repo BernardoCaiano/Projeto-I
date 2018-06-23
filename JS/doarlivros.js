@@ -28,7 +28,7 @@
         let biblioteca = document.getElementById("inputDoador").value
        
         let novoLivro = new Livro(getLastId() + 1, titulo, capa, descriçao , autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao, categoria, tags, biblioteca, false)
-        event.preventDefault();
+        
         livros.push(novoLivro)
         localStorage.setItem("livros", JSON.stringify(livros))
         alert("Livro adicionado com sucesso!")

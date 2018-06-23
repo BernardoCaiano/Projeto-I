@@ -1,11 +1,10 @@
 livroId = JSON.parse(localStorage.getItem("livroID"))
 utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
+let array = []
 
 livrosStorage()
 carregarLivro(livroId)
-
 carregarComentarios(livroId)
-
 
 function carregarLivro(id) {
 
@@ -68,16 +67,17 @@ function carregarLivro(id) {
 }
 
 function carregarComentarios(id) {
-    console.log(id)
-
+    
+    pontuacao(id)
+    
     let carregarComentarios = document.getElementById("carregarComentarios")
     
     let strHtml = ""
     
     let comentar = true
-    
+    cont = 0
     for (let i = 0; i < comentarios.length; i++) {
-      
+            
             if (comentarios[i].livroID == id) {
                
                 if (utilizadores.length == 0) {
@@ -93,14 +93,15 @@ function carregarComentarios(id) {
                                        <h6>${utilizadores[k].nome}</h6>
                                     </div>
                                     <br>
-                                    <div class="ml-2"><h6>Pontuacao: ${comentarios[i].pontuacao} </h6><br>
-                                    <h6>Comentario: </h6>
+                                    <div class="ml-2"><div>${array[cont]}</div>
+                                    
                                     <p>${comentarios[i].comentario}</p></div><br>`
-                    }   
+                        cont++
+                    } 
+
                 }
             } 
-            
-                         
+                      
             if (comentarios[i].utilizadorID == utilizadorLogado._id && comentarios[i].livroID == id) {
                                 
                 btnComentar.style.display = "none"
@@ -112,17 +113,151 @@ function carregarComentarios(id) {
                 btnComentar.style.display = "block"
                 estrelas.style.display = "block"
                 comentario.style.display = "block"
-            }
-                          
+            }                 
     }
-    
-    
-    
+
     carregarComentarios.innerHTML = strHtml
         
 }
 
+function pontuacao(id) {
+    
+    let cont = 0 
+    for (let i = 0; i < comentarios.length; i++) {
+        if (comentarios[i].livroID == id) {
+            
+                    if (comentarios[i].pontuacao == 1) {
+                        array[cont] = `<div class="poststar-rating">
+                        <input id="star-5" type="radio" name="rating" class = "estrela" value="5" disabled>
+                        <label for="star-5" title="5 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-4" type="radio" name="rating"  class = "estrela" value="4" disabled>
+                        <label for="star-4" title="4 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-3" type="radio" name="rating" class = "estrela" value="3" disabled>
+                        <label for="star-3" title="3 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-2" type="radio" name="rating"  class = "estrela" value="2" disabled>
+                        <label for="star-2" title="2 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-1" type="radio" name="rating" class = "estrela" value="1" disabled>
+                        <label for="star-1" title="1 star">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        </div>`
+                    }
+        
+                    if (comentarios[i].pontuacao == 2) {
+                      
+                        array[cont] = `<div class="poststar-rating">
+                        <input id="star-5" type="radio" name="rating" class = "estrela" value="5">
+                        <label for="star-5" title="5 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-4" type="radio" name="rating"  class = "estrela" value="4">
+                        <label for="star-4" title="4 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-3" type="radio" name="rating" class = "estrela" value="3">
+                        <label for="star-3" title="3 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-2" type="radio" name="rating"  class = "estrela" value="2">
+                        <label for="star-2" title="2 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-1" type="radio" name="rating" class = "estrela" value="1">
+                        <label for="star-1" title="1 star">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        </div>`
+                    }
+        
+                    if (comentarios[i].pontuacao == 3) {
 
+                        array[cont] = `<div class="poststar-rating">
+                        <input id="star-5" type="radio" name="rating" class = "estrela" value="5">
+                        <label for="star-5" title="5 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-4" type="radio" name="rating"  class = "estrela" value="4">
+                        <label for="star-4" title="4 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-3" type="radio" name="rating" class = "estrela" value="3">
+                        <label for="star-3" title="3 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-2" type="radio" name="rating"  class = "estrela" value="2">
+                        <label for="star-2" title="2 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-1" type="radio" name="rating" class = "estrela" value="1">
+                        <label for="star-1" title="1 star">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        </div>`
+                    }
+        
+                    if (comentarios[i].pontuacao == 4) {
+
+                        array[cont] = `<div class="poststar-rating">
+                        <input id="star-5" type="radio" name="rating" class = "estrela" value="5">
+                        <label for="star-5" title="5 stars">
+                                <i class="active fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-4" type="radio" name="rating"  class = "estrela" value="4">
+                        <label for="star-4" title="4 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-3" type="radio" name="rating" class = "estrela" value="3">
+                        <label for="star-3" title="3 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-2" type="radio" name="rating"  class = "estrela" value="2">
+                        <label for="star-2" title="2 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-1" type="radio" name="rating" class = "estrela" value="1">
+                        <label for="star-1" title="1 star">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        </div>`
+                    }
+        
+                    if (comentarios[i].pontuacao == 5) {
+
+                        array[cont] = `<div class="poststar-rating">
+                        <input id="star-5" type="radio" name="rating" class = "estrela" value="5">
+                        <label for="star-5" title="5 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-4" type="radio" name="rating"  class = "estrela" value="4">
+                        <label for="star-4" title="4 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-3" type="radio" name="rating" class = "estrela" value="3">
+                        <label for="star-3" title="3 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-2" type="radio" name="rating"  class = "estrela" value="2">
+                        <label for="star-2" title="2 stars">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        <input id="star-1" type="radio" name="rating" class = "estrela" value="1">
+                        <label for="star-1" title="1 star">
+                                <i class="active fa fa-star checked" aria-hidden="true"></i>
+                        </label>
+                        </div>`
+                    }
+                    cont++
+        }       
+    }   
+}
 
 function livrosStorage(){
     if(localStorage.livros) {

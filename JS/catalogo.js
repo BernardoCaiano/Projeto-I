@@ -1,12 +1,12 @@
-    
+    let tempArray = []
     livrosStorage()
     completarFiltroAutores()
     completarFiltroEstadoLivro()
     completarFiltroEditoras()
     carregarCatalogo()
-
-    let livroIdRequisicao = 0
     
+    let livroIdRequisicao = 0
+
     let novoLivro01 = new Livro(1, "Quem Meteu a Mão na Caixa", "https://img.wook.pt/images/quem-meteu-a-mao-na-caixa-helena-garrido/MXwxOTc0MTgzNHwxNTU3NTEyM3wxNTI1MjE1NjAwMDAw/502x", "", "Helena Garrido" ) 
     let novoLivro02 = new Livro(2, "Deixar Ir", "https://img.wook.pt/images/deixar-ir-david-r-hawkins/MXwyMTgxMzU4OXwxNzY2NDg2NHwxNTIzODMzMjAwMDAw/502x", "", "David R. Hawkins" )
     let novoLivro03 = new Livro(3, "O Tatuador de Auschwitz", "https://img.wook.pt/images/o-tatuador-de-auschwitz-heather-morris/MXwyMTM3MDQwNnwxNzI1MjkwM3wxNTE2NzUyMDAwMDAw/502x", "", "Heather Morris" )
@@ -39,13 +39,23 @@
         livros.push(novoLivro14)
         localStorage.setItem("livros", JSON.stringify(livros))
     }
+
+    let ordem = document.getElementById("ordem")
+    
+    
     
     //Filtros
     let btnFiltrar = document.getElementById("btnFiltrar")
    
     btnFiltrar.addEventListener("click", function(){
+        if(ordem.value == "alfabetica") {
+            filtrarOrdemAlfabetica()
+        }
+        if(ordem.value == "maisRecentes") {
+            filtrarMaisRecentes()
+        }
         carregarCatalogo()
-        filtrarOrdemAlfabetica()
+        
     })
     
 
@@ -61,7 +71,7 @@
         for (let i = 0, cont = 0; i < livros.length ; i++) {
             if ((autores.value == livros[i].autor || autores.value == "") && 
                 (estadoLivro.value == livros[i].estado || estadoLivro.value == "") && 
-                (editora.value == livros[i].editora || editora.value == "")  ) {
+                (editora.value == livros[i].editora || editora.value == "") ) {
                 
                 if(cont % 6 == 0) {
                     strHtml += `<div class="row">`    
@@ -130,7 +140,7 @@
                 // Ao clicar num livro especifico, editar no form
                 let livroId = editar[i].getAttribute("id")
                 
-                 
+                editarLivroPorId(livroId)
                 carregarCatalogo(livroId)
                 event.preventDefault()
                          
@@ -212,17 +222,27 @@
     }
 
     function filtrarOrdemAlfabetica() {
-        let ordem = document.getElementById("ordem")
-        if(ordem.value == "alfabetica") {
-            let tempArray = []
-            for (let i = 0; i < livros.length; i++) {
-                tempArray.push(livros[i].titulo)
-                tempArray.sort() 
+        let livroTemp = new Livro()
+        for (let i = 0; i < livros.length-1; i++) {
+            for (let j = 0; j < livros.length; j++) {
+                if ( livros[i].titulo < livros[j].titulo ){
+                    livroTemp = livros[j]
+                    livros[j] = livros[i]
+                    livros[i] = livroTemp
+                }
             }
         }
         
     }
 
+    function filtrarMaisRecentes() {
+        
+            for (let i = 0; i < livros.length; i++) {
+                 
+                 livros.reverse()
+            }
+        
+    }
 
     function eliminarLivro(id){
         if (confirm("Tem a certeza que quer eliminar o livro?")){

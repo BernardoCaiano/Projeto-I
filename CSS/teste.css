@@ -149,6 +149,7 @@ input[type="color"]:focus,
   outline: 0 none;
 }
 
+/*Estrelas ao pontuar*/
 .star-rating {
     direction: rtl;
     display: inline-block;
@@ -178,3 +179,27 @@ input[type="color"]:focus,
     color: #f2b600;
 }
 
+/*Estrelas ao carregar pontuacao*/
+.poststar-rating {
+    direction: rtl;
+    display: inline-block;
+   
+}
+
+.poststar-rating input[type=radio] {
+    display: none
+}
+
+.poststar-rating label {
+    color: #bbb;
+    font-size: 18px;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out
+}
+
+
+.checked {
+    color: #f2b600;
+}

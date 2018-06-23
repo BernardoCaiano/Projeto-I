@@ -114,16 +114,20 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="inputTitulo"> <h6>Categoria</h6> </label> 
-                                <input type="text" class="form-control" value="" id="inputTitulo">
+                                <label for="inputCategoria"> <h6>Categoria</h6> </label> 
+                                <select id="inputCategoria" class="form-control">
+                                </select>
                             </div>
-                            <div class="form-group col-md-8">
-                                <label for="inputTags"><h6>Tags</h6></label> <br>
-                                <input type="text" class="form-control" value="" id="inputTags">
-                                <small  class="form-text" style="color:white">
-                                    As tags devem ser separadas por um espaço.
-                                </small>
-                            </div>   
+                            <div class="form-group col-md-4">
+                                <label for="inputTags"><h6>Tags</h6></label> 
+                                <select id="inputTags" class="form-control">
+                                    
+                                </select>
+                            </div> 
+                            <div class="form-group col-md-4">
+                                <label for="inputBiblioteca"><h6>Bibioteca</h6></label> 
+                                <input type="text" class="form-control" value="" id="inputBiblioteca">    
+                            </div> 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
@@ -142,7 +146,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputEstado">Estado:</label> 
-                                <select id="inputEstado" class="form-control" >                            
+                                <select id="inputEstado" class="form-control">                            
                                     <option type="text" value="Bom">Bom</option>
                                     <option type="text" value="Aceitável">Aceitável</option>
                                     <option type="text" value="Fraco">Fraco</option>
