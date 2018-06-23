@@ -68,7 +68,7 @@
                     
                     </li>
                     <li class="nav-item">
-                        <a href=""><i class="fas fa-cog fa-2x" style="color:white"></i></a>
+                        <a href="" id="linkConfiguracoes"><i class="fas fa-cog fa-2x" style="color:white"></i></a>
                     </li>                
             </ul>              
         </div>
@@ -143,6 +143,9 @@
                     <div class="form-group col-md-12">
                             <button type="button" id = "btnComentar"  class="btn submeter mb-2">Submeter</button>
                     </div>
+                    
+                    <hr style="border-color:white">
+                    <br>
                 
                     <div id="carregarComentarios">
                             
@@ -151,7 +154,7 @@
             
             
         </div>
-
+        
     <!--MODAL PARA REGISTO-->    
     <div class="modal fade" id="registoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -233,6 +236,59 @@
       </div>
       
     </div>
+    <!--MODAL Editar Comentarios-->    
+    <div class="modal fade" id="comentarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar Categoria</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            
+            <div class="modal-body">
+                <form action="" >
+                    <div class="form-group col-md-12" id="estrelasEditar">
+                        <h6>Pontuacao:</h6>
+                        <div class="star-rating">
+                                <input id="star-5" type="radio" name="rating" class = "estrela" value="5">
+                                <label for="star-5" title="5 stars">
+                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input id="star-4" type="radio" name="rating"  class = "estrela" value="4">
+                                <label for="star-4" title="4 stars">
+                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input id="star-3" type="radio" name="rating" class = "estrela" value="3">
+                                <label for="star-3" title="3 stars">
+                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input id="star-2" type="radio" name="rating"  class = "estrela" value="2">
+                                <label for="star-2" title="2 stars">
+                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input id="star-1" type="radio" name="rating" class = "estrela" value="1">
+                                <label for="star-1" title="1 star">
+                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                </label>
+                            </div>     
+                    </div>
+                    <div class="form-group col-md-12" id="comentario">
+                        <label for="inputComentarioEditar">Comentario:</label> <br>
+                        <textarea name="" maxlength="500" class="form-control" id="inputComentarioEditar"   rows="5"></textarea>
+                    </div>
+                          
+                    
+            </form>
+            <div class="form-group col-md-12">
+                <button type="button" id = "btnComentarEditar"  class="btn submeter mb-2">Submeter</button>
+            </div>
+            </div>
+        
+          </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <script src="../JS/classeRequisicao.js"></script>
@@ -240,10 +296,6 @@
     <script src="../JS/classeComentarios.js"></script>
     <script src="../JS/comentarios.js"></script>
     <script src="../JS/livro.js"></script>
-    
-    
-    
-    
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

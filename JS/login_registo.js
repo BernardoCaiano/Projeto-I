@@ -14,6 +14,7 @@ window.onload = function() {
     let linkCatalogo = document.getElementById("linkCatalogo")
     let linkDoarLivro = document.getElementById("linkDoarLivro")
     let linkPerfil = document.getElementById("linkPerfil")
+    let linkConfiguracoes = document.getElementById("linkConfiguracoes")
 
 
     linkCatalogo.addEventListener("click", function(event) {
@@ -24,13 +25,6 @@ window.onload = function() {
         }
     })
 
-    linkDoarLivro.addEventListener("click", function(event) {
-        if (logado == false) {
-            event.preventDefault()
-            alert("Para aceder a esses conteudos tem que fazer login!")
-        }
-    })
-
     //linkPerfil.addEventListener("click", function(event) {
         //if (logado == false) {
             //event.preventDefault()
@@ -38,26 +32,44 @@ window.onload = function() {
         //}
     //})
 
-    let novoUtilizador01 = new Utilizador(getLastId() + 1, "operador", "operador@email.com", "11111", "operador", "../imagens/per", 0 ) 
+    let novoUtilizador01 = new Utilizador(getLastId() + 1, "operador", "operador@email.com", "11111", "operador", "../imagens/perfil.jpg", 0 ) 
     let novoUtilizador02 = new Utilizador(getLastId() + 2, "admin", "admin@email.com", "11111", "admin", "", 0 )
     let utilizadorLogado = new Utilizador()
 
-    //if (logado == false || utilizadorLogado._tipo != "operador") {
-        //linkDoarLivro.style.display = "none"
-    //}
-    
-
-    
     if (localStorage.getItem("utilizadores") == null){
         utilizadores.push(novoUtilizador01)
         utilizadores.push(novoUtilizador02)
         localStorage.setItem("utilizadores", JSON.stringify(utilizadores))
+    }
+
+    
+    utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
+    // Apenas mostrar a opcao doar livro na navbar se o utilizador for do tipo operador
+    if (logado == false || utilizadorLogado._tipo != "operador") {
+
+        linkDoarLivro.style.display = "none"
+    }
+    else if (logado == true && utilizadorLogado._tipo == "operador"){
+        
+        linkDoarLivro.style.display = "block"
+    }
+
+     // Apenas mostrar a opcao configuracoes  se o utilizador for do tipo admin
+    if (logado == false || utilizadorLogado._tipo != "admin") {
+
+        linkConfiguracoes.style.display = "none"
+
+    }
+    else if (logado == true && utilizadorLogado._tipo == "admin"){
+      
+        linkConfiguracoes.style.display = "block"
     }
         
     
     
     if (logado) {
 
+        linkPerfil.style.display = 'block'
         optLogin.style.display = 'none'
         optRegister.style.display = 'none'
         optLogout.style.display = 'block'
@@ -68,6 +80,7 @@ window.onload = function() {
     else {
         optLogout.style.display = 'none'
         optNome.style.display = 'none'
+        linkPerfil.style.display = 'none'
     }
 
     let frmLogin = document.getElementById("frmLogin")
@@ -103,7 +116,7 @@ window.onload = function() {
             
             alert("Autenticação efetuado com sucesso!!")
             logado = true
-            
+            location.reload()
             // Fechar a modal
             $('#loginModal').modal('hide')
             // Alterar navbar 
@@ -121,11 +134,7 @@ window.onload = function() {
         event.preventDefault()
 
     })
-    // Apenas mostrar a opcao doar livro na navbar se o utilizador for do tipo operador
-    //if (utilizadorLogado._tipo != "operador") {
-        //let linkDoarLivro = document.getElementById("linkDoarLivro")
-        //linkDoarLivro.style.display = "none"
-    //}
+    
 
     //REGISTO
     let frmRegister = document.getElementById("frmRegister")
@@ -220,7 +229,7 @@ window.onload = function() {
         
         if(localStorage.utilizadorLogado) {
             let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
-            console.log(utilizadorLogado._nome)
+            
             nomeUtilizador = utilizadorLogado._nome
             logado = true        
         } 

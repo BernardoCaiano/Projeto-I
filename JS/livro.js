@@ -70,7 +70,12 @@ function carregarComentarios(id) {
     
     pontuacao(id)
     
-    let carregarComentarios = document.getElementById("carregarComentarios")
+    //let comentariosTemp = []
+    //comentariosTemp = comentarios
+    //comentariosTemp.reverse()
+    //console.log(comentariosT)
+
+    let carregarComentariosHtml = document.getElementById("carregarComentarios")
     
     let strHtml = ""
     
@@ -86,8 +91,28 @@ function carregarComentarios(id) {
                 for (let k = 0; k < utilizadores.length; k++) {
                  
                     if (comentarios[i].utilizadorID == utilizadores[k].id) {
+                        if(comentarios[i].utilizadorID == utilizadorLogado._id) {
+                            strHtml += `<div class="row align-items-center">
+                                        <img src="${utilizadores[k].foto}" class="rounded-circle mr-3 ml-3" alt="" height="50" width="50">
+                                       <h6>${utilizadores[k].nome}</h6>
+                                       <div class="margem">
+                                        <a id="${comentarios[i].id}" href="#"  class="btn btn-danger removerComentario mt-3"><i class="fas fa-trash-alt"></i> </a>
+                                        <a id="${comentarios[i].id}" href="#" data-toggle='modal'  data-target='#comentarioModal' class="btn btn-dark editarComentario mt-3"><i class="fas fa-edit"></i> </a>
+                                       </div>
+                                       
+                                    </div>
+                                    <br>
+                                    <div class="ml-2"><div>${array[cont]}</div>
+                                    
+                                    <p>${comentarios[i].comentario}</p></div>
+                                    <br>
+                                    <hr style="border-color:white">
+                                    <br>`
+                                    
                         
-                        strHtml += `<div class="row align-items-center">
+                        }
+                        else {
+                            strHtml += `<div class="row align-items-center">
                                         <img src="${utilizadores[k].foto}" class="rounded-circle mr-3 ml-3" alt="" height="50" width="50">
                                     
                                        <h6>${utilizadores[k].nome}</h6>
@@ -95,15 +120,19 @@ function carregarComentarios(id) {
                                     <br>
                                     <div class="ml-2"><div>${array[cont]}</div>
                                     
-                                    <p>${comentarios[i].comentario}</p></div><br>`
+                                    <p>${comentarios[i].comentario}</p></div>
+                                    <br>
+                                    <hr style="border-color:white">
+                                    <br>`
+                        
+                        }
                         cont++
                     } 
 
                 }
             } 
                       
-            if (comentarios[i].utilizadorID == utilizadorLogado._id && comentarios[i].livroID == id) {
-                                
+            if (comentarios[i].utilizadorID == utilizadorLogado._id && comentarios[i].livroID == id) {              
                 btnComentar.style.display = "none"
                 estrelas.style.display = "none"
                 comentario.style.display = "none"
@@ -116,8 +145,34 @@ function carregarComentarios(id) {
             }                 
     }
 
-    carregarComentarios.innerHTML = strHtml
-        
+    carregarComentariosHtml.innerHTML = strHtml
+    
+    let btnRemoverComentarios = document.getElementsByClassName("removerComentario")
+    // Para cada botão, adicionar um listener para escutar pelo evento clique
+    for (let i = 0; i < btnRemoverComentarios.length; i++) {
+        btnRemoverComentarios[i].addEventListener("click", function() {
+            // Ao clicar num livro especifico, remover do array
+            let comentarioId = btnRemoverComentarios[i].getAttribute("id")
+            eliminarComentario(comentarioId)
+            carregarComentarios()
+            localStorage.setItem("comentarios", JSON.stringify(comentarios))
+        })             
+    }
+
+    let btnEditarComentarios = document.getElementsByClassName("editarComentario")
+    // Para cada botão, adicionar um listener para escutar pelo evento clique
+    for (let i = 0; i < btnEditarComentarios.length; i++) {
+        btnEditarComentarios[i].addEventListener("click", function(event) {
+            console.log(btnEditarComentarios.length)
+            // Ao clicar num livro especifico, editar no form
+            let comentarioId = btnEditarComentarios[i].getAttribute("id")
+
+            editarComentarioPorId(comentarioId)
+            carregarComentarios()
+            event.preventDefault()
+                         
+        })        
+    }  
 }
 
 function pontuacao(id) {
@@ -257,6 +312,60 @@ function pontuacao(id) {
                     cont++
         }       
     }   
+}
+
+function eliminarComentario(id){
+    console.log(id)
+    if (confirm("Tem a certeza que quer eliminar o Comentario?")){
+        for (let i = 0; i < comentarios.length; i++) {
+            if(comentarios[i].id == id) {
+                comentarios.splice(i, 1)
+            }    
+                        
+        }
+    }
+    location.reload()
+}
+
+function editarComentarioPorId(id) {
+    console.log(id)
+    let valorPontuacaoEditar = 0
+    let btnComentarEditar = document.getElementById("btnComentarEditar") 
+    let estrelaEditar = document.getElementsByClassName("estrelaEditar")
+    let inputComentarioEditar = document.getElementById("inputComentarioEditar")
+    
+    
+    //Preencher o formulario de edicao da categoria
+    for (let j = 0; j < comentarios.length; j++) {
+        if(comentarios[j].id == id) {
+            inputComentarioEditar.value = comentarios[j].comentario
+        }
+    }
+
+    btnComentarEditar.addEventListener("submit", function(event) {
+        
+        for (let i = 0; i < estrelasEditar.length; i++) {
+            if (estrelasEditar[i].checked == true) {
+                valorPontuacaoEditar = estrelasEditar[i].value
+            }
+        }
+        for (let i = 0; i < comentarios.length; i++) {
+            if(comentarios[i].id == id) {
+                
+                comentarios[i].comentario = inputComentarioEditar.value
+                comentarios[i].pontuacao = valorPontuacaoEditar
+
+                
+                // Fechar a modal
+                $('#comentarioModal').modal('hide')
+                
+                event.preventDefault()
+            }                                    
+        }
+        localStorage.setItem("comentarios", JSON.stringify(comentarios))
+        location.reload()
+    })
+    
 }
 
 function livrosStorage(){
