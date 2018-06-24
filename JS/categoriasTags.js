@@ -166,7 +166,7 @@ function carregarTags() {
             let tagId = btnEditarTags[i].getAttribute("id")
 
             editarTagPorId(tagId)
-            carregarCategorias(tagId)
+            carregarTags(tagId)
             event.preventDefault()
                          
         })        
@@ -239,7 +239,7 @@ function editarTagPorId(id) {
         }
     }
 
-    frmEditarCategoria.addEventListener("submit", function(event) {
+    frmEditarTag.addEventListener("submit", function(event) {
         for (let i = 0; i < tags.length; i++) {
             if(tags[i].id == id) {
                 

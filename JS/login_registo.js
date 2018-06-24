@@ -69,7 +69,7 @@ window.onload = function() {
     
     if (logado) {
 
-        linkPerfil.style.display = 'block'
+        
         optLogin.style.display = 'none'
         optRegister.style.display = 'none'
         optLogout.style.display = 'block'
