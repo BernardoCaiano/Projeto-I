@@ -40,11 +40,9 @@ function carregarPerfil() {
     perfil.innerHTML = strHtml
 
     let editar = document.getElementById("editar")
-        // Para cada botão, adicionar um listener para escutar pelo evento clique
         
             editar.addEventListener("click", function() {
-            // Ao clicar num livro especifico, editar no form
-            //utilizadorId = editar.getAttribute("id")
+            
                         
             editarPerfilPorId(utilizadorLogado._id) 
             carregarPerfil(utilizadorLogado._id)
@@ -154,7 +152,7 @@ function carregarRequisicoes() {
 
 let entregar = document.getElementsByClassName("entregar") 
 
-// For each link, add a listener to listen the click event
+
 for (let i = 0; i < entregar.length; i++) {
     entregar[i].addEventListener("click", function() {
         
