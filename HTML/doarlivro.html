@@ -14,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../CSS/teste.css">
+    <link rel="stylesheet" href="../CSS/projeto.css">
   </head>
   <body>
       
@@ -57,16 +57,9 @@
                         <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>
                     
                     </li>
-                    <!--<li class="nav-item">
-                         <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
-                        
-                    </li>
+            
                     <li class="nav-item">
-                        <a href=""><i class="fas fa-question fa-2x mr-3" style="color:white"></i></a>
-                    
-                    </li>-->
-                    <li class="nav-item">
-                        <a href="" id="linkConfiguracoes"><i class="fas fa-cog fa-2x" style="color:white"></i></a>
+                        <a href="../HTML/backOffice.html" id="linkConfiguracoes"><i class="fas fa-cog fa-2x" style="color:white"></i></a>
                     </li>                
             </ul>              
         </div>
@@ -99,54 +92,54 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputTitulo"> <h6>Titulo</h6> </label> 
-                                <input type="text" class="form-control" value="harry potter" id="inputTitulo">
+                                <input type="text" class="form-control" value="harry potter" id="inputTitulo" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputAutor"><h6>Autor</h6></label> <br>
-                                <input type="text" class="form-control" value="j.k.rowling" id="inputAutor">
+                                <input type="text" class="form-control" value="j.k.rowling" id="inputAutor" required>
                             </div>   
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="inputCapa"> <h6>Capa</h6> </label> 
-                                <input type="url" class="form-control" value="https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9370589&qld=90&l=430&a=-1" id="inputCapa">
+                                <input type="url" class="form-control" value="https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=9370589&qld=90&l=430&a=-1" id="inputCapa" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputTags"><h6>Tags</h6></label> 
-                                <select id="inputTags" class="form-control">
+                                <select id="inputTags" class="form-control" required>
                                 </select>
                             </div> 
                             <div class="form-group col-md-4">
                                 <label for="inputCategoria"> <h6>Categoria</h6> </label> 
-                                <select id="inputCategoria" class="form-control">
+                                <select id="inputCategoria" class="form-control" required>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputBiblioteca"><h6>Bibioteca</h6></label> 
-                                <select id="inputBiblioteca" class="form-control">
+                                <select id="inputBiblioteca" class="form-control" required>
                                 </select>
                             </div> 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputEditora"> <h6>Editora</h6> </label> 
-                                <input type="text" class="form-control" value="" id="inputEditora">
+                                <input type="text" class="form-control" value="" id="inputEditora" required>
                             </div>   
                             <div class="form-group col-md-4">
                                 <label for="inputDataLançamento"><h6>Data de lançamento</h6></label> 
-                                <input type="date" class="form-control" value="" id="inputDataLançamento">
+                                <input type="date" class="form-control" value="" id="inputDataLançamento" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputNpaginas"><h6>Nº Páginas</h6></label> 
-                                <input type="number" class="form-control" value="" id="inputNpaginas">
+                                <input type="number" class="form-control" value="" id="inputNpaginas" required>
                             </div>  
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputEstado"><h6>Estado</h6></label> 
-                                <select id="inputEstado" class="form-control">                            
+                                <select id="inputEstado" class="form-control" required>                            
                                     <option type="text" value="Bom">Bom</option>
                                     <option type="text" value="Aceitável">Aceitável</option>
                                     <option type="text" value="Fraco">Fraco</option>
@@ -158,13 +151,13 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputDataDoaçao"><h6>Data de Doação</h6></label> 
-                                <input type="date" class="form-control" value="" id="inputDataDoaçao">
+                                <input type="date" class="form-control" value="" id="inputDataDoaçao" required>
                             </div>      
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="inputDescriçao"><h6>Descrição</h6></label> <br>
-                                <textarea name="" class="form-control" id="inputDescriçao" value = "brehqufvl"  rows="5"></textarea>
+                                <textarea name="" class="form-control" id="inputDescriçao" value = "brehqufvl"  rows="5" required></textarea>
                             </div>
                         </div>
                         

@@ -26,20 +26,20 @@ function carregarLivro(id) {
                                     <div class="col-4"><p></p></div>
                                     <div class="col-4"><p></p></div>
                                     <div class="col-4"><p></p></div>
-                                    <div class="col-4"><h6>Categoria:</h6><p>${livros[i].categoria}</p></div>
-                                    <div class="col-4"><h6>Tags:</h6><p>${livros[i].tags}</p></div>
-                                    <div class="col-4"><h6>Biblioteca:</h6><p>${livros[i].biblioteca}</p></div>
-                                    <div class="col-4"><h6>Editora:</h6><p>${livros[i].editora}</p></div>
-                                    <div class="col-4"><h6>Data de Lançamento:</h6><p>${livros[i].dataLançamento}</p></div>
-                                    <div class="col-4"><h6>Nº de Páginas:</h6><p>${livros[i].numeroPaginas}</p></div>
-                                    <div class="col-4"><h6>Estado do Livro:</h6><p>${livros[i].estado}</p></div>
-                                    <div class="col-4"><h6>Data de Doação:</h6><p>${livros[i].dataDoaçao}</p></div>
-                                    <div class="col-4"><h6>Nome do doador:</h6><p>${livros[i].doador}</p></div>
+                                    <div class="col-4"><h6>Categoria</h6><p>${livros[i].categoria}</p></div>
+                                    <div class="col-4"><h6>Tags</h6><p>${livros[i].tags}</p></div>
+                                    <div class="col-4"><h6>Biblioteca</h6><p>${livros[i].biblioteca}</p></div>
+                                    <div class="col-4"><h6>Editora</h6><p>${livros[i].editora}</p></div>
+                                    <div class="col-4"><h6>Data de Lançamento</h6><p>${livros[i].dataLançamento}</p></div>
+                                    <div class="col-4"><h6>Nº de Páginas</h6><p>${livros[i].numeroPaginas}</p></div>
+                                    <div class="col-4"><h6>Estado do Livro</h6><p>${livros[i].estado}</p></div>
+                                    <div class="col-4"><h6>Data de Doação</h6><p>${livros[i].dataDoaçao}</p></div>
+                                    <div class="col-4"><h6>Nome do doador</h6><p>${livros[i].doador}</p></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12"<h6>Descrição:</h6><p>${livros[i].descriçao}</p></div>
+                            <div class="col-12"><h6>Descrição</h6><p>${livros[i].descriçao}</p></div>
                         </div>`
 
                         
@@ -56,7 +56,12 @@ function carregarLivro(id) {
                     livroRequisitado.style.display = "none"
                     
                 }  
-        }   
+            }    
+            
+            if (utilizadorLogado._tipo == "admin" || utilizadorLogado._tipo == "operador") {
+                btnRequisitar.style.display = "none"
+                livroRequisitado.style.display = "none"
+            }
     }
      
     detalhesLivro.innerHTML = strHtml
@@ -89,7 +94,6 @@ function carregarComentarios(id) {
                                        <h6>${utilizadores[k].nome}</h6>
                                        <div class="margem">
                                         <a id="${comentarios[i].id}" href="#"  class="btn btn-danger removerComentario mt-3"><i class="fas fa-trash-alt"></i> </a>
-                                        <a id="${comentarios[i].id}" href="#" data-toggle='modal'  data-target='#comentarioModal' class="btn btn-dark editarComentario mt-3"><i class="fas fa-edit"></i> </a>
                                        </div>
                                        
                                     </div>
@@ -123,7 +127,8 @@ function carregarComentarios(id) {
 
                 }
             } 
-                      
+              
+
             if (comentarios[i].utilizadorID == utilizadorLogado._id && comentarios[i].livroID == id) {              
                 btnComentar.style.display = "none"
                 estrelas.style.display = "none"
@@ -134,7 +139,9 @@ function carregarComentarios(id) {
                 btnComentar.style.display = "block"
                 estrelas.style.display = "block"
                 comentario.style.display = "block"
-            }                 
+            }  
+            2
+            
     }
 
     carregarComentariosHtml.innerHTML = strHtml
@@ -151,20 +158,6 @@ function carregarComentarios(id) {
         })             
     }
 
-    let btnEditarComentarios = document.getElementsByClassName("editarComentario")
-    // Para cada botão, adicionar um listener para escutar pelo evento clique
-    for (let i = 0; i < btnEditarComentarios.length; i++) {
-        btnEditarComentarios[i].addEventListener("click", function(event) {
-            console.log(btnEditarComentarios.length)
-            // Ao clicar num livro especifico, editar no form
-            let comentarioId = btnEditarComentarios[i].getAttribute("id")
-
-            editarComentarioPorId(comentarioId)
-            carregarComentarios()
-            event.preventDefault()
-                         
-        })        
-    }  
 }
 
 function pontuacao(id) {
@@ -328,45 +321,6 @@ function eliminarComentario(id){
     location.reload()
 }
 
-function editarComentarioPorId(id) {
-    console.log(id)
-    let valorPontuacaoEditar = 0
-    let btnComentarEditar = document.getElementById("btnComentarEditar") 
-    let estrelaEditar = document.getElementsByClassName("estrelaEditar")
-    let inputComentarioEditar = document.getElementById("inputComentarioEditar")
-    
-    
-    //Preencher o formulario de edicao da categoria
-    for (let j = 0; j < comentarios.length; j++) {
-        if(comentarios[j].id == id) {
-            inputComentarioEditar.value = comentarios[j].comentario
-        }
-    }
-
-    btnComentarEditar.addEventListener("submit", function(event) {
-        
-        for (let i = 0; i < estrelasEditar.length; i++) {
-            if (estrelasEditar[i].checked == true) {
-                valorPontuacaoEditar = estrelasEditar[i].value
-            }
-        }
-        for (let i = 0; i < comentarios.length; i++) {
-            if(comentarios[i].id == id) {
-                
-                comentarios[i].comentario = inputComentarioEditar.value
-                comentarios[i].pontuacao = valorPontuacaoEditar
-
-                // Fechar a modal
-                $('#comentarioModal').modal('hide')
-                
-                event.preventDefault()
-            }                                    
-        }
-        localStorage.setItem("comentarios", JSON.stringify(comentarios))
-        location.reload()
-    })
-    
-}
 
 function livrosStorage(){
     if(localStorage.livros) {

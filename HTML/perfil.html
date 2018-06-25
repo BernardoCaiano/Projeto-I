@@ -7,7 +7,7 @@
     <script src="../JS/classeRequisicao.js"></script>
     <script src="../JS/classeComentarios.js"></script>
     <script src="../JS/classeLivros.js"></script>
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../CSS/teste.css">
+    <link rel="stylesheet" href="../CSS/projeto.css">
   </head>
   <body>
       
@@ -59,14 +59,6 @@
                 <li class="nav-item">
                     <a href=""><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
                 </li>
-                    <!--<li class="nav-item">
-                        <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
-                        
-                    </li>
-                    <li class="nav-item">
-                        <a href=""><i class="fas fa-question fa-2x mr-3" style="color:white"></i></a>
-                    
-                    </li>-->
                     <li class="nav-item">
                         <a href="" id="linkConfiguracoes"><i class="fas fa-cog fa-2x" style="color:white"></i></a>
                     </li>                
@@ -100,44 +92,47 @@
 
                 </div>
             </div>
-
-            <div class="jumbotron" id="titulosJumbotron">
-                <h2>Requisições</h2>
-            </div>
-            <div class="jumbotron" id="conteudoJumbotron">
-                <div id="requisicoes">
-                       
-                </div>
-            </div>
+            <div id="naoMostrar">
+                    <div class="jumbotron" id="titulosJumbotron">
+                            <h2>Requisições</h2>
+                        </div>
+                        <div class="jumbotron" id="conteudoJumbotron">
+                            <div id="requisicoes">
+                                   
+                            </div>
+                        </div>
+                        
+                        <div class="jumbotron" id="titulosJumbotron">
+                            <h2>Histórico de Requisições</h2>
+                        </div>
+                        <div class="jumbotron" id="conteudoJumbotron">
+                            <div class="table-responsive">
+                                <div class="scrollTabelas">
+                                    <table id="historicoRequisicoes" class="table table-sm"> 
             
-            <div class="jumbotron" id="titulosJumbotron">
-                <h2>Historico de Requisições</h2>
-            </div>
-            <div class="jumbotron" id="conteudoJumbotron">
-                <div class="table-responsive">
-                    <div class="scrollTabelas">
-                        <table id="historicoRequisicoes" class="table table-sm"> 
-
-                        </table>
-                    </div>
-                    
-                </div>
-            </div>
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+            
+            
 
             <div class="jumbotron" id="titulosJumbotron">
-                <h2>Historico de Comentarios</h2>
+                <h2>Histórico de Comentários</h2>
             </div>
             <div class="jumbotron" id="conteudoJumbotron">
                 <div class="table-responsive">
                     <div class="scrollTabelas">
                         <table id="historicoComentarios" class="table table-sm">
 
-                                </table>
+                        </table>
                     </div>
                     
                 </div>
-            </div>        
-        </div>
+            </div>
+        </div>        
+    </div>
 
     <!--MODAL PARA REGISTO-->    
     <div class="modal fade" id="registoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -9,6 +9,11 @@ carregarHistoricoRequisicoes()
 carregarHistoricoComentarios()
 calcularMulta()
 
+let naoMostrar = document.getElementById("naoMostrar")
+if (utilizadorLogado._tipo == "admin" || utilizadorLogado._tipo == "operador") {
+    naoMostrar.style.display = "none"
+}
+
 function carregarPerfil() {
     
       
@@ -113,9 +118,7 @@ function carregarRequisicoes() {
             contRequisicoes ++
             for (let j = 0 ; j < livros.length; j++) {
                 if (livros[j].id == requisiçoes[i].livroID) {
-                    console.log(utilizadorLogado._requisiçoes)
-                    
-                   
+                
                         strHtml += `
                                 <div class="row">
                     
@@ -128,10 +131,12 @@ function carregarRequisicoes() {
                                     <h4>${livros[j].titulo}</h4>
                                     <h5>de ${livros[j].autor}</h5>
                                     <br>
-                                    <br>
-                                    <p>Data de Requisicao: ${requisiçoes[i].dataRequisiçao}</p>
-                                    <p>Data limite de Entrega: ${requisiçoes[i].dataRequisiçao}</p>
-                                    <p>Multa: ${requisiçoes[i].multa}</p>
+                                    
+                                    <p><b>Data de Requisição:</b> ${requisiçoes[i].dataRequisiçao.toLocaleString()}</p>
+                                    <p><b>Dias para entregar após data de requisição:</b> ${multa._diasRequisicao}</p>
+                                    <p><b>Valor de multa diária após final do prazo de requisição:</b> ${multa._valorMulta}€</p>
+                                    <p><b>Valor limite da multa:</b> ${multa._limiteValorMulta}€</p>
+                                    <p><b>Multa:</b> ${requisiçoes[i].multa}€</p>
                                 </div>
                                 </div>
                                 <br>`             
@@ -180,17 +185,18 @@ for (let i = 0; i < entregar.length; i++) {
     })        
 }
 
-
+//Codigo nao funciona a 100%
 function calcularMulta(){
     let dataAtual = new Date()
-    console.log(dataAtual)
+ 
     let diaDataAtual = dataAtual.getDate()
+    
     console.log(diaDataAtual)
     for (let i = 0; i < requisiçoes.length; i++) {
-        let diaDataRequisicao = requisiçoes[i].dataRequisiçao
-        console.log(diaDataRequisicao)
-        let diferencaDias = diaDataAtual - (diaDataRequisicao.getDate())
-        console.log(diferencaDias)
+        let diaDataRequisicao = requisiçoes[i].dataRequisiçao.getDate()
+       
+        let diferencaDias = diaDataAtual - diaDataRequisicao
+        
         if (diferencaDias > multa._diasRequisicao ) {
             requisiçoes[i].multa = (diferencaDias - multa._diasRequisicao) * multa._valorMulta
         }
@@ -205,7 +211,7 @@ function carregarHistoricoRequisicoes() {
     strHtml = "<thead class=' tabela'><tr>" +
                     "<th>Titulo</th>" +
                     "<th>Autor</th>" +
-                    "<th>Data de Requisicao</th>"+  
+                    "<th>Data de Requisição</th>"+  
                     "<th>Data de Entrega</th>" +              
                     "</tr>" + 
                     "</thead><tbody>"
@@ -232,8 +238,8 @@ function carregarHistoricoComentarios() {
     let strHtml = ""
     strHtml = "<thead class=' tabela'><tr>" +
                     "<th>Livro</th>" +
-                    "<th>Pontuacao</th>" +
-                    "<th>Comentario</th>"+              
+                    "<th>Pontuação</th>" +
+                    "<th>Comentário</th>"+              
                     "</tr>" + 
                     "</thead><tbody>"
     for (let i = 0; i < comentarios.length; i++) {

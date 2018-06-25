@@ -33,7 +33,7 @@ window.onload = function() {
     //})
 
     let novoUtilizador01 = new Utilizador(getLastId() + 1, "operador", "operador@email.com", "11111", "operador", "../imagens/perfil.jpg", 0 ) 
-    let novoUtilizador02 = new Utilizador(getLastId() + 2, "admin", "admin@email.com", "11111", "admin", "", 0 )
+    let novoUtilizador02 = new Utilizador(getLastId() + 2, "admin", "admin@email.com", "11111", "admin", "../imagens/perfil.jpg", 0 )
     let utilizadorLogado = new Utilizador()
 
     if (localStorage.getItem("utilizadores") == null){

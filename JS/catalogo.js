@@ -79,7 +79,7 @@
             if ((autores.value == arrayOrdenacoes[i].autor || autores.value == "") && 
                 (filtroCategorias.value == arrayOrdenacoes[i].categoria || filtroCategorias.value == "") &&
                 (estadoLivro.value == arrayOrdenacoes[i].estado || estadoLivro.value == "") && 
-                (filtroBibliotecas.value == arrayOrdenacoes[i].freguesia || filtroBibliotecas.value == "") && 
+                (filtroBibliotecas.value == arrayOrdenacoes[i].biblioteca || filtroBibliotecas.value == "") && 
                 (filtroTags.value == arrayOrdenacoes[i].tags || filtroTags.value == "") && 
                 (editora.value == arrayOrdenacoes[i].editora || editora.value == "") ) {
                 
