@@ -1,4 +1,5 @@
 let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
+let multa = JSON.parse(localStorage.getItem("multa"))
 requisiçoesStorage()
 comentariosStorage()
 livrosStorage()
@@ -6,6 +7,7 @@ carregarPerfil()
 carregarRequisicoes()
 carregarHistoricoRequisicoes()
 carregarHistoricoComentarios()
+//calcularMulta()
 
 function carregarPerfil() {
     
@@ -129,22 +131,18 @@ function carregarRequisicoes() {
                                     <br>
                                     <p>Data de Requisicao: ${requisiçoes[i].dataRequisiçao}</p>
                                     <p>Data limite de Entrega: ${requisiçoes[i].dataRequisiçao}</p>
-                                    <p>Multa:</p>
+                                    <p>Multa: ${requisiçoes[i].multa}</p>
                                 </div>
                                 </div>
-                                <br>`      
-                    
-                              
+                                <br>`             
                 }
             }
         }
- 
     }
     if (contRequisicoes == 0) {
         strHtml += `<p>De momento nao tem livros requisitados.</p>` 
     }
             
-        
     requisicoes.innerHTML = strHtml
     
 }
@@ -180,6 +178,23 @@ for (let i = 0; i < entregar.length; i++) {
         }
                      
     })        
+}
+
+
+function calcularMulta(){
+    let dataAtual = new Date()
+    console.log(dataAtual)
+    let diaDataAtual = dataAtual.getDate()
+    console.log(diaDataAtual)
+    for (let i = 0; i < requisiçoes.length; i++) {
+        let diaDataRequisicao = requisiçoes[i].dataRequisiçao
+        console.log(diaDataRequisicao)
+        let diferencaDias = diaDataAtual - (diaDataRequisicao.getDate())
+        console.log(diferencaDias)
+        if (diferencaDias > multa._diasRequisicao ) {
+            requisiçoes[i].multa = (diferencaDias - multa._diasRequisicao) * multa._valorMulta
+        }
+    }
 }
 
 function carregarHistoricoRequisicoes() {
@@ -241,7 +256,7 @@ function requisiçoesStorage() {
         
         for (var i = 0; i < tempArrayReq.length; i++) {
             
-            let novaRequisiçao =  new Requisiçao(tempArrayReq[i]._utilizadorID, tempArrayReq[i]._livroID, tempArrayReq[i]._dataRequisiçao, tempArrayReq[i]._dataEntrega)
+            let novaRequisiçao =  new Requisiçao(tempArrayReq[i]._utilizadorID, tempArrayReq[i]._livroID, tempArrayReq[i]._dataRequisiçao, tempArrayReq[i]._dataEntrega, tempArrayReq[i]._multa)
             requisiçoes.push(novaRequisiçao)       
         }
     }
@@ -265,7 +280,7 @@ function livrosStorage(){
         
         for (let i = 0; i < tempArray2.length; i++) {
             
-            let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categorias, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado)
+            let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._inputCategoria, tempArray2[i]._inputTags, tempArray2[i]._inputBiblioteca, tempArray2[i]._requisitado, tempArray2[i]._somaPontuacoes, tempArray2[i]._numeroPontuacoes, tempArray2[i]._mediaPontuacoes)
             livros.push(novoLivro)       
         }
     }

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
                 <a class="navbar-brand" href="index.html"><i class="fas fa-home"></i></a>
                 <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -33,11 +33,11 @@
                         </li>  
                         <!--OPÇÃO Gerir Bibliotecas-->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Gerir Bibliotecas</a>
+                            <a class="nav-link" href="#">Gerir Multas</a>
                         </li>  
                         <!--OPÇÃO Multas-->
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> Gerir Multas</a>
+                            <a class="nav-link" href="#">Gerir Bibliotecas</a>
                         </li>                  
                     </ul>
                 </div>
@@ -52,6 +52,7 @@
                 </table>
         </div>
         <br>
+        <hr>
         <center><h5>Gerir Categorias/Tags</h5></center>
         <br>
         <div class="container">
@@ -88,7 +89,75 @@
                 </table>
             </div>
         </div>
-
+        <hr>
+        <center><h5>Gerir Multas</h5></center>
+        <br>
+        <div class="container">
+            <form id="frmMultas">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="inputDias">Dias de requisiçao</label>
+                        <input type="number" class="form-control" id="inputDias" required>
+                    </div>
+                    <div class="col-3">
+                        <label for="inputMultaPorDia">Valor da multa por dia</label>
+                        <input type="number" class="form-control" id="inputMultaPorDia" required>
+                    </div>
+                    <div class="col-3">
+                        <label for="inputLimiteMulta">Valor limite da multa</label>
+                        <input type="number" class="form-control" id="inputLimiteMulta" required>
+                    </div>
+                    <div class="col-3">
+                        <br>
+                        <button type="submit" class="btn btn-dark mt-2">Submit</button>
+                    </div>
+                    
+                </div>
+                
+            </form>
+        </div>
+        <hr>
+        <center><h5>Gerir Bibliotecas</h5></center>
+        <br>
+        <div class="container">
+            <form id="frmBibliotecas">
+                <div class="row">
+                    <div class="col-4">
+                        <label for="inputFreguesia">Freguesia</label>
+                        <input type="text" class="form-control" id="inputFreguesia" required>
+                    </div>
+                    <div class="col-8">
+                        <label for="inputMorada">Morada</label>
+                        <input type="text" class="form-control" id="inputMorada" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-5">
+                        <label for="inputLatitude">Latitude</label>
+                        <input type="number" class="form-control" id="inputLatitude" required>
+                    </div>
+                    <div class="col-5">
+                        <label for="inputLongitude">Longitude</label>
+                        <input type="number" class="form-control" id="inputLongitude" required>
+                    </div>
+                    <div class="col-2">
+                        <br>
+                        <button type="submit" class="btn btn-dark mt-2">Submit</button>
+                    </div>
+                    
+                </div>
+                
+            </form>
+            <br>
+        </div>
+        <div class="row">
+                <div class="table-responsive col-12">
+                    <table id="gerirBibliotecas" class="table table-sm">   
+                                        
+                    </table>
+                </div>
+            </div>
 
     <!--MODAL Editar Categorias-->    
     <div class="modal fade" id="categoriaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -110,7 +179,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <button type="submit"  class="btn btn-primary mb-2">Editar</button>
+                            <button type="submit"  class="btn btn-dark mb-2">Editar</button>
                         </div>
                     </div>
                 </form>
@@ -121,11 +190,59 @@
     </div>
 
     <!--MODAL Editar Tags-->    
+    <div class="modal fade" id="bibliotecaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Biblioteca</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                
+                <div class="modal-body">
+                        <form id="frmEditarBibliotecas">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="inputFreguesiaEditar">Freguesia</label>
+                                        <input type="text" class="form-control" id="inputFreguesiaEditar" required>
+                                    </div>
+                                    <div class="col-8">
+                                        <label for="inputMoradaEditar">Morada</label>
+                                        <input type="text" class="form-control" id="inputMoradaEditar" required>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="inputLatitudeEditar">Latitude</label>
+                                        <input type="number" class="form-control" id="inputLatitudeEditar" required>
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="inputLongitudeEditar">Longitude</label>
+                                        <input type="number" class="form-control" id="inputLongitudeEditar" required>
+                                    </div>
+                                </div>
+                                    <div class="col-2">
+                                        <br>
+                                        <button type="submit" class="btn btn-dark mt-2">Editar</button>
+                                    </div>
+                                    
+                                
+                                
+                            </form>
+                </div>
+            
+              </div>
+            </div>
+        </div>
+        
+    <!--MODAL Editar Tags-->    
     <div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Editar Tag</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Biblioteca</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -140,7 +257,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <button type="submit"  class="btn btn-primary mb-2">Editar</button>
+                                <button type="submit"  class="btn btn-dark mb-2">Editar</button>
                             </div>
                         </div>
                     </form>
@@ -148,12 +265,14 @@
             
               </div>
             </div>
-        </div>
-        
-        
+        </div>    
     <!-- Optional JavaScript -->
     <script src="../JS/backOffice.js"></script>
+    <script src="../JS/classeCategoriasTags.js"></script>
     <script src="../JS/categoriasTags.js"></script>
+    <script src="../JS/classeMultas.js"></script>
+    <script src="../JS/classeBibliotecas.js"></script>
+    <script src="../JS/bibliotecas.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

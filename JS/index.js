@@ -1,45 +1,70 @@
 
+    let arrayMaisPontuados = []
     livrosStorage()
     
-    let strHtml = ""
-    let strHtml2 = ""
+    carregarMaisPontuados()
+    carregarMaisRecentes()
+    
+    function carregarMaisPontuados() {
 
-    let arrayMaisPontuados = []
+        let strHtml = ""
+        let maisPontuados = document.getElementById("maisPontuados")
+        
+        for (let i = 0; i < arrayMaisPontuados.length-1; i++) {
+            for (let j = i+1; j < arrayMaisPontuados.length; j++) {
+                if (arrayMaisPontuados[j].mediaPontuacoes > arrayMaisPontuados[i].mediaPontuacoes) {
+                    for (let k = 0; k < livros.length; k++) {
+                        if (livros[k].id == arrayMaisPontuados[j].id){
+                            arrayMaisPontuados[j] = arrayMaisPontuados[i]
+                            arrayMaisPontuados[i] = livros[k]  
+                        } 
+                    }
+                }
+            }  
+        }
+        
+        strHtml = `<div class="col-3"><img src="${arrayMaisPontuados[0].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
+                <div class="col-3"><img src="${arrayMaisPontuados[1].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
+                <div class="col-3"><img src="${arrayMaisPontuados[2].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
+                <div class="col-3"><img src="${arrayMaisPontuados[3].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>`
 
-    for (let i = 0; i < comentarios.length; i++) {
-        arrayMaisPontuados.push(comentarios[i].pontuacao)  
+        maisPontuados.innerHTML = strHtml
     }
+    
 
-    arrayMaisPontuados.sort()
-    arrayMaisPontuados.reverse()
+    function carregarMaisRecentes() {
 
-    console.log(arrayMaisPontuados)
+        let strHtml2 = ""
+        let maisRecentes = document.getElementById("maisRecentes")
 
-    let maisRecentes = document.getElementById("maisRecentes")
-
-    for (let i = 0, cont = 0; i < livros.length ; i++) {
-        strHtml2 = `<a id="${livros[i].id}" class='verLivro' href = "../HTML/livro.html"> <div class="col-3"><img src="${livros[livros.length-1].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>
+        strHtml2 = `<div class="col-3"><img src="${livros[livros.length-1].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
                 <div class="col-3"><img src="${livros[livros.length-2].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
                 <div class="col-3"><img src="${livros[livros.length-3].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
                 <div class="col-3"><img src="${livros[livros.length-4].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>`
+        
+
+        maisRecentes.innerHTML = strHtml2
     }
 
-    
-
-    maisRecentes.innerHTML = strHtml2
-    
     function livrosStorage(){
         if(localStorage.livros) {
             let tempArray2 = JSON.parse(localStorage.getItem("livros"))
             
-            for (let i = 0; i < tempArray2.length; i++) {
+            for (var i = 0; i < tempArray2.length; i++) {
                 
-                let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao)
-                livros.push(novoLivro)       
+                let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._inputCategoria, tempArray2[i]._inputTags, tempArray2[i]._inputBiblioteca, tempArray2[i]._requisitado, tempArray2[i]._somaPontuacoes, tempArray2[i]._numeroPontuacoes, tempArray2[i]._mediaPontuacoes)
+                livros.push(novoLivro)  
+                arrayMaisPontuados.push(novoLivro)     
             }
+            
         }
             
     }
 
+    
+    
+
+    
+    
     
 

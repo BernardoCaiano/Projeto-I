@@ -58,14 +58,14 @@
                 <li class="nav-item">
                     <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
                 </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
                         
                     </li>
                     <li class="nav-item">
                         <a href=""><i class="fas fa-question fa-2x mr-3" style="color:white"></i></a>
                     
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a href="" id="linkConfiguracoes"><i class="fas fa-cog fa-2x" style="color:white"></i></a>
                     </li>                
@@ -82,6 +82,7 @@
                     </li>
                     <li class="nav-item" >
                         <a href="catalogo.html" class="nav-link" id="linkCatalogo" style="color:white">Catálogo</a>
+                        
                     </li>
                     <li class="nav-item" >
                         <a href="doarlivro.html" class="nav-link" id="linkDoarLivro" style="color:white">Doar Livro</a>
@@ -97,13 +98,28 @@
                         <h2> <i class="fas fa-book mr-3"></i> Catálogo</h2>
                         
                 </div>
-                
                 <div class="jumbotron" id="conteudoJumbotron">
                     <form class="form-inline"> 
+                        <div class="form-group col-2">
+                            <label for="ordem"><h5>Por ordem</h5> </label>
+                            <select class="form-control" id="ordem">
+                                <option value="alfabetica">Alfabética</option>
+                                <option value="maisRecentes">Mais Recentes</option>
+                                <option value="maisPontuados">Mais Pontuados</option>
+                            </select>
+                        </div>
                         <div class="form-group col-3">
                             <label for="autores"><h5>Autores</h5> </label>
                             <select class="form-control" id="autores"></select>
                         </div>
+                        <div class="form-group col-2">
+                            <label for="filtroCategorias"><h5>Categorias</h5> </label>
+                            <select class="form-control" id="filtroCategorias"></select>
+                        </div>
+                        <div class="form-group col-2">
+                                <label for="filtroTags"><h5>Tags</h5> </label>
+                                <select class="form-control" id="filtroTags"></select>
+                            </div>
                         <div class="form-group col-2">
                             <label for="estadoLivro"><h5>Estado Livro</h5> </label>
                             <select class="form-control" id="estadoLivro"></select>
@@ -112,13 +128,10 @@
                             <label for="editora"><h5>Editora</h5> </label>
                             <select class="form-control" id="editora"></select>
                         </div>
-                        <div class="form-group col-2">
-                            <label for="ordem"><h5>Por ordem</h5> </label>
-                            <select class="form-control" id="ordem">
-                                <option value="alfabetica">Alfabética</option>
-                                <option value="maisRecentes">Mais Recentes</option>
-                                <option value="maisPontuados">Mais Pontuados</option>
-                            </select>
+                        
+                        <div class="form-group col-3">
+                            <label for="filtroBibliotecas"><h5>Biblioteca</h5> </label>
+                            <select class="form-control" id="filtroBibliotecas"></select>
                         </div>
                         
                         <div class="form-group col-2">
@@ -135,72 +148,7 @@
             </div>
         </div>
         
-        <!--Modal Livro-->
-<div class="modal fade bd-example-modal-lg" id="livroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content" id="cssModal">
-        <div class="modal-header" id="headerModal">
-          <h5 class="modal-title">Detalhes sobre o livro</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" >
-            
-                    <h5>Titulo</h5>
-                    <p id="modalTituloLivro"></p>
-                <hr>
-                <h5>Autor</h5>
-                    <p id="modalAutorLivro"></p>
-                <hr>
-                <h5>Descrição</h5>
-                    <p id="modalDescriçaoLivro"></p>
-                <hr>
-                <h5>Capa</h5>
-                    <img id="modalCapaLivro" class="img-thumbnail" src="" alt="" height="240" width="160">
-                
-                <form action="" >
-                        <div class="form-group col-md-12" id="estrelas">
-                            <br>
-                            <label >Pontuacao:</label> <br>
-                            <label for = "estrela">1</label>
-                            <input type = "radio"   class = "estrela" value = "1">
-                            <label for = "estrela">2</label>
-                            <input type = "radio"  class = "estrela" value = "2">
-                            <label for = "estrela">3</label>
-                            <input type = "radio"  class = "estrela" value = "3">
-                            <label for = "estrela">4</label>
-                            <input type = "radio"  class = "estrela" value = "4">
-                            <label for = "estrela">5</label>
-                            <input type = "radio" class = "estrela" value = "5">
-                                  
-                        </div>
-                        <div class="form-group col-md-12" id="comentario">
-                            <label for="inputComentario">Comentario:</label> <br>
-                            <textarea name="" maxlength="500" class="form-control" id="inputComentario"   rows="5"></textarea>
-                        </div>
-                              
-                        
-                </form>
-                <div class="form-group col-md-12">
-                        <button type="button" id = "btnComentar"  class="btn submeter mb-2">Submeter</button>
-                </div>
-                <h5>Comentarios:</h5>
-                <br>
-                <div id="carregarComentarios">
-                           
-                </div>
-            
-            
-        </div>
-       
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="btnRequisitar"> Requisitar Livro </button>
-            <p id="livroRequisitado">Livro Requisitado</p>
-        </div>
-      </div>
-    </div>
-  </div>
+     
    <!--Modal para Editar Livro-->
 <div class="modal fade bd-example-modal-lg" id="editarLivroModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -365,10 +313,11 @@
       </div>
 
     <!-- Optional JavaScript -->
-    
+    <script src="../JS/classeCategoriasTags.js"></script>
+    <script src="../JS/classeBibliotecas.js"></script>
     <script src="../JS/catalogo.js"></script>
     
-
+    
     <!--<script src="../JS/requisitar.js"></script>-->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

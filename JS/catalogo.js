@@ -1,26 +1,32 @@
-    let tempArray = []
+    let arrayOrdenacoes = []
     livrosStorage()
+    categoriasStorage()
+    bibliotecasStorage()
+    tagsStorage()
     completarFiltroAutores()
+    completarFiltroCategorias()
     completarFiltroEstadoLivro()
     completarFiltroEditoras()
+    completarFiltroBibliotecas()
+    completarFiltroTags()
     carregarCatalogo()
     
     let livroIdRequisicao = 0
 
-    let novoLivro01 = new Livro(1, "Quem Meteu a Mão na Caixa", "https://img.wook.pt/images/quem-meteu-a-mao-na-caixa-helena-garrido/MXwxOTc0MTgzNHwxNTU3NTEyM3wxNTI1MjE1NjAwMDAw/502x", "", "Helena Garrido" ) 
-    let novoLivro02 = new Livro(2, "Deixar Ir", "https://img.wook.pt/images/deixar-ir-david-r-hawkins/MXwyMTgxMzU4OXwxNzY2NDg2NHwxNTIzODMzMjAwMDAw/502x", "", "David R. Hawkins" )
-    let novoLivro03 = new Livro(3, "O Tatuador de Auschwitz", "https://img.wook.pt/images/o-tatuador-de-auschwitz-heather-morris/MXwyMTM3MDQwNnwxNzI1MjkwM3wxNTE2NzUyMDAwMDAw/502x", "", "Heather Morris" )
-    let novoLivro04 = new Livro(4, "Cebola Crua com Sal e Broa", "https://img.wook.pt/images/cebola-crua-com-sal-e-broa-miguel-sousa-tavares/MXwyMTkwOTA1N3wxNzc2ODk3NHwxNTI2MzM4ODAwMDAw/502x", "", "Miguel Sousa Tavares" )
-    let novoLivro05 = new Livro(5, "Propósito", "https://img.wook.pt/images/proposito-sri-prem-baba/MXwyMTUyMTI5NnwxNzM2ODUyN3wxNTI2MjUyNDAwMDAw/502x", "", "Sri Prem Baba" )
-    let novoLivro06 = new Livro(6, "O Homem Que Sou", "https://img.wook.pt/images/tony-carreira---o-homem-que-sou-tony-carreira/MXwyMTE4ODM3NXwxNzA1NDY1NXwxNTI2MzM4ODAwMDAw/502x", "", "Tony Carreira" )
-    let novoLivro07 = new Livro(7, "Hippie", "https://img.wook.pt/images/hippie-paulo-coelho/MXwyMTYwMjc3MnwxNzQ1MzQ4NHwxNTI2MjUyNDAwMDAw/502x", "", "Paulo Coelho" )
-    let novoLivro08 = new Livro(8, "A Guerra dos Tronos", "https://img.wook.pt/images/a-guerra-dos-tronos-george-r-r-martin/MXwxOTY1MTF8MjQ3OTIzfDEzODM1MjMyMDAwMDA=/502x", "", "George R. R. Martin" )
-    let novoLivro09 = new Livro(9, "A Guerra dos Tronos", "https://img.wook.pt/images/o-mundo-de-a-guerra-dos-tronos-george-r-r-martin/MXwxNjM3NDc0OHwxMTk1ODU1MXwxNDI4NDQ3NjAwMDAw/502x", "", "George R. R. Martin" )
-    let novoLivro10 = new Livro(10, "Sonho Febril", "https://img.wook.pt/images/sonho-febril-george-r-r-martin/MXwyMTM5NDQ2MHwxNzI2OTk5NnwxNTE3MzU2ODAwMDAw/502x", "", "George R. R. Martin" )
-    let novoLivro11 = new Livro(11, "Não Respire", "https://img.wook.pt/images/nao-respire-pedro-rolo-duarte/MXwyMTg3Njc5MXwxNzczMjk2NXwxNTI1MzAyMDAwMDAw/502x", "", "Pedro Rolo Duarte " )
-    let novoLivro12 = new Livro(12, "A Rapariga de Auschwitz", "https://img.wook.pt/images/a-rapariga-de-auschwitz-eva-schloss/MXwyMTYwODkwMnwxNzQ2MDE4MnwxNTIyMTkxNjAwMDAw/502x", "", "Eva Schloss" )
-    let novoLivro13 = new Livro(13, "Do Sonho à Vitória", "https://img.wook.pt/images/do-sonho-a-vitoria-antonio-tadeia/MXwyMTkxMjU5OHwxNzc3MjgxMnwxNTI2NDI1MjAwMDAw/502x", "", "António Tadeia" )
-    let novoLivro14 = new Livro(14, "Almanaque da Seleção", "https://img.wook.pt/images/almanaque-da-selecao-rui-miguel-tovar/MXwyMTk0Mjk3OXwxNzgwNTA0MXwxNTI3MTE2NDAwMDAw/502x", "", "Rui Miguel Tovar " )
+    let novoLivro01 = new Livro(1, "Quem Meteu a Mão na Caixa", "https://img.wook.pt/images/quem-meteu-a-mao-na-caixa-helena-garrido/MXwxOTc0MTgzNHwxNTU3NTEyM3wxNTI1MjE1NjAwMDAw/502x", "", "Helena Garrido", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0) 
+    let novoLivro02 = new Livro(2, "Deixar Ir", "https://img.wook.pt/images/deixar-ir-david-r-hawkins/MXwyMTgxMzU4OXwxNzY2NDg2NHwxNTIzODMzMjAwMDAw/502x", "", "David R. Hawkins", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro03 = new Livro(3, "O Tatuador de Auschwitz", "https://img.wook.pt/images/o-tatuador-de-auschwitz-heather-morris/MXwyMTM3MDQwNnwxNzI1MjkwM3wxNTE2NzUyMDAwMDAw/502x", "", "Heather Morris", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro04 = new Livro(4, "Cebola Crua com Sal e Broa", "https://img.wook.pt/images/cebola-crua-com-sal-e-broa-miguel-sousa-tavares/MXwyMTkwOTA1N3wxNzc2ODk3NHwxNTI2MzM4ODAwMDAw/502x", "", "Miguel Sousa Tavares", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro05 = new Livro(5, "Propósito", "https://img.wook.pt/images/proposito-sri-prem-baba/MXwyMTUyMTI5NnwxNzM2ODUyN3wxNTI2MjUyNDAwMDAw/502x", "", "Sri Prem Baba", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0 , 0)
+    let novoLivro06 = new Livro(6, "O Homem Que Sou", "https://img.wook.pt/images/tony-carreira---o-homem-que-sou-tony-carreira/MXwyMTE4ODM3NXwxNzA1NDY1NXwxNTI2MzM4ODAwMDAw/502x", "", "Tony Carreira", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro07 = new Livro(7, "Hippie", "https://img.wook.pt/images/hippie-paulo-coelho/MXwyMTYwMjc3MnwxNzQ1MzQ4NHwxNTI2MjUyNDAwMDAw/502x", "", "Paulo Coelho", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro08 = new Livro(8, "A Guerra dos Tronos", "https://img.wook.pt/images/a-guerra-dos-tronos-george-r-r-martin/MXwxOTY1MTF8MjQ3OTIzfDEzODM1MjMyMDAwMDA=/502x", "", "George R. R. Martin", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro09 = new Livro(9, "A Guerra dos Tronos", "https://img.wook.pt/images/o-mundo-de-a-guerra-dos-tronos-george-r-r-martin/MXwxNjM3NDc0OHwxMTk1ODU1MXwxNDI4NDQ3NjAwMDAw/502x", "", "George R. R. Martin", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro10 = new Livro(10, "Sonho Febril", "https://img.wook.pt/images/sonho-febril-george-r-r-martin/MXwyMTM5NDQ2MHwxNzI2OTk5NnwxNTE3MzU2ODAwMDAw/502x", "", "George R. R. Martin", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro11 = new Livro(11, "Não Respire", "https://img.wook.pt/images/nao-respire-pedro-rolo-duarte/MXwyMTg3Njc5MXwxNzczMjk2NXwxNTI1MzAyMDAwMDAw/502x", "", "Pedro Rolo Duarte ", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro12 = new Livro(12, "A Rapariga de Auschwitz", "https://img.wook.pt/images/a-rapariga-de-auschwitz-eva-schloss/MXwyMTYwODkwMnwxNzQ2MDE4MnwxNTIyMTkxNjAwMDAw/502x", "", "Eva Schloss", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro13 = new Livro(13, "Do Sonho à Vitória", "https://img.wook.pt/images/do-sonho-a-vitoria-antonio-tadeia/MXwyMTkxMjU5OHwxNzc3MjgxMnwxNTI2NDI1MjAwMDAw/502x", "", "António Tadeia", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
+    let novoLivro14 = new Livro(14, "Almanaque da Seleção", "https://img.wook.pt/images/almanaque-da-selecao-rui-miguel-tovar/MXwyMTk0Mjk3OXwxNzgwNTA0MXwxNTI3MTE2NDAwMDAw/502x", "", "Rui Miguel Tovar ", "ASA", "", 356, "Fraco", "Manuel Silva", "", "Desporto", "", "", false, 0, 0, 0 )
 
     if (localStorage.getItem("livros") == null){
         livros.push(novoLivro01)
@@ -39,39 +45,43 @@
         livros.push(novoLivro14)
         localStorage.setItem("livros", JSON.stringify(livros))
     }
-
+    
     let ordem = document.getElementById("ordem")
-    
-    
     
     //Filtros
     let btnFiltrar = document.getElementById("btnFiltrar")
-   
+
     btnFiltrar.addEventListener("click", function(){
+        
         if(ordem.value == "alfabetica") {
             filtrarOrdemAlfabetica()
         }
+        
         if(ordem.value == "maisRecentes") {
             filtrarMaisRecentes()
         }
-        carregarCatalogo()
         
+        if(ordem.value == "maisPontuados") {
+            filtrarMaisPontuados()
+        }
+        carregarCatalogo()
     })
     
-
     function carregarCatalogo() {
 
         let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
         
         let catalogo = document.getElementById("catalogo")
         
-        
         let strHtml = ""
        
-        for (let i = 0, cont = 0; i < livros.length ; i++) {
-            if ((autores.value == livros[i].autor || autores.value == "") && 
-                (estadoLivro.value == livros[i].estado || estadoLivro.value == "") && 
-                (editora.value == livros[i].editora || editora.value == "") ) {
+        for (let i = 0, cont = 0; i < arrayOrdenacoes.length ; i++) {
+            if ((autores.value == arrayOrdenacoes[i].autor || autores.value == "") && 
+                (filtroCategorias.value == arrayOrdenacoes[i].categoria || filtroCategorias.value == "") &&
+                (estadoLivro.value == arrayOrdenacoes[i].estado || estadoLivro.value == "") && 
+                (filtroBibliotecas.value == arrayOrdenacoes[i].freguesia || filtroBibliotecas.value == "") && 
+                (filtroTags.value == arrayOrdenacoes[i].tags || filtroTags.value == "") && 
+                (editora.value == arrayOrdenacoes[i].editora || editora.value == "") ) {
                 
                 if(cont % 6 == 0) {
                     strHtml += `<div class="row">`    
@@ -79,19 +89,19 @@
 
                 if (utilizadorLogado._tipo == "operador"){
                     strHtml += `
-                    <div class="col-md-2"><a id="${livros[i].id}" class='verLivro' href = "../HTML/livro.html"><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
-                    <center><a id="${livros[i].id}" class='verLivro' ><p><b>${livros[i].titulo}</b></a> <br>
-                             de ${livros[i].autor}</p>  </center>
-                             <center><a id="${livros[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
-                    <a id="${livros[i].id}" href="#" data-toggle='modal'  data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
+                    <div class="col-md-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayOrdenacoes[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
+                    <center><a id="${arrayOrdenacoes[i].id}" class='verLivro' ><p><b>${arrayOrdenacoes[i].titulo}</b></a> <br>
+                             de ${arrayOrdenacoes[i].autor}</p>  </center>
+                             <center><a id="${arrayOrdenacoes[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
+                    <a id="${arrayOrdenacoes[i].id}" href="#" data-toggle='modal'  data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
                              
                     </div>`
                 }
                 else {
                     strHtml += `
-                    <div class="col-2"><a id="${livros[i].id}" class='verLivro' href = "livro.html" ><img src="${livros[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
-                    <center><a id="${livros[i].id}" class='verLivro' ><p><b>${livros[i].titulo}</b></a> <br>
-                             de ${livros[i].autor}</p>  </center>
+                    <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "livro.html" ><img src="${arrayOrdenacoes[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
+                    <center><a id="${arrayOrdenacoes[i].id}" class='verLivro' ><p><b>${arrayOrdenacoes[i].titulo}</b></a> <br>
+                             de ${arrayOrdenacoes[i].autor}</p>  </center>
                     </div>`
                 }
             
@@ -101,17 +111,15 @@
                 cont++
             }
                 
-            
         }
             
         catalogo.innerHTML = strHtml
-        
         
         let verLivro = document.getElementsByClassName("verLivro")
         // For each link, add a listener to listen the click event
         for (let i = 0; i < verLivro.length; i++) {
             verLivro[i].addEventListener("click", function() {
-                // Ao clicar num livro especifico, ve-lo numa modal
+                // Ao clicar num livro especifico, ve-lo numa pagina
                 let livroId = verLivro[i].getAttribute("id")
                 localStorage.setItem("livroID", livroId)
                 
@@ -131,7 +139,6 @@
             })        
             
         }
-
         
         let editar = document.getElementsByClassName("editar")
         // Para cada botão, adicionar um listener para escutar pelo evento clique
@@ -175,21 +182,21 @@
 
     function completarFiltroEstadoLivro() {
 
-        let tempAutores = []
+        let tempEstadoLivro = []
         // 1. Iterar sobre o array livros
         for (let i = 0; i < livros.length; i++) {
-            if (tempAutores.indexOf(livros[i].estado) == -1) {
+            if (tempEstadoLivro.indexOf(livros[i].estado) == -1) {
                 // 2. Guardar todos os autores não duplicados
-                tempAutores.push(livros[i].estado)    
+                tempEstadoLivro.push(livros[i].estado)    
             }
         }   
     
         // 3. Criar o HTML (option) para todos os users encontrados
         let strHtml = "<option value=''>Todos</option>"
-        for (let i = 0; i < tempAutores.length; i++) {
+        for (let i = 0; i < tempEstadoLivro.length; i++) {
             // Obter o nome do autor no array users
             
-                    strHtml += `<option value='${tempAutores[i]}'>${tempAutores[i]}</option>` 
+                    strHtml += `<option value='${tempEstadoLivro[i]}'>${tempEstadoLivro[i]}</option>` 
                             
         }
     
@@ -199,21 +206,21 @@
     
     function completarFiltroEditoras() {
 
-        let tempAutores = []
+        let tempEditoras = []
         // 1. Iterar sobre o array livros
         for (let i = 0; i < livros.length; i++) {
-            if (tempAutores.indexOf(livros[i].editora) == -1) {
+            if (tempEditoras.indexOf(livros[i].editora) == -1) {
                 // 2. Guardar todos os autores não duplicados
-                tempAutores.push(livros[i].editora)    
+                tempEditoras.push(livros[i].editora)    
             }
         }   
     
         // 3. Criar o HTML (option) para todos os users encontrados
         let strHtml = "<option value=''>Todos</option>"
-        for (let i = 0; i < tempAutores.length; i++) {
+        for (let i = 0; i < tempEditoras.length; i++) {
             // Obter o nome do autor no array users
             
-                    strHtml += `<option value='${tempAutores[i]}'>${tempAutores[i]}</option>` 
+                    strHtml += `<option value='${tempEditoras[i]}'>${tempEditoras[i]}</option>` 
                             
         }
     
@@ -221,27 +228,122 @@
         editora.innerHTML = strHtml
     }
 
+    function completarFiltroCategorias() {
+
+        let tempCategorias = []
+        // 1. Iterar sobre o array livros
+        for (let i = 0; i < categorias.length; i++) {
+            if (tempCategorias.indexOf(categorias[i].categoria) == -1) {
+                // 2. Guardar todos os autores não duplicados
+
+                tempCategorias.push(categorias[i].categoria)    
+            }
+        }   
+    
+        // 3. Criar o HTML (option) para todos os users encontrados
+        let strHtml = "<option value=''>Todas</option>"
+        for (let i = 0; i < tempCategorias.length; i++) {
+    
+            
+                    strHtml += `<option value='${tempCategorias[i]}'>${tempCategorias[i]}</option>` 
+                            
+        }
+    
+        let filtroCategorias = document.getElementById("filtroCategorias")
+        filtroCategorias.innerHTML = strHtml
+    }
+
+    function completarFiltroTags() {
+        console.log(tags)
+        let tempTags = []
+        // 1. Iterar sobre o array livros
+        for (let i = 0; i < tags.length; i++) {
+            if (tempTags.indexOf(tags[i].tag) == -1) {
+                // 2. Guardar todos os autores não duplicados
+
+                tempTags.push(tags[i].tag)    
+            }
+        }   
+    
+        // 3. Criar o HTML (option) para todos os users encontrados
+        let strHtml = "<option value=''>Todas</option>"
+        for (let i = 0; i < tempTags.length; i++) {
+    
+            
+                    strHtml += `<option value='${tempTags[i]}'>${tempTags[i]}</option>` 
+                            
+        }
+    
+        let filtroTags = document.getElementById("filtroTags")
+        filtroTags.innerHTML = strHtml
+    }
+
+    function completarFiltroBibliotecas() {
+        console.log(bibliotecas)
+        let tempBibliotecas = []
+        // 1. Iterar sobre o array categorias
+        for (let i = 0; i < bibliotecas.length; i++) {
+            if (tempBibliotecas.indexOf(bibliotecas[i].freguesia) == -1) {
+                // 2. Guardar todos os autores não duplicados
+                tempBibliotecas.push(bibliotecas[i].freguesia)    
+            }
+        }   
+    
+        // 3. Criar o HTML (option) para todos os users encontrados
+        let strHtml = "<option value=''>Todas</option>"
+        for (let i = 0; i < tempBibliotecas.length; i++) {
+            // Obter o nome do autor no array users
+            
+                    strHtml += `<option value='${tempBibliotecas[i]}'>${tempBibliotecas[i]}</option>` 
+                            
+        }
+        let filtroBibliotecas = document.getElementById("filtroBibliotecas")
+        filtroBibliotecas.innerHTML = strHtml
+    }
+
     function filtrarOrdemAlfabetica() {
+        for (let l = 0; l < arrayOrdenacoes.length; l++){
+            arrayOrdenacoes[l] = livros[l]
+        }
+        
         let livroTemp = new Livro()
-        for (let i = 0; i < livros.length-1; i++) {
-            for (let j = 0; j < livros.length; j++) {
-                if ( livros[i].titulo < livros[j].titulo ){
-                    livroTemp = livros[j]
-                    livros[j] = livros[i]
-                    livros[i] = livroTemp
+        for (let i = 0; i < arrayOrdenacoes.length-1; i++) {
+            for (let j = i+1; j < arrayOrdenacoes.length; j++) {
+                if ( arrayOrdenacoes[i].titulo > arrayOrdenacoes[j].titulo ){
+                    livroTemp = arrayOrdenacoes[j]
+                    arrayOrdenacoes[j] = arrayOrdenacoes[i]
+                    arrayOrdenacoes[i] = livroTemp
                 }
             }
         }
+
         
     }
 
     function filtrarMaisRecentes() {
-        
-            for (let i = 0; i < livros.length; i++) {
-                 
-                 livros.reverse()
-            }
-        
+        for (let l = 0; l < arrayOrdenacoes.length; l++){
+            arrayOrdenacoes[l] = livros[l]
+        }
+        arrayOrdenacoes.reverse()
+    }
+
+    function filtrarMaisPontuados() {
+       
+        for (let l = 0; l < arrayOrdenacoes.length; l++){
+            arrayOrdenacoes[l] = livros[l]
+        }
+        for (let i = 0; i < arrayOrdenacoes.length-1; i++) {
+            for (let j = i+1; j < arrayOrdenacoes.length; j++) {
+                if (arrayOrdenacoes[j].mediaPontuacoes > arrayOrdenacoes[i].mediaPontuacoes) {
+                    for (let k = 0; k < livros.length; k++) {
+                        if (livros[k].id == arrayOrdenacoes[j].id){
+                            arrayOrdenacoes[j] = arrayOrdenacoes[i]
+                            arrayOrdenacoes[i] = livros[k]  
+                        } 
+                    }
+                }
+            }  
+        }
     }
 
     function eliminarLivro(id){
@@ -249,8 +351,12 @@
             for (let i = 0; i < livros.length; i++) {
                 if(livros[i].id == id) {
                     livros.splice(i, 1)
-                }    
-                            
+                }                
+            }
+            for (let i = 0; i < arrayOrdenacoes.length; i++) {
+                if(arrayOrdenacoes[i].id == id) {
+                    arrayOrdenacoes.splice(i, 1)
+                }                 
             }
         }
     }
@@ -321,23 +427,56 @@
         })
         
     }
+
+    function bibliotecasStorage(){
     
+        if(localStorage.bibliotecas) {
+            let tempArray = JSON.parse(localStorage.getItem("bibliotecas"))
+        
+            for (let i = 0; i < tempArray.length; i++) {
+            
+                let novaBiblioteca =  new Biblioteca (tempArray[i]._id, tempArray[i]._freguesia,  tempArray[i]._morada, tempArray[i]._latitude, tempArray[i]._longitude)
+                bibliotecas.push(novaBiblioteca)       
+            }
+        } 
+    } 
+
+    function categoriasStorage(){
+    
+        if(localStorage.categorias) {
+            let tempArray = JSON.parse(localStorage.getItem("categorias"))
+        
+            for (let i = 0; i < tempArray.length; i++) {
+            
+                let novaCategoria =  new Categoria (tempArray[i]._id, tempArray[i]._categoria)
+                categorias.push(novaCategoria)       
+            }
+        } 
+    } 
+
+    function tagsStorage(){
+    
+        if(localStorage.tags) {
+            let tempArray = JSON.parse(localStorage.getItem("tags"))
+        
+            for (let i = 0; i < tempArray.length; i++) {
+            
+                let novaTag =  new Tag (tempArray[i]._id, tempArray[i]._tag)
+                tags.push(novaTag)       
+            }
+        } 
+    } 
+
     function livrosStorage(){
         if(localStorage.livros) {
             let tempArray2 = JSON.parse(localStorage.getItem("livros"))
             
             for (let i = 0; i < tempArray2.length; i++) {
                 
-                let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categorias, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado)
-                livros.push(novoLivro)       
+                let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._inputCategoria, tempArray2[i]._inputTags, tempArray2[i]._inputBiblioteca, tempArray2[i]._requisitado, tempArray2[i]._somaPontuacoes, tempArray2[i]._numeroPontuacoes, tempArray2[i]._mediaPontuacoes)
+                livros.push(novoLivro)
+                arrayOrdenacoes.push(novoLivro)
             }
         }
             
     }
-
-
-
-
-
-
-   

@@ -4,8 +4,8 @@
     <title>Books on the move</title>
     <script src="../JS/classeUtilizadores.js"></script>
     <script src="../JS/login_registo.js"></script>
-    <script src="../JS/classeLivros.js"></script>
-    <script src="../JS/classeComentarios.js"></script>
+    
+    
     
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -58,14 +58,14 @@
                 <li class="nav-item">
                     <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
                 </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a href=""><i class="fas fa-bell fa-2x mr-3" style="color:white"></i></a>
                         
                     </li>
                     <li class="nav-item">
                         <a href=""><i class="fas fa-question fa-2x mr-3" style="color:white"></i></a>
                     
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a href="../HTML/backOffice.html" id="linkConfiguracoes"><i class="fas fa-cog fa-2x" style="color:white"></i></a>
                     </li>                
@@ -86,6 +86,9 @@
                     <li class="nav-item" >
                         <a href="doarlivro.html" class="nav-link" id="linkDoarLivro" style="color:white">Doar Livro</a>
                     </li>
+                    <li class="nav-item" >
+                        <a href="bibliotecas.html" class="nav-link" id="linkDoarLivro" style="color:white">Bibliotecas</a>
+                    </li>
                 </div>        
             </ul>
         </nav>
@@ -95,11 +98,8 @@
             </div>
             <div class="jumbotron" id="conteudoJumbotron">
                 <center>
-                    <div class="row">
-                        <div class="col-3"><img src="https://img.wook.pt/images/deixar-ir-david-r-hawkins/MXwyMTgxMzU4OXwxNzY2NDg2NHwxNTIzODMzMjAwMDAw/502x" class="img-thumbnail" alt="" height="240" width="160"></div>
-                        <div class="col-3"><img src="https://img.wook.pt/images/hippie-paulo-coelho/MXwyMTYwMjc3MnwxNzQ1MzQ4NHwxNTI2MjUyNDAwMDAw/502x" class="img-thumbnail" alt="" height="240" width="160"></div>
-                        <div class="col-3"><img src="https://img.wook.pt/images/quem-meteu-a-mao-na-caixa-helena-garrido/MXwxOTc0MTgzNHwxNTU3NTEyM3wxNTI1MjE1NjAwMDAw/502x" class="img-thumbnail" alt="" height="240" width="160"></div>
-                        <div class="col-3"><img src="https://img.wook.pt/images/tony-carreira---o-homem-que-sou-tony-carreira/MXwyMTE4ODM3NXwxNzA1NDY1NXwxNTI2MzM4ODAwMDAw/502x" class="img-thumbnail" alt="" height="240" width="160"></div> 
+                    <div class="row" id="maisPontuados">
+                        
                          
                     </div>
                 </center>   
@@ -198,8 +198,9 @@
       </div>
 
     <!-- Optional JavaScript -->
+    <script src="../JS/classeLivros.js"></script>
     <script src="../JS/index.js"></script>
-    <script src="../JS/livro.js"></script>
+    
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

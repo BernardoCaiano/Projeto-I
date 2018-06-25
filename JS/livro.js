@@ -26,20 +26,20 @@ function carregarLivro(id) {
                                     <div class="col-4"><p></p></div>
                                     <div class="col-4"><p></p></div>
                                     <div class="col-4"><p></p></div>
-                                    <div class="col-4"><h6>Categoria:</h6><p>Desporto</p></div>
-                                    <div class="col-4"><h6>Tags:</h6><p>Futebol, FCPorto</p></div>
-                                    <div class="col-4"><h6>Biblioteca:</h6><p>Vila do Conde</p></div>
-                                    <div class="col-4"><h6>Editora:</h6><p>Porto Editora</p></div>
-                                    <div class="col-4"><h6>Data de Lançamento:</h6><p>21/06/2018</p></div>
-                                    <div class="col-4"><h6>Nº de Páginas:</h6><p>356</p></div>
-                                    <div class="col-4"><h6>Estado do Livro:</h6><p>Bom</p></div>
-                                    <div class="col-4"><h6>Data de Doação:</h6><p>21/06/2018</p></div>
-                                    <div class="col-4"><h6>Nome do doador:</h6><p>Manuel Silva</p></div>
+                                    <div class="col-4"><h6>Categoria:</h6><p>${livros[i].categoria}</p></div>
+                                    <div class="col-4"><h6>Tags:</h6><p>${livros[i].tags}</p></div>
+                                    <div class="col-4"><h6>Biblioteca:</h6><p>${livros[i].biblioteca}</p></div>
+                                    <div class="col-4"><h6>Editora:</h6><p>${livros[i].editora}</p></div>
+                                    <div class="col-4"><h6>Data de Lançamento:</h6><p>${livros[i].dataLançamento}</p></div>
+                                    <div class="col-4"><h6>Nº de Páginas:</h6><p>${livros[i].numeroPaginas}</p></div>
+                                    <div class="col-4"><h6>Estado do Livro:</h6><p>${livros[i].estado}</p></div>
+                                    <div class="col-4"><h6>Data de Doação:</h6><p>${livros[i].dataDoaçao}</p></div>
+                                    <div class="col-4"><h6>Nome do doador:</h6><p>${livros[i].doador}</p></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12"<h6>Descrição:</h6><p>Depois de uma investigação rigorosa ao mundo dos bancos portugueses, Helena Garrido regressa para, num livro sobre a Caixa Geral de Depósitos, mostrar como o banco público serviu para negócios e operações duvidosas - sempre a mando do poder e sempre a perder dinheiro que pertence aos contribuintes. </p></div>
+                            <div class="col-12"<h6>Descrição:</h6><p>${livros[i].descriçao}</p></div>
                         </div>`
 
                         
@@ -55,11 +55,8 @@ function carregarLivro(id) {
                     btnRequisitar.style.display = "block"
                     livroRequisitado.style.display = "none"
                     
-                }
-               
-                  
-        }
-         
+                }  
+        }   
     }
      
     detalhesLivro.innerHTML = strHtml
@@ -70,11 +67,6 @@ function carregarComentarios(id) {
     
     pontuacao(id)
     
-    //let comentariosTemp = []
-    //comentariosTemp = comentarios
-    //comentariosTemp.reverse()
-    //console.log(comentariosT)
-
     let carregarComentariosHtml = document.getElementById("carregarComentarios")
     
     let strHtml = ""
@@ -319,11 +311,20 @@ function eliminarComentario(id){
     if (confirm("Tem a certeza que quer eliminar o Comentario?")){
         for (let i = 0; i < comentarios.length; i++) {
             if(comentarios[i].id == id) {
+                for (let j = 0; j < livros.length; j++) {
+                    if (livros[j].id == comentarios[i].livroID){
+                        livros[j].somaPontuacoes = livros[j].somaPontuacoes - comentarios[i].pontuacao
+                        livros[j].numeroPontuacoes = livros[j].numeroPontuacoes - 1 
+                        livros[j].mediaPontuacoes = livros[j].somaPontuacoes / livros[j].numeroPontuacoes
+                    }
+                
+                }
+                localStorage.setItem("livros", JSON.stringify(livros))
                 comentarios.splice(i, 1)
-            }    
-                        
+            }                
         }
     }
+    
     location.reload()
 }
 
@@ -374,7 +375,7 @@ function livrosStorage(){
         
         for (let i = 0; i < tempArray2.length; i++) {
             
-            let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categorias, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado)
+            let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._inputCategoria, tempArray2[i]._inputTags, tempArray2[i]._inputBiblioteca, tempArray2[i]._requisitado, tempArray2[i]._somaPontuacoes, tempArray2[i]._numeroPontuacoes, tempArray2[i]._mediaPontuacoes)
             livros.push(novoLivro)       
         }
     }

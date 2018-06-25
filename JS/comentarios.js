@@ -11,7 +11,7 @@ let comentario = document.getElementById("comentario")
 
 
 
-btnComentar.addEventListener("click", function(){
+btnComentar.addEventListener("click", function(event){
      
     for (let i = 0; i < estrela.length; i++) {
         if (estrela[i].checked == true) {
@@ -19,13 +19,25 @@ btnComentar.addEventListener("click", function(){
         }
     }
     
-    
     let novoComentario = new Comentario (getLastId() + 1, utilizadorLogado._id, livroIdRequisicao, inputComentario.value, valorPontuacao)
     comentarios.push(novoComentario)
-    console.log(comentarios.length)
+    console.log(livros)
+    console.log(valorPontuacao)
+    for (let i = 0; i < livros.length ; i++) {
+        if (livros[i].id == livroIdRequisicao) {
+            
+            livros[i].somaPontuacoes = livros[i].somaPontuacoes + parseInt(valorPontuacao)
+            livros[i].numeroPontuacoes = livros[i].numeroPontuacoes + 1 
+            livros[i].mediaPontuacoes = livros[i].somaPontuacoes / livros[i].numeroPontuacoes
+        }
+    }
+
     localStorage.setItem("comentarios", JSON.stringify(comentarios))
+    localStorage.setItem("livros", JSON.stringify(livros))
+    
     location.reload()
 })
+
 
 
 function comentariosStorage() {

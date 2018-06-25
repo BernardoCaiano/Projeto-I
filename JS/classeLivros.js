@@ -2,7 +2,7 @@ let livros = []
 let livroId = 0
 
 class Livro {
-    constructor(id, titulo, capa, descriçao, autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao, categoria, tags, biblioteca, requisitado) {
+    constructor(id, titulo, capa, descriçao, autor, editora, dataLançamento, numeroPaginas, estado, doador, dataDoaçao, categoria, tags, biblioteca, requisitado, somaPontuacoes, numeroPontuacoes, mediaPontuacoes) {
         this.id = id
         this.titulo = titulo
         this.capa = capa
@@ -18,6 +18,9 @@ class Livro {
         this.tags = tags
         this.biblioteca = biblioteca
         this.requisitado = requisitado
+        this.somaPontuacoes = somaPontuacoes
+        this.numeroPontuacoes = numeroPontuacoes
+        this.mediaPontuacoes = mediaPontuacoes 
     }
     
     // Propriedade id
@@ -142,7 +145,28 @@ class Livro {
         this._requisitado = novoRequisitado
     }
 
-    
+    // Propriedade somaPontuacoes
+    get somaPontuacoes() {
+        return this._somaPontuacoes
+    }
+    set somaPontuacoes(novaSomaPontuacoes) {
+        this._somaPontuacoes = novaSomaPontuacoes
+    }
 
+    // Propriedade numeroPontuacoes
+    get numeroPontuacoes() {
+        return this._numeroPontuacoes
+    }
+    set numeroPontuacoes(novoNumeroPontuacoes) {
+        this._numeroPontuacoes = novoNumeroPontuacoes
+    }
+    
+    // Propriedade mediaPontuacoes
+    get mediaPontuacoes() {
+        return this._mediaPontuacoes
+    }
+    set mediaPontuacoes(novaMediaPontuacoes) {
+        this._mediaPontuacoes = novaMediaPontuacoes
+    }
 }
 
