@@ -17,8 +17,8 @@
                 
             }
             localStorage.setItem("livros", JSON.stringify(livros))
-            let a = new Date()
-            let novaRequisiçao = new Requisiçao (utilizadorLogado._id, livroIdRequisicao, a, "", 0)
+            
+            let novaRequisiçao = new Requisiçao (utilizadorLogado._id, livroIdRequisicao, new Date(), "", 0)
             utilizadorLogado._requisiçoes = utilizadorLogado._requisiçoes + 1
             requisiçoes.push(novaRequisiçao)
             for (let i = 0; i < utilizadores.length; i++) {
@@ -46,7 +46,7 @@
             
             for (var i = 0; i < tempArrayReq.length; i++) {
                 
-                let novaRequisiçao =  new Requisiçao(tempArrayReq[i]._utilizadorID, tempArrayReq[i]._livroID, tempArrayReq[i]._dataRequisiçao, tempArrayReq[i]._dataEntrega, tempArrayReq[i]._multa)
+                let novaRequisiçao =  new Requisiçao(tempArrayReq[i]._utilizadorID, tempArrayReq[i]._livroID, new Date(tempArrayReq[i]._dataRequisiçao), tempArrayReq[i]._dataEntrega, tempArrayReq[i]._multa)
                 requisiçoes.push(novaRequisiçao)       
             }
         }
