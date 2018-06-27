@@ -222,7 +222,7 @@ function carregarHistoricoRequisicoes() {
 
                     strHtml += `<tr><td>${livros[j].titulo}</td>
                     <td>${livros[j].autor}</td>
-                    <td>${requisiçoes[i].dataRequisiçao}</td>
+                    <td>${requisiçoes[i].dataRequisiçao.toLocaleString()}</td>
                     <td>${requisiçoes[i].dataEntrega}</td></tr>`
                 }
             }

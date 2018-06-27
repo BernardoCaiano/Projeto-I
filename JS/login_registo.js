@@ -69,7 +69,7 @@ window.onload = function() {
     
     if (logado) {
 
-        
+
         optLogin.style.display = 'none'
         optRegister.style.display = 'none'
         optLogout.style.display = 'block'
@@ -101,9 +101,9 @@ window.onload = function() {
                 utilizadorExiste = true
                 utilizadorId = utilizadores[i].id
                 nomeUtilizador = utilizadores[i].nome
-                let utilizadorLogadoID = utilizadores[i].id
+                
                 let utilizadorLogado = utilizadores[i]
-                console
+    
                 localStorage.setItem("utilizadorLogado", JSON.stringify(utilizadorLogado))
 
             }        
