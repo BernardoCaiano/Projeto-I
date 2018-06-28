@@ -129,7 +129,7 @@ function carregarComentarios(id) {
             } 
               
 
-            if (comentarios[i].utilizadorID == utilizadorLogado._id && comentarios[i].livroID == id) {              
+            if ((comentarios[i].utilizadorID == utilizadorLogado._id && comentarios[i].livroID == id) || (utilizadorLogado._tipo != "utilizador")) {              
                 btnComentar.style.display = "none"
                 estrelas.style.display = "none"
                 comentario.style.display = "none"
@@ -140,7 +140,7 @@ function carregarComentarios(id) {
                 estrelas.style.display = "block"
                 comentario.style.display = "block"
             }  
-            2
+            
             
     }
 

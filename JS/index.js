@@ -23,10 +23,10 @@
             }  
         }
         
-        strHtml = `<div class="col-3"><img src="${arrayMaisPontuados[0].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="${arrayMaisPontuados[1].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="${arrayMaisPontuados[2].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="${arrayMaisPontuados[3].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>`
+        strHtml = `<div class="col-3"><a id="${arrayMaisPontuados[0].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayMaisPontuados[0].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>
+                <div class="col-3"><a id="${arrayMaisPontuados[1].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayMaisPontuados[1].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>
+                <div class="col-3"><a id="${arrayMaisPontuados[2].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayMaisPontuados[2].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>
+                <div class="col-3"><a id="${arrayMaisPontuados[3].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayMaisPontuados[3].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>`
 
         maisPontuados.innerHTML = strHtml
     }
@@ -37,14 +37,29 @@
         let strHtml2 = ""
         let maisRecentes = document.getElementById("maisRecentes")
 
-        strHtml2 = `<div class="col-3"><img src="${livros[livros.length-1].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="${livros[livros.length-2].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="${livros[livros.length-3].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>
-                <div class="col-3"><img src="${livros[livros.length-4].capa}" class="img-thumbnail" alt="" height="240" width="160"></div>`
+        strHtml2 = `<div class="col-3"><a id="${livros[livros.length-1].id}" class='verLivro' href = "../HTML/livro.html"><img src="${livros[livros.length-1].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>
+                <div class="col-3"><a id="${livros[livros.length-2].id}" class='verLivro' href = "../HTML/livro.html"><img src="${livros[livros.length-2].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>
+                <div class="col-3"><a id="${livros[livros.length-3].id}" class='verLivro' href = "../HTML/livro.html"><img src="${livros[livros.length-3].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>
+                <div class="col-3"><a id="${livros[livros.length-4].id}" class='verLivro' href = "../HTML/livro.html"><img src="${livros[livros.length-4].capa}" class="img-thumbnail" alt="" height="240" width="160"></a></div>`
         
 
         maisRecentes.innerHTML = strHtml2
     }
+
+    verLivro()
+
+    function verLivro() {
+        let verLivro = document.getElementsByClassName("verLivro")
+        // For each link, add a listener to listen the click event
+        for (let i = 0; i < verLivro.length; i++) {
+            verLivro[i].addEventListener("click", function() {
+                // Ao clicar num livro especifico, ve-lo numa pagina
+                let livroId = verLivro[i].getAttribute("id")
+                localStorage.setItem("livroID", livroId)
+            })        
+        }
+    }
+    
 
     function livrosStorage(){
         if(localStorage.livros) {

@@ -72,48 +72,51 @@
         let utilizadorLogado = JSON.parse(localStorage.getItem("utilizadorLogado"))
         
         let catalogo = document.getElementById("catalogo")
-        
+        let btnGrelha = document.getElementById("btnGrelha")
+        let btnLista = document.getElementById("btnLista")
         let strHtml = ""
-       
-        for (let i = 0, cont = 0; i < arrayOrdenacoes.length ; i++) {
-            if ((autores.value == arrayOrdenacoes[i].autor || autores.value == "") && 
-                (filtroCategorias.value == arrayOrdenacoes[i].categoria || filtroCategorias.value == "") &&
-                (estadoLivro.value == arrayOrdenacoes[i].estado || estadoLivro.value == "") && 
-                (filtroBibliotecas.value == arrayOrdenacoes[i].biblioteca || filtroBibliotecas.value == "") && 
-                (filtroTags.value == arrayOrdenacoes[i].tags || filtroTags.value == "") && 
-                (editora.value == arrayOrdenacoes[i].editora || editora.value == "") ) {
-                
-                if(cont % 6 == 0) {
-                    strHtml += `<div class="row">`    
-                }
-
-                if (utilizadorLogado._tipo == "operador"){
-                    strHtml += `
-                    <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayOrdenacoes[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
-                    <center><a id="${arrayOrdenacoes[i].id}" class='verLivro' ><p><b>${arrayOrdenacoes[i].titulo}</b></a> <br>
-                             de ${arrayOrdenacoes[i].autor}</p>  </center>
-                             <center><a id="${arrayOrdenacoes[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
-                    <a id="${arrayOrdenacoes[i].id}" href="#" data-toggle='modal'  data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>
-                             
-                    </div>`
-                }
-                else {
-                    strHtml += `
-                    <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "livro.html" ><img src="${arrayOrdenacoes[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
-                    <center><a id="${arrayOrdenacoes[i].id}" class='verLivro' ><p><b>${arrayOrdenacoes[i].titulo}</b></a> <br>
-                             de ${arrayOrdenacoes[i].autor}</p>  </center>
-                    </div>`
-                }
+   
             
-                if(cont % 6 == 5) {
-                   strHtml += `</div>`    
-                } 
-                cont++
+            for (let i = 0, cont = 0; i < arrayOrdenacoes.length ; i++) {
+                if ((autores.value == arrayOrdenacoes[i].autor || autores.value == "") && 
+                    (filtroCategorias.value == arrayOrdenacoes[i].categoria || filtroCategorias.value == "") &&
+                    (estadoLivro.value == arrayOrdenacoes[i].estado || estadoLivro.value == "") && 
+                    (filtroBibliotecas.value == arrayOrdenacoes[i].biblioteca || filtroBibliotecas.value == "") && 
+                    (filtroTags.value == arrayOrdenacoes[i].tags || filtroTags.value == "") && 
+                    (editora.value == arrayOrdenacoes[i].editora || editora.value == "") ) {
+                
+                        if(cont % 6 == 0) {
+                            strHtml += `<div class="row">`    
+                        }
+    
+                        if (utilizadorLogado._tipo == "operador"){
+                            strHtml += `
+                            <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayOrdenacoes[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
+                            <center><a id="${arrayOrdenacoes[i].id}" class='verLivro' ><p><b>${arrayOrdenacoes[i].titulo}</b></a> <br>
+                                 de ${arrayOrdenacoes[i].autor}</p>  </center>
+                                 <center><a id="${arrayOrdenacoes[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
+                            <a id="${arrayOrdenacoes[i].id}" href="#" data-toggle='modal'  data-target='#editarLivroModal' class="btn btn-dark editar "><i class="fas fa-edit"></i> </a></center> <br>  
+                            </div>`
+                        }
+                        else {
+                            strHtml += `
+                            <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "livro.html" ><img src="${arrayOrdenacoes[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
+                            <center><a id="${arrayOrdenacoes[i].id}" class='verLivro' ><p><b>${arrayOrdenacoes[i].titulo}</b></a> <br>
+                                 de ${arrayOrdenacoes[i].autor}</p>  </center>
+                            </div>`
+                        }
+                
+                        if(cont % 6 == 5) {
+                            strHtml += `</div>`    
+                        } 
+                        cont++
+                }   
             }
-                
-        }
-            
         catalogo.innerHTML = strHtml
+       
+
+       
+       
         
         let verLivro = document.getElementsByClassName("verLivro")
         // For each link, add a listener to listen the click event

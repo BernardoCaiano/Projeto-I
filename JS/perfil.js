@@ -121,7 +121,7 @@ function carregarRequisicoes() {
                                 <div class="row">
                     
                                 <div class="col-3">
-                                    <center><img src="${livros[j].capa}" class="img-thumbnail" height="240" width="160" alt=""> 
+                                    <center><a id="${livros[j].id}" class='verLivro' href = "../HTML/livro.html"><img src="${livros[j].capa}" class="img-thumbnail" height="240" width="160" alt=""></a> 
                                     <a id = "${requisiçoes[i].id}" class="btn btn-dark entregar">Entregar</a></center>
                                     
                                 </div>
@@ -148,6 +148,20 @@ function carregarRequisicoes() {
             
     requisicoes.innerHTML = strHtml
     
+}
+
+verLivro()
+
+function verLivro() {
+    let verLivro = document.getElementsByClassName("verLivro")
+    // For each link, add a listener to listen the click event
+    for (let i = 0; i < verLivro.length; i++) {
+        verLivro[i].addEventListener("click", function() {
+            // Ao clicar num livro especifico, ve-lo numa pagina
+            let livroId = verLivro[i].getAttribute("id")
+            localStorage.setItem("livroID", livroId)
+        })        
+    }
 }
 
 let entregar = document.getElementsByClassName("entregar") 
