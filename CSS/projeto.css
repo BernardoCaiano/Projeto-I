@@ -38,10 +38,6 @@
     background-color: #0A1D29;
 }
 
-/*#cssModal {
-    background-color: #3E606F;
-    color: white;
-}*/
 
 .active a{
     color: #0A1D29 !important;
@@ -70,12 +66,35 @@
     color: #fff !important;
 }
 
-
-
 .scrollTabelas {
     height: 300px;
     overflow: scroll;
 }
+
+.verLivro img {
+    box-sizing: border-box;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+.verLivro:hover img {
+    border-color: #96F1FF;
+    
+    opacity: 0.8;
+}
+
+
+
+/*#ranking{
+    -webkit-box-shadow: 0px 0px 50px 4px #0A1D29;
+    -moz-box-shadow: 0px 0px 50px 4px #0A1D29;
+    box-shadow: 0px 0px 50px 4px #0A1D29;
+    background-color: #0A1D29;
+    font-size: 250%; 
+    color: #0A1D29;
+    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    margin-top: 190px  
+}*/
 
 
 

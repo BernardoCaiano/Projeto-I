@@ -1,4 +1,5 @@
     let arrayOrdenacoes = []
+
     livrosStorage()
     categoriasStorage()
     bibliotecasStorage()
@@ -91,7 +92,7 @@
     
                         if (utilizadorLogado._tipo == "operador"){
                             strHtml += `
-                            <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayOrdenacoes[i].capa}" class="img-thumbnail" alt="" height="240" width="160" ></a> <br>
+                            <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "../HTML/livro.html"><img src="${arrayOrdenacoes[i].capa}"  alt="" height="240" width="160" ></a> <br>
                             <center><a id="${arrayOrdenacoes[i].id}" class='verLivro' ><p><b>${arrayOrdenacoes[i].titulo}</b></a> <br>
                                  de ${arrayOrdenacoes[i].autor}</p>  </center>
                                  <center><a id="${arrayOrdenacoes[i].id}" href="#"  class="btn btn-danger remove"><i class="fas fa-trash-alt"></i> </a>
@@ -100,7 +101,7 @@
                         }
                         else {
                             strHtml += `
-                            <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "livro.html" ><img src="${arrayOrdenacoes[i].capa}" class="img-thumbnail" alt="" height="240" width="160"></a> <br>
+                            <div class="col-2"><a id="${arrayOrdenacoes[i].id}" class='verLivro' href = "livro.html" ><img src="${arrayOrdenacoes[i].capa}"  alt="" height="240" width="160"></a> <br>
                             <center><a id="${arrayOrdenacoes[i].id}" class='verLivro' ><p><b>${arrayOrdenacoes[i].titulo}</b></a> <br>
                                  de ${arrayOrdenacoes[i].autor}</p>  </center>
                             </div>`
@@ -441,7 +442,7 @@
             }
         } 
     } 
-
+    
     function categoriasStorage(){
     
         if(localStorage.categorias) {
@@ -454,7 +455,7 @@
             }
         } 
     } 
-
+    
     function tagsStorage(){
     
         if(localStorage.tags) {
@@ -467,7 +468,7 @@
             }
         } 
     } 
-
+    
     function livrosStorage(){
         if(localStorage.livros) {
             let tempArray2 = JSON.parse(localStorage.getItem("livros"))
@@ -477,7 +478,9 @@
                 let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categoria, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado, tempArray2[i]._somaPontuacoes, tempArray2[i]._numeroPontuacoes, tempArray2[i]._mediaPontuacoes)
                 livros.push(novoLivro)
                 arrayOrdenacoes.push(novoLivro)
+                
             }
         }
             
     }
+    
