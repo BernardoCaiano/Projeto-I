@@ -301,7 +301,7 @@ function pontuacao(id) {
 
 function eliminarComentario(id){
     console.log(id)
-    if (confirm("Tem a certeza que quer eliminar o Comentario?")){
+    if (confirm("Tem a certeza que quer eliminar o comentario?")){
         for (let i = 0; i < comentarios.length; i++) {
             if(comentarios[i].id == id) {
                 for (let j = 0; j < livros.length; j++) {

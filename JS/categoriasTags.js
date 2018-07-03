@@ -1,3 +1,4 @@
+livrosStorage()
 categoriasStorage()
 tagsStorage()
 carregarCategorias()
@@ -120,23 +121,44 @@ function carregarTags() {
 }
 
 function eliminarCategoria(id){
-    console.log(id)
+    let categoriasAssociadas = []
+    for (let j = 0; j < livros.length; j++){
+        if (categoriasAssociadas.indexOf(livros[j].categoria) == -1) {
+            categoriasAssociadas.push(livros[j].categoria)
+        }
+    }
     if (confirm("Tem a certeza que quer eliminar a Categoria?")){
         for (let i = 0; i < categorias.length; i++) {
             if(categorias[i].id == id) {
-                categorias.splice(i, 1)
-            }    
-                        
+                if (categoriasAssociadas.indexOf(categorias[i].categoria) == -1) {
+                    categorias.splice(i, 1)
+                }
+                else{
+                    alert("Não pode eliminar categorias que estão associadas a um livro.")
+                }       
+            }                 
         }
     }
 }
 
 function eliminarTag(id){
+    let tagsAssociadas = []
+    for (let j = 0; j < livros.length; j++){
+        if (tagsAssociadas.indexOf(livros[j].tags) == -1) {
+            tagsAssociadas.push(livros[j].tags)
+        }
+    }
+    console.log(tagsAssociadas)
     if (confirm("Tem a certeza que quer eliminar o livro?")){
         for (let i = 0; i < tags.length; i++) {
             if(tags[i].id == id) {
-                tags.splice(i, 1)
-            }    
+                if (tagsAssociadas.indexOf(tags[i].tag) == -1) {
+                    tags.splice(i, 1)
+                }
+                else{
+                    alert("Não pode eliminar tags que estão associadas a um livro.")
+                }       
+            }      
                         
         }
     }
@@ -236,6 +258,22 @@ function getLastIdCategorias() {
     }        
     return lastIdCategorias
 }
+
+function livrosStorage(){
+    if(localStorage.livros) {
+        let tempArray2 = JSON.parse(localStorage.getItem("livros"))
+        
+        for (let i = 0; i < tempArray2.length; i++) {
+            
+            let novoLivro =  new Livro(tempArray2[i]._id, tempArray2[i]._titulo, tempArray2[i]._capa, tempArray2[i]._descriçao, tempArray2[i]._autor, tempArray2[i]._editora, tempArray2[i]._dataLançamento, tempArray2[i]._numeroPaginas, tempArray2[i]._estado, tempArray2[i]._doador, tempArray2[i]._dataDoaçao, tempArray2[i]._categoria, tempArray2[i]._tags, tempArray2[i]._biblioteca, tempArray2[i]._requisitado, tempArray2[i]._somaPontuacoes, tempArray2[i]._numeroPontuacoes, tempArray2[i]._mediaPontuacoes)
+            livros.push(novoLivro)
+           
+            
+        }
+    }
+        
+}
+
 
 function getLastIdTags() {
     let lastIdTags = 0

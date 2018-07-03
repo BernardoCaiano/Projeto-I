@@ -31,7 +31,7 @@
 
     if (localStorage.getItem("livros") == null){
         livros.push(novoLivro01)
-        livros.push(novoLivro02)
+        livros.push(novoLivro02) 
         livros.push(novoLivro03)
         livros.push(novoLivro04)
         livros.push(novoLivro05)
@@ -54,8 +54,12 @@
 
     btnFiltrar.addEventListener("click", function(){
         
-        if(ordem.value == "alfabetica") {
-            filtrarOrdemAlfabetica()
+        if(ordem.value == "alfabeticaAZ") {
+            filtrarOrdemAlfabeticaAZ()
+        }
+
+        if(ordem.value == "alfabeticaZA") {
+            filtrarOrdemAlfabeticaZA()
         }
         
         if(ordem.value == "maisRecentes") {
@@ -79,12 +83,13 @@
    
             
             for (let i = 0, cont = 0; i < arrayOrdenacoes.length ; i++) {
+                
                 if ((autores.value == arrayOrdenacoes[i].autor || autores.value == "") && 
                     (filtroCategorias.value == arrayOrdenacoes[i].categoria || filtroCategorias.value == "") &&
                     (estadoLivro.value == arrayOrdenacoes[i].estado || estadoLivro.value == "") && 
                     (filtroBibliotecas.value == arrayOrdenacoes[i].biblioteca || filtroBibliotecas.value == "") && 
                     (filtroTags.value == arrayOrdenacoes[i].tags || filtroTags.value == "") && 
-                    (editora.value == arrayOrdenacoes[i].editora || editora.value == "") ) {
+                    (editora.value == arrayOrdenacoes[i].editora || editora.value == "")) {
                 
                         if(cont % 6 == 0) {
                             strHtml += `<div class="row">`    
@@ -113,12 +118,9 @@
                         cont++
                 }   
             }
-        catalogo.innerHTML = strHtml
+            
+            catalogo.innerHTML = strHtml
        
-
-       
-       
-        
         let verLivro = document.getElementsByClassName("verLivro")
         // For each link, add a listener to listen the click event
         for (let i = 0; i < verLivro.length; i++) {
@@ -303,7 +305,7 @@
         filtroBibliotecas.innerHTML = strHtml
     }
 
-    function filtrarOrdemAlfabetica() {
+    function filtrarOrdemAlfabeticaAZ() {
         for (let l = 0; l < arrayOrdenacoes.length; l++){
             arrayOrdenacoes[l] = livros[l]
         }
@@ -312,6 +314,25 @@
         for (let i = 0; i < arrayOrdenacoes.length-1; i++) {
             for (let j = i+1; j < arrayOrdenacoes.length; j++) {
                 if ( arrayOrdenacoes[i].titulo > arrayOrdenacoes[j].titulo ){
+                    livroTemp = arrayOrdenacoes[j]
+                    arrayOrdenacoes[j] = arrayOrdenacoes[i]
+                    arrayOrdenacoes[i] = livroTemp
+                }
+            }
+        }
+
+        
+    }
+
+    function filtrarOrdemAlfabeticaZA() {
+        for (let l = 0; l < arrayOrdenacoes.length; l++){
+            arrayOrdenacoes[l] = livros[l]
+        }
+        
+        let livroTemp = new Livro()
+        for (let i = 0; i < arrayOrdenacoes.length-1; i++) {
+            for (let j = i+1; j < arrayOrdenacoes.length; j++) {
+                if ( arrayOrdenacoes[i].titulo < arrayOrdenacoes[j].titulo ){
                     livroTemp = arrayOrdenacoes[j]
                     arrayOrdenacoes[j] = arrayOrdenacoes[i]
                     arrayOrdenacoes[i] = livroTemp
@@ -346,6 +367,7 @@
                 }
             }  
         }
+        console.log(arrayOrdenacoes)
     }
 
     function eliminarLivro(id){
