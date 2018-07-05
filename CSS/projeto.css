@@ -36,7 +36,6 @@
     background-color: #0A1D29;
 }
 
-
 .active a{
     color: #0A1D29 !important;
 }
@@ -80,7 +79,15 @@
     opacity: 0.8;
 }
 
+#myMap {
+    box-sizing: border-box;
+    border: 3px solid #fff;
+    border-radius: 5px;
+}
 
+#emLinha {
+    display: inline;
+}
 
 /*#ranking{
     
@@ -93,8 +100,6 @@
     text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     margin-top: 190px  
 }*/
-
-
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -127,9 +132,6 @@
     min-height: 100vh;
     transition: all 0.3s;
 }
-
-
-
 
 /* ---------------------------------------------------
     MEDIAQUERIES
@@ -217,9 +219,6 @@ input[type="color"]:focus,
     transition: all .3s ease-in-out
 }
 
-
 .checked {
     color: #f2b600;
 }
-
-

@@ -6,6 +6,7 @@
     <script src="../JS/login_registo.js"></script>
     <script src="../JS/classeLivros.js"></script>
     
+    <link rel="icon" href="../imagens/favicon.png" type="image/gif" sizes="30x30">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,30 +38,29 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </ul>
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 
                 <!--OPÇÃO LOGIN-->
                 <li id="optLogin" class="nav-item">
-                  <a data-toggle="modal" data-target="#loginModal" class="nav-link" href="#" style="color:white">Login</a>
+                    <a data-toggle="modal" data-target="#loginModal" class="nav-link" href="#" style="color:white">Login</a>
                 </li>
                 <!--OPÇÃO REGISTO-->
                 <li id="optRegister" class="nav-item">
-                  <a data-toggle="modal" data-target="#registoModal" class="nav-link" href="#" style="color:white">Registo</a>
+                    <a data-toggle="modal" data-target="#registoModal" class="nav-link" href="#" style="color:white">Registo</a>
                 </li> 
                 <!--OPÇÃO LOGOUT-->
                 <li id="optLogout" class="nav-item">
                     <a class="nav-link" href="#" style="color:white">Logout</a>
                 </li> 
                 <!--OPÇÃO NOME-->
-                <li id="optNome" class="nav-item"></li>  
+                <li id="optNome" class="nav-item"></li> 
+                <!--ICONS-->
                 <li class="nav-item">
-                        <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>
-                    
-                    </li>
-            
-                    <li class="nav-item">
-                        <a href="../HTML/backOffice.html" id="linkConfiguracoes"><i class="fas fa-cog fa-2x" style="color:white"></i></a>
-                    </li>                
+                    <a href="perfil.html" id="linkPerfil"><i class="fas fa-user fa-2x mr-3 ml-3" style="color:white"></i></a>    
+                </li>
+                <li class="nav-item">
+                    <a href="../HTML/backOffice.html" id="linkConfiguracoes"><i class="fas fa-cog fa-2x" style="color:white"></i></a>
+                </li>                
             </ul>              
         </div>
     </nav>
@@ -71,13 +71,16 @@
                 <ul class="navbar-nav ">
                     <div class="position-fixed">
                         <li class="nav-item " >
-                            <a href="index.html" class="nav-link ml-2"  style="color:white">Home</a>
+                            <a href="index.html" class="nav-link "  style="color:white">Home</a>
                         </li>
                         <li class="nav-item" >
-                            <a href="catalogo.html" class="nav-link ml-2" id="linkCatalogo" style="color:white">Catálogo</a>
+                            <a href="catalogo.html" class="nav-link " id="linkCatalogo" style="color:white">Catálogo</a>
                         </li>
                         <li class="nav-item" >
-                            <a href="doarlivro.html" class="nav-link ml-2" id="linkDoarLivro" style="color:white">Doar Livro</a>
+                            <a href="doarlivro.html" class="nav-link" id="linkDoarLivro" style="color:white">Doar Livro</a>
+                        </li>
+                        <li class="nav-item" >
+                            <a href="bibliotecas.html" class="nav-link" id="linkBibliotecas" style="color:white">Bibliotecas</a>
                         </li>
                     </div>        
                 </ul>

@@ -49,10 +49,15 @@
     
     let ordem = document.getElementById("ordem")
     
-    //Filtros
+    //Filtros/Ordenacoes
     let btnFiltrar = document.getElementById("btnFiltrar")
+    let btnOrdenar = document.getElementById("btnOrdenar")
 
     btnFiltrar.addEventListener("click", function(){
+        carregarCatalogo()
+    })
+
+    btnOrdenar.addEventListener("click", function(){
         
         if(ordem.value == "alfabeticaAZ") {
             filtrarOrdemAlfabeticaAZ()
@@ -71,6 +76,7 @@
         }
         carregarCatalogo()
     })
+    
     
     function carregarCatalogo() {
 

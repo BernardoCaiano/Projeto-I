@@ -14,8 +14,8 @@ window.onload = function() {
     let linkCatalogo = document.getElementById("linkCatalogo")
     let linkDoarLivro = document.getElementById("linkDoarLivro")
     let linkPerfil = document.getElementById("linkPerfil")
+    let linkBibliotecas = document.getElementById("linkBibliotecas")
     let linkConfiguracoes = document.getElementById("linkConfiguracoes")
-
 
     linkCatalogo.addEventListener("click", function(event) {
         if (logado == false) {
@@ -25,12 +25,12 @@ window.onload = function() {
         }
     })
 
-    //linkPerfil.addEventListener("click", function(event) {
-        //if (logado == false) {
-            //event.preventDefault()
-            //alert("Para aceder a esses conteudos tem que fazer login!")
-        //}
-    //})
+    linkBibliotecas.addEventListener("click", function(event) {
+        if (logado == false) {
+            event.preventDefault()
+            alert("Para aceder a esses conteudos tem que fazer login!")
+        }
+    })
 
     let novoUtilizador01 = new Utilizador(getLastId() + 1, "operador", "operador@email.com", "11111", "operador", "../imagens/perfil.jpg", 0 ) 
     let novoUtilizador02 = new Utilizador(getLastId() + 2, "admin", "admin@email.com", "11111", "admin", "../imagens/perfil.jpg", 0 )

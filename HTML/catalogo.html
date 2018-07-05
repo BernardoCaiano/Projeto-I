@@ -6,6 +6,7 @@
     <script src="../JS/login_registo.js"></script>
     <script src="../JS/classeLivros.js"></script>
   
+    <link rel="icon" href="../imagens/favicon.png" type="image/gif" sizes="30x30">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -74,12 +75,13 @@
                     </li>
                     <li class="nav-item" >
                         <a href="catalogo.html" class="nav-link" id="linkCatalogo" style="color:white">Catálogo</a>
-                        
                     </li>
                     <li class="nav-item" >
                         <a href="doarlivro.html" class="nav-link" id="linkDoarLivro" style="color:white">Doar Livro</a>
                     </li>
-                    
+                    <li class="nav-item" >
+                        <a href="bibliotecas.html" class="nav-link" id="linkBibliotecas" style="color:white">Bibliotecas</a>
+                    </li>
                 </div>        
             </ul>
         </nav>
@@ -91,17 +93,36 @@
                         
                 </div>
                 <div class="jumbotron" id="conteudoJumbotron">
+                    <center><h5 id="emLinha" data-toggle="collapse" data-target="#collapseOrdenações" aria-expanded="false" aria-controls="collapseOrdenações">Ordenações</h5><i class="fas fa-angle-down fa-lg ml-3 mt-1" data-toggle="collapse" data-target="#collapseOrdenações" aria-expanded="false" aria-controls="collapseOrdenações"></i></center>
+                    <br>
+                    <div class="collapse" id="collapseOrdenações">
+                            <form action="">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label for="ordem"><h5>Ordenar</h5> </label>
+                                        <select class="form-control" id="ordem">
+                                            <option value="alfabeticaAZ">de A para Z</option>
+                                            <option value="alfabeticaZA">de Z para A</option>
+                                            <option value="maisRecentes">pelos mais recentes</option>
+                                            <option value="maisPontuados">pelos mais pontuados</option>
+                                        </select>
+                                    </div>
+                                    
+                                        <div class="form-group col-1">
+                                                <br>
+                                                <button id="btnOrdenar" type="button" class="btn btn-dark   mt-3">Ordenar</button>
+                                            </div> 
+                                </div>
+        
+                            </form> <br>
+                        </div>
+                    <center><h5 id="emLinha" data-toggle="collapse" data-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseFiltros">Filtros</h5><i class="fas fa-angle-down fa-lg ml-3" data-toggle="collapse" data-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseFiltros"></i></center>
+                    <br>
+                    
+                    <div class="collapse" id="collapseFiltros">
                     <form > 
                         <div class="row">
-                            <div class="form-group col-md-3">
-                                <label for="ordem"><h5>Ordenações</h5> </label>
-                                <select class="form-control" id="ordem">
-                                    <option value="alfabeticaAZ">Alfabética</option>
-                                    <option value="maisRecentes">Mais Recentes</option>
-                                    <option value="maisPontuados">Mais Pontuados</option>
-                                    <option value="alfabeticaZA">de Z para A</option>
-                                </select>
-                            </div>
+                            
                             <div class="form-group col-md-3">
                                 <label for="autores"><h5>Autores</h5> </label>
                                 <select class="form-control" id="autores"></select>
@@ -134,26 +155,28 @@
                                         <br>
                                         <button id="btnFiltrar" type="button" class="btn btn-dark   mt-3">Filtrar</button>
                                     </div> 
-                                    <div class="form-group col-1 ">
+                                    <!--<div class="form-group col-1 ">
                                         <br>
                                         <button id="btnGrelha" type="button" class="btn btn-dark  mt-3"><i class="fas fa-th"></i></button>
                                     </div> 
                                     <div class="form-group col-1">
                                         <br>
                                         <button id="btnLista" type="button" class="btn btn-dark  mt-3"><i class="fas fa-th-list"></i></button>
-                                    </div>
-                                    
-                                    
-
+                                    </div>-->
                         </div>
                         
-                    
-                    </form> <br>
-        
-                    <div  id="catalogo">
+                    </form> 
+                </div>
+                
+                <hr style="border-color:white">
+                <br>
+                <div  id="catalogo">
                     
                         
-                    </div>
+                </div>
+                
+                <hr style="border-color:white">
+                <center><i  class="fas fa-arrow-circle-left fa-2x mr-4 "></i><h4 id="emLinha">1</h4><i class="fas fa-arrow-circle-right fa-2x ml-4 "></i></center>
             </div>
         </div>
         
